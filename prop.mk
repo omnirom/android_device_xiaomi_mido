@@ -23,6 +23,7 @@ persist.vendor.btstack.a2dp_offload_cap=sbc-aptx-aptxhd-aac \
 ro.af.client_heap_size_kbyte=7168 \
 ro.vendor.audio.sdk.fluencetype=fluence \
 ro.vendor.audio.sdk.ssr=false \
+ro.config.vc_call_vol_steps=7 \
 vendor.audio.flac.sw.decoder.24bit=true \
 vendor.audio.offload.buffer.size.kb=64 \
 vendor.audio.offload.gapless.enabled=true \
