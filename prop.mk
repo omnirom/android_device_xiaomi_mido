@@ -21,6 +21,7 @@ persist.vendor.audio.hw.binder.size_kbyte=1024 \
 persist.vendor.btstack.enable.splita2dp=false \
 persist.vendor.btstack.a2dp_offload_cap=sbc-aptx-aptxhd-aac \
 ro.af.client_heap_size_kbyte=7168 \
+ro.config.media_vol_steps=25 \
 ro.vendor.audio.sdk.fluencetype=fluence \
 ro.vendor.audio.sdk.ssr=false \
 ro.config.vc_call_vol_steps=7 \
