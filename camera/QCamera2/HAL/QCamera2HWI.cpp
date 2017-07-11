@@ -412,7 +412,7 @@ void QCamera2HardwareInterface::stop_preview(struct camera_device *device)
              hw->getCameraId());
 
     // Disable power Hint for preview
-    hw->m_perfLock.powerHint(POWER_HINT_VIDEO_ENCODE, false);
+    hw->m_perfLock.powerHint(PowerHint::VIDEO_ENCODE, false);
 
     hw->m_perfLock.lock_acq();
     hw->lockAPI();
@@ -3549,8 +3549,10 @@ int QCamera2HardwareInterface::startPreview()
     m_perfLock.lock_rel();
 
     if (rc == NO_ERROR) {
-        // Set power Hint for preview
-        m_perfLock.powerHint(POWER_HINT_VIDEO_ENCODE, true);
+        if (!mParameters.isSeeMoreEnabled()) {
+            // Set power Hint for preview
+            m_perfLock.powerHint(PowerHint::VIDEO_ENCODE, true);
+        }
     }
 
     LOGI("X rc = %d", rc);
@@ -3583,7 +3585,7 @@ int QCamera2HardwareInterface::stopPreview()
     mActiveAF = false;
 
     // Disable power Hint for preview
-    m_perfLock.powerHint(POWER_HINT_VIDEO_ENCODE, false);
+    m_perfLock.powerHint(PowerHint::VIDEO_ENCODE, false);
 
     m_perfLock.lock_acq();
 
@@ -3750,8 +3752,10 @@ int QCamera2HardwareInterface::startRecording()
     }
 
     if (rc == NO_ERROR) {
-        // Set power Hint for video encoding
-        m_perfLock.powerHint(POWER_HINT_VIDEO_ENCODE, true);
+        if (!mParameters.isSeeMoreEnabled()) {
+            // Set power Hint for video encoding
+            m_perfLock.powerHint(PowerHint::VIDEO_ENCODE, true);
+        }
     }
 
     LOGI("X rc = %d", rc);
@@ -3781,7 +3785,7 @@ int QCamera2HardwareInterface::stopRecording()
 
     m_cbNotifier.flushVideoNotifications();
     // Disable power hint for video encoding
-    m_perfLock.powerHint(POWER_HINT_VIDEO_ENCODE, false);
+    m_perfLock.powerHint(PowerHint::VIDEO_ENCODE, false);
     LOGI("X rc = %d", rc);
     return rc;
 }
