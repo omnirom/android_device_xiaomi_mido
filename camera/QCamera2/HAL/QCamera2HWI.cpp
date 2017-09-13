@@ -3568,10 +3568,8 @@ int QCamera2HardwareInterface::startPreview()
     m_perfLock.lock_rel();
 
     if (rc == NO_ERROR) {
-        if (!mParameters.isSeeMoreEnabled()) {
-            // Set power Hint for preview
-            m_perfLock.powerHint(PowerHint::VIDEO_ENCODE, true);
-        }
+        // Set power Hint for preview
+        m_perfLock.powerHint(PowerHint::VIDEO_ENCODE, true);
     }
 
     LOGI("X rc = %d", rc);
@@ -3775,13 +3773,6 @@ int QCamera2HardwareInterface::startRecording()
         rc = pChannel->start();
     }
 
-    if (rc == NO_ERROR) {
-        if (!mParameters.isSeeMoreEnabled()) {
-            // Set power Hint for video encoding
-            m_perfLock.powerHint(PowerHint::VIDEO_ENCODE, true);
-        }
-    }
-
     LOGI("X rc = %d", rc);
     return rc;
 }
@@ -3808,8 +3799,6 @@ int QCamera2HardwareInterface::stopRecording()
     int rc = stopChannel(QCAMERA_CH_TYPE_VIDEO);
 
     m_cbNotifier.flushVideoNotifications();
-    // Disable power hint for video encoding
-    m_perfLock.powerHint(PowerHint::VIDEO_ENCODE, false);
     LOGI("X rc = %d", rc);
     return rc;
 }
