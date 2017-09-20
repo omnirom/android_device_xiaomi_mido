@@ -46,3 +46,6 @@
 
 # Data files
 /cache/org\.omnirom\.device\.dex                u:object_r:dalvikcache_data_file:s0
+
+# IR
+/(vendor|system/vendor)/bin/hw/android\.hardware\.ir@1\.0-service.xiaomi_mido       u:object_r:hal_ir_default_exec:s0

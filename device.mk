@@ -114,10 +114,6 @@ PRODUCT_PACKAGES += \
     libmm-qcamera \
     Snap
 
-# Consumerir
-PRODUCT_PACKAGES += \
-    consumerir.msm8953
-
 # Device Settings
 PRODUCT_PACKAGES += \
     XiaomiParts
