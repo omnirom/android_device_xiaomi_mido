@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.du.settings.doze"
+    package="com.custom.ambient.display"
     android:versionCode="1"
     android:versionName="1.0"
     android:sharedUserId="android.uid.system">
@@ -20,14 +20,14 @@
         android:persistent="true"
         android:supportsRtl="true">
 
-        <receiver android:name="com.du.settings.doze.BootCompletedReceiver">
+        <receiver android:name="com.custom.ambient.display.BootCompletedReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
 
-        <service android:name="com.du.settings.doze.DozeService"
+        <service android:name="com.custom.ambient.display.DozeService"
                  android:permission="XiaomiDozeService">
         </service>
 

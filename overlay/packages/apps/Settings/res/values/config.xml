@@ -18,6 +18,6 @@
     <bool name="config_enableManualSubProvisioning">true</bool>
 
 <!-- Device specific doze package -->
-    <string name="config_customDozePackage" translatable="false">com.du.settings.doze/com.du.settings.doze.DozeSettings</string>
+    <string name="config_customDozePackage" translatable="false">com.custom.ambient.display/com.custom.ambient.display.DozeSettings</string>
 
 </resources>

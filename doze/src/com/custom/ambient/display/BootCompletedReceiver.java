@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.du.settings.doze;
+package com.custom.ambient.display;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
