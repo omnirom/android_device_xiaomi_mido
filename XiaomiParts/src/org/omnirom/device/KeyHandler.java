@@ -55,7 +55,7 @@ public class KeyHandler implements DeviceKeyHandler {
 
     private static final String TAG = KeyHandler.class.getSimpleName();
     private static final boolean DEBUG = false;
-    private static final String KEY_CONTROL_PATH = "/proc/touchpanel/capacitive_keys_enable";
+    private static final String KEY_CONTROL_PATH = "/proc/touchpanel/capacitive_keys_disable";
 
     private static final int KEY_HOME = 102;
     private static final int KEY_BACK = 158;
