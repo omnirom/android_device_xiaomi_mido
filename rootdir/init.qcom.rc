@@ -264,10 +264,6 @@ on post-fs-data
     mkdir /data/vendor/netmgr 0770 radio radio
     chmod 0770 /data/vendor/netmgr
 
-    #create ipacm log dir
-    mkdir /data/vendor/ipa 0770 radio radio
-    chmod 0770 /data/vendor/ipa
-
     # Create the directories used by CnE subsystem
     mkdir /data/connectivity 0771 system system
     chown system system /data/connectivity
@@ -493,19 +489,6 @@ on property:bluetooth.hciattach=false
 
 service netmgrd /system/vendor/bin/netmgrd
     class main
-    writepid /dev/cpuset/system-background/tasks
-
-service ipacm-diag /system/vendor/bin/ipacm-diag
-    class main
-    user radio
-    socket ipacm_log_file dgram 660 radio radio
-    group radio diag
-    writepid /dev/cpuset/system-background/tasks
-
-service ipacm /system/vendor/bin/ipacm
-    class main
-    user radio
-    group radio inet
     writepid /dev/cpuset/system-background/tasks
 
 service qti /system/vendor/bin/qti
