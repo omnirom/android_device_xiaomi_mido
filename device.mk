@@ -109,7 +109,8 @@ PRODUCT_COPY_FILES += \
 # Bluetooth
 PRODUCT_PACKAGES += \
     libbt-vendor \
-    android.hardware.bluetooth@1.0-impl
+    android.hardware.bluetooth@1.0-impl \
+    android.hardware.bluetooth@1.0-service
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -133,7 +134,8 @@ PRODUCT_PACKAGES += \
     consumerir.msm8953
 
 PRODUCT_PACKAGES += \
-    android.hardware.ir@1.0-impl
+    android.hardware.ir@1.0-impl \
+    android.hardware.ir@1.0-service
 
 # Device Settings
 PRODUCT_PACKAGES += \
@@ -154,12 +156,15 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator@2.0-impl \
     android.hardware.graphics.allocator@2.0-service \
     android.hardware.graphics.composer@2.1-impl \
+    android.hardware.graphics.composer@2.1-service \
     android.hardware.graphics.mapper@2.0-impl \
-    android.hardware.memtrack@1.0-impl
+    android.hardware.memtrack@1.0-impl \
+    android.hardware.memtrack@1.0-service
 
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
+    android.hardware.drm@1.0-service
 
 # Ebtables
 PRODUCT_PACKAGES += \
@@ -178,7 +183,8 @@ PRODUCT_PACKAGES += \
 
 # Gatekeeper HAL
 PRODUCT_PACKAGES += \
-    android.hardware.gatekeeper@1.0-impl
+    android.hardware.gatekeeper@1.0-impl \
+    android.hardware.gatekeeper@1.0-service
 
 # GPS
 PRODUCT_PACKAGES += \
@@ -229,14 +235,16 @@ PRODUCT_COPY_FILES += \
 
 # Keymaster HAL
 PRODUCT_PACKAGES += \
-    android.hardware.keymaster@3.0-impl
+    android.hardware.keymaster@3.0-impl \
+    android.hardware.keymaster@3.0-service
 
 # Lights
 PRODUCT_PACKAGES += \
     lights.msm8953
 
 PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-impl
+    android.hardware.light@2.0-impl \
+    android.hardware.light@2.0-service
 
 # Media
 PRODUCT_COPY_FILES += \
@@ -277,7 +285,8 @@ PRODUCT_PACKAGES += \
     power.msm8953
 
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.0-impl
+    android.hardware.power@1.0-impl \
+    android.hardware.power@1.0-service
 
 # QMI
 PRODUCT_PACKAGES += \
@@ -317,7 +326,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sensors/sensor_def_qcomdev.conf:system/vendor/etc/sensors/sensor_def_qcomdev.conf
 
 PRODUCT_PACKAGES += \
-    android.hardware.sensors@1.0-impl
+    android.hardware.sensors@1.0-impl \
+    android.hardware.sensors@1.0-service
 
 # USB HAL
 PRODUCT_PACKAGES += \
@@ -325,7 +335,8 @@ PRODUCT_PACKAGES += \
 
 # Vibrator
 PRODUCT_PACKAGES += \
-    android.hardware.vibrator@1.0-impl
+    android.hardware.vibrator@1.0-impl \
+    android.hardware.vibrator@1.0-service
 
 # Whitelisted app
 PRODUCT_COPY_FILES += \
@@ -344,7 +355,8 @@ PRODUCT_PACKAGES += \
     wpa_supplicant.conf
 
 PRODUCT_PACKAGES += \
-    android.hardware.wifi@1.0-service
+    android.hardware.wifi@1.0-service \
+    android.hardware.wifi@1.0-supplicant
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/p2p_supplicant_overlay.conf:system/vendor/etc/wifi/p2p_supplicant_overlay.conf \
