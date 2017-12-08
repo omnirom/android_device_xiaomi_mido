@@ -169,6 +169,7 @@ Return<RequestStatus> BiometricsFingerprint::postEnroll() {
 }
 
 Return<uint64_t> BiometricsFingerprint::getAuthenticatorId() {
+    usleep(140000);
     return mDevice->get_authenticator_id(mDevice);
 }
 
