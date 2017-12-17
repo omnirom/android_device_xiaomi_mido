@@ -1,6 +1,6 @@
-# Audio dirac
-lib/soundfx/libdirac.so
-lib/libDiracAPI_SHARED.so
+# DIRAC audio
+vendor/lib/soundfx/libdirac.so
+vendor/lib/libDiracAPI_SHARED.so
 vendor/etc/diracmobile.config
 vendor/lib/libhwdaphal.so
 vendor/lib64/libhwdaphal.so
@@ -629,17 +629,23 @@ etc/firmware/cpp_firmware_v1_8_0.fw|26e2badbb4e3049243f0a176722f26879e7b87e8
 -etc/qdcm_calib_data_nt35532_fhd_video_mode_dsi_panel.xml
 -etc/qdcm_calib_data_nt35596_tianma_fhd_video_mode_dsi_panel.xml
 
+# Graphics firmware
+etc/firmware/a506_zap.b00
+etc/firmware/a506_zap.b01
+etc/firmware/a506_zap.b02
+etc/firmware/a506_zap.mdt
+etc/firmware/a530_pfp.fw
+etc/firmware/a530_pm4.fw
+
 # Fingerprint
 bin/gx_fpd
 lib/hw/fingerprint.searchf.so
-lib/libcom_fingerprints_service.so
 lib64/hw/fingerprint.goodix.so
 lib64/hw/fingerprint.searchf.so
 lib64/hw/gxfingerprint.default.so
-lib64/libcom_fingerprints_service.so
 lib64/libfp_client.so
 lib64/libfpnav.so
 lib64/libfpservice.so
 
 # Wi-Fi
-bin/wcnss_service 
+vendor/bin/wcnss_service
