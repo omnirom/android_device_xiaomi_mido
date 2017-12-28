@@ -46,8 +46,8 @@ qcom.bluetooth.soc=smd
 persist.camera.isp.clock.optmz=0
 vidc.enc.dcvs.extra-buff-count=2
 media.camera.ts.monotonic=1
-camera.display.umax=1920x1080
-camera.display.lmax=1280x720
+persist.vendor.camera.display.umax=1920x1080
+persist.vendor.camera.display.lmax=1280x720
 persist.camera.stats.test=5
 persist.camera.feature.cac=1
 persist.camera.imglib.cac3=2
@@ -114,6 +114,7 @@ vendor.vidc.dec.downscalar_height=1088
 vendor.vidc.disable.split.mode=1
 vendor.vidc.enc.disable.pq=true
 persist.media.treble_omx=false
+media.settings.xml=/vendor/etc/media_profiles_vendor.xml
 
 # Perf
 ro.vendor.extension_library=libqti-perfd-client.so
