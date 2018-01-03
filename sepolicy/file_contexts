@@ -28,3 +28,18 @@
 
 # Camera
 /system/bin/mm-qcamera-daemon			u:object_r:mm-qcamerad_exec:s0
+
+# Debugfs files
+/sys/kernel/debug/rmt_storage(/.*)?             u:object_r:debugfs_rmt:s0
+/sys/kernel/debug/rpm_stats                     u:object_r:debugfs_rpm:s0
+/sys/kernel/debug/rpm_master_stats              u:object_r:debugfs_rpm:s0
+
+# Power
+/(vendor|system/vendor)/bin/hw/android\.hardware\.power@1\.0-service-qti      u:object_r:hal_power_default_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.power@1\.1-service-qti      u:object_r:hal_power_default_exec:s0
+
+# Sysfs
+/sys/devices/virtual/timed_output/vibrator/vtg_level            u:object_r:sysfs_vibrator:s0
+
+# Data files
+/cache/org\.omnirom\.device\.dex                u:object_r:dalvikcache_data_file:s0
