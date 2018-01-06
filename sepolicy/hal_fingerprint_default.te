@@ -1,7 +1,6 @@
 allow hal_fingerprint_default gx_fpd:binder { transfer call };
 allow hal_fingerprint_default gx_fpd_service:service_manager { find };
 allow hal_fingerprint_default fingerprint_service:service_manager { find };
-allow hal_fingerprint_default fingerprintd_service:service_manager { find };
 allow hal_fingerprint_default fpc_sysfs:file rw_file_perms;
 allow hal_fingerprint_default fpc_sysfs:dir rw_dir_perms;
 allow hal_fingerprint_default tee_device:chr_file rw_file_perms;
@@ -11,5 +10,6 @@ allow hal_fingerprint_default fpc_data_file:sock_file create_file_perms;
 allow hal_fingerprint_default servicemanager:binder { transfer call };
 allow hal_fingerprint_default keystore_service:service_manager { find };
 allow hal_fingerprint_default keystore:binder { call };
+add_service(hal_fingerprint_default, fingerprintd_custom_service);
 set_prop(hal_fingerprint_default, system_prop)
 r_dir_file(hal_fingerprint_default, firmware_file)
