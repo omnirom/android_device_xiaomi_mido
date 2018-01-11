@@ -25,6 +25,7 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
+init.omni.rc
 import /vendor/etc/init/hw/init.qcom.usb.rc
 import /vendor/etc/init/hw/init.target.rc
 
@@ -185,6 +186,14 @@ on boot
     chown system system /sys/class/leds/green/brightness
     chown system system /sys/class/leds/blue/brightness
 
+    # Vibrator permissions
+    chown root system /sys/devices/virtual/timed_output/vibrator/vtg_level
+    chmod 0660 /sys/devices/virtual/timed_output/vibrator/vtg_level
+
+    # Buttons
+    chown root system /proc/touchpanel/capacitive_keys_disable
+    chmod 0660 /proc/touchpanel/capacitive_keys_disable
+
     # Allow access to emmc rawdump block partition and dload sysfs node
     chown root system /dev/block/bootdevice/by-name/rawdump -p /dev/block/
     chmod 0660 /dev/block/bootdevice/by-name/rawdump -p /dev/block/
@@ -326,6 +335,9 @@ on post-fs-data
 
     # Create /data/vendor/time folder for time-services
     mkdir /data/vendor/time/ 0700 system system
+
+    # backward comp
+    symlink /data/vendor/time /data/time
 
     mkdir /data/vendor/audio/ 0770 media audio
 
