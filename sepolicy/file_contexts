@@ -43,3 +43,7 @@
 
 # Data files
 /cache/org\.omnirom\.device\.dex                u:object_r:dalvikcache_data_file:s0
+
+# System files
+/(vendor|system/vendor)/bin/hci_qcomm_init      u:object_r:hci_exec:s0
+
