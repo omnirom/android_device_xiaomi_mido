@@ -22,6 +22,10 @@
 
 # Data files
 /data/misc/netmgr/log\.txt			u:object_r:netmgrd_data_file:s0
+/data/vendor/time(/.*)?                         u:object_r:time_data_file:s0
+
+# Proc files
+/proc/touchpanel(/.*)?                          u:object_r:proc_touchpanel:s0
 
 # Custom biometrics
 /(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.0-service-custom u:object_r:hal_fingerprint_default_exec:s0
@@ -40,6 +44,7 @@
 
 # Sysfs
 /sys/devices/virtual/timed_output/vibrator/vtg_level            u:object_r:sysfs_vibrator:s0
+/sys/devices/soc/78b7000.i2c/i2c-3/3-0038/disable_keys          u:object_r:sysfs:s0
 
 # Data files
 /cache/org\.omnirom\.device\.dex                u:object_r:dalvikcache_data_file:s0
