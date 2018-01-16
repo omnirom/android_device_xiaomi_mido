@@ -33,6 +33,7 @@ LOCAL_C_INCLUDES+= $(kernel_includes)
 LOCAL_ADDITIONAL_DEPENDENCIES := $(common_deps)
 
 LOCAL_SRC_FILES := mm_jpeg_test.c
+LOCAL_VENDOR_MODULE := true
 
 LOCAL_32_BIT_ONLY := $(BOARD_QTI_CAMERA_32BIT_ONLY)
 LOCAL_MODULE           := mm-jpeg-interface-test
@@ -76,6 +77,7 @@ LOCAL_C_INCLUDES+= $(kernel_includes)
 LOCAL_ADDITIONAL_DEPENDENCIES := $(common_deps)
 
 LOCAL_SRC_FILES := mm_jpegdec_test.c
+LOCAL_VENDOR_MODULE := true
 
 LOCAL_32_BIT_ONLY := $(BOARD_QTI_CAMERA_32BIT_ONLY)
 LOCAL_MODULE           := mm-jpegdec-interface-test
