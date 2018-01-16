@@ -80,6 +80,6 @@ LOCAL_SHARED_LIBRARIES += android.hardware.power@1.1
 endif
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_OWNER := qcom
-LOCAL_PROPRIETARY_MODULE := true
+LOCAL_VENDOR_MODULE := true
 LOCAL_HEADER_LIBRARIES := libhardware_headers
 include $(BUILD_EXECUTABLE)

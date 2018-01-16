@@ -26,6 +26,7 @@ LOCAL_C_INCLUDES+= $(kernel_includes)
 LOCAL_ADDITIONAL_DEPENDENCIES := $(common_deps)
 
 LOCAL_SRC_FILES := mm_lib2d_test.c
+LOCAL_VENDOR_MODULE := true
 
 LOCAL_32_BIT_ONLY := $(BOARD_QTI_CAMERA_32BIT_ONLY)
 LOCAL_MODULE           := mm-lib2d-interface-test
