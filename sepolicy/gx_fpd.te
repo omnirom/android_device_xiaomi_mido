@@ -49,5 +49,5 @@ allow gx_fpd storage_file:lnk_file read;
 allow gx_fpd media_rw_data_file:dir { open read search };
 allow gx_fpd mnt_user_file:dir { getattr search };
 allow gx_fpd mnt_user_file:lnk_file read;
-allow gx_fpd sdcardfs:dir search;
+allow gx_fpd sdcardfs:dir { search write };
 r_dir_file(gx_fpd, firmware_file)
