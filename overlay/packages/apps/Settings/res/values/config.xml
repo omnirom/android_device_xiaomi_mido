@@ -19,7 +19,7 @@
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!-- Enable gesture setting. -->
-    <bool name="config_gesture_settings_enabled">true</bool>
+    <!-- Allow manual subscription provisioning -->
+    <bool name="config_enableManualSubProvisioning">true</bool>
 
 </resources>
