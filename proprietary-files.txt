@@ -14,18 +14,6 @@ vendor/etc/acdbdata/QRD/QRD_Hdmi_cal.acdb
 vendor/etc/acdbdata/QRD/QRD_Headset_cal.acdb
 vendor/etc/acdbdata/QRD/QRD_Speaker_cal.acdb
 
-# Bluetooth firmware
-etc/firmware/nvm_tlv.bin
-etc/firmware/nvm_tlv_1.3.bin
-etc/firmware/nvm_tlv_2.1.bin
-etc/firmware/nvm_tlv_3.0.bin
-etc/firmware/nvm_tlv_3.2.bin
-etc/firmware/rampatch_tlv.img
-etc/firmware/rampatch_tlv_1.3.tlv
-etc/firmware/rampatch_tlv_2.1.tlv
-etc/firmware/rampatch_tlv_3.0.tlv
-etc/firmware/rampatch_tlv_3.2.tlv
-
 # Camera - from stock miui 7.5.4
 bin/mm-qcamera-daemon|0e0922a2a47bc0779b725ff6609fab1945018f6a
 vendor/lib/libChamomilePA.so|91b057183b30a8ea6f617ad64f0eeb23efd6bd10
@@ -615,27 +603,30 @@ etc/camera/s5k5e8_qtech_chromatix.xml|ee93f43bff2153ab93262d318b89df2258a3b1fa
 etc/camera/s5k5e8_sunny_chromatix.xml|145fe425825569f76f1adaa5fa84d88248d5ceb5
 
 # Camera firmware - from stock miui 7.5.4
-etc/firmware/cpp_firmware_v1_10_0.fw|cf9458601aa4bbe9c57acfc1c7d0f158386ace9f
-etc/firmware/cpp_firmware_v1_1_1.fw|04b8eb253d630eaeadab296e1607dc6a29d93d3c
-etc/firmware/cpp_firmware_v1_1_6.fw|6b2c9fe0a43a9ce86a921e18faffe4d0a35746ee
-etc/firmware/cpp_firmware_v1_2_0.fw|5ff0d66bcdbb29f4e924d011ae825583e48b3962
-etc/firmware/cpp_firmware_v1_4_0.fw|11eba982212797920102912142940a9e08931c52
-etc/firmware/cpp_firmware_v1_5_0.fw|ac19cd179b7b118bb3ea01a35fdfc78dc58164a1
-etc/firmware/cpp_firmware_v1_5_2.fw|58dd7f7c09dbb62bc6f334a8885064b292610675
-etc/firmware/cpp_firmware_v1_6_0.fw|dcd3d1f904c7ee3d731f8f28b5f78f2503916ada
-etc/firmware/cpp_firmware_v1_8_0.fw|26e2badbb4e3049243f0a176722f26879e7b87e8
+etc/firmware/cpp_firmware_v1_10_0.fw:vendor/firmware/cpp_firmware_v1_10_0.fw|cf9458601aa4bbe9c57acfc1c7d0f158386ace9f
+etc/firmware/cpp_firmware_v1_1_1.fw:vendor/firmware/cpp_firmware_v1_1_1.fw|04b8eb253d630eaeadab296e1607dc6a29d93d3c
+etc/firmware/cpp_firmware_v1_1_6.fw:vendor/firmware/cpp_firmware_v1_1_6.fw|6b2c9fe0a43a9ce86a921e18faffe4d0a35746ee
+etc/firmware/cpp_firmware_v1_2_0.fw:vendor/firmware/cpp_firmware_v1_2_0.fw|5ff0d66bcdbb29f4e924d011ae825583e48b3962
+etc/firmware/cpp_firmware_v1_4_0.fw:vendor/firmware/cpp_firmware_v1_4_0.fw|11eba982212797920102912142940a9e08931c52
+etc/firmware/cpp_firmware_v1_5_0.fw:vendor/firmware/cpp_firmware_v1_5_0.fw|ac19cd179b7b118bb3ea01a35fdfc78dc58164a1
+etc/firmware/cpp_firmware_v1_5_2.fw:vendor/firmware/cpp_firmware_v1_5_2.fw|58dd7f7c09dbb62bc6f334a8885064b292610675
+etc/firmware/cpp_firmware_v1_6_0.fw:vendor/firmware/cpp_firmware_v1_6_0.fw|dcd3d1f904c7ee3d731f8f28b5f78f2503916ada
+etc/firmware/cpp_firmware_v1_8_0.fw:vendor/firmware/cpp_firmware_v1_8_0.fw|26e2badbb4e3049243f0a176722f26879e7b87e8
 
 # Display calibration
+-etc/qdcm_calib_data_ili9885_boe_fhd_video_mode_dsi_panel.xml
 -etc/qdcm_calib_data_nt35532_fhd_video_mode_dsi_panel.xml
 -etc/qdcm_calib_data_nt35596_tianma_fhd_video_mode_dsi_panel.xml
+-etc/qdcm_calib_data_otm1911_fhd_video_mode_dsi_panel.xml
+-etc/qdcm_calib_data_r63350_ebbg_fhd_video_mode_dsi_panel.xml
 
 # Graphics firmware
-etc/firmware/a506_zap.b00
-etc/firmware/a506_zap.b01
-etc/firmware/a506_zap.b02
-etc/firmware/a506_zap.mdt
-etc/firmware/a530_pfp.fw
-etc/firmware/a530_pm4.fw
+etc/firmware/a506_zap.b00:vendor/firmware/a506_zap.b00
+etc/firmware/a506_zap.b01:vendor/firmware/a506_zap.b01
+etc/firmware/a506_zap.b02:vendor/firmware/a506_zap.b02
+etc/firmware/a506_zap.mdt:vendor/firmware/a506_zap.mdt
+etc/firmware/a530_pfp.fw:vendor/firmware/a530_pfp.fw
+etc/firmware/a530_pm4.fw:vendor/firmware/a530_pm4.fw
 
 # Fingerprint
 bin/gx_fpd
@@ -646,6 +637,3 @@ lib64/hw/gxfingerprint.default.so
 lib64/libfp_client.so
 lib64/libfpnav.so
 lib64/libfpservice.so
-
-# Wi-Fi
-vendor/bin/wcnss_service
