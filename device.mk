@@ -149,8 +149,7 @@ PRODUCT_PACKAGES += \
 # Doze mode
 PRODUCT_PACKAGES += \
     OmniDoze \
-    OmniParts \
-    OmniDisplayManager
+    OmniParts
 
 # OMNI Charger Images
 PRODUCT_PACKAGES += \
