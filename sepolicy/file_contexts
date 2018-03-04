@@ -25,7 +25,7 @@
 /data/vendor/time(/.*)?                         u:object_r:time_data_file:s0
 
 # Proc files
-/proc/touchpanel(/.*)?                          u:object_r:proc_touchpanel:s0
+/proc/touchpanel(/.*)?                          u:object_r:proc:s0
 
 # Custom biometrics
 /(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.0-service-custom u:object_r:hal_fingerprint_default_exec:s0

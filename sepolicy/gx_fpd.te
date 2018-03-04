@@ -50,4 +50,6 @@ allow gx_fpd media_rw_data_file:dir { open read search };
 allow gx_fpd mnt_user_file:dir { getattr search };
 allow gx_fpd mnt_user_file:lnk_file read;
 allow gx_fpd sdcardfs:dir { search write };
+allow gx_fpd sdcardfs:file { getattr append open};
+allow gx_fpd media_rw_data_file:file { getattr append open };
 r_dir_file(gx_fpd, firmware_file)
