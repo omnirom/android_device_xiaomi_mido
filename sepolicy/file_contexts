@@ -12,7 +12,7 @@
 /persist/data/gxfp(/.*)?			u:object_r:gx_fpd_data_file:s0
 /data/system/fingerprint(/.*)?			u:object_r:gx_fpd_data_file:s0
 /dev/gf66xx-spi					u:object_r:gx_fpd_device:s0
-/system/bin/gx_fpd				u:object_r:gx_fpd_exec:s0
+/(vendor|system/vendor)/bin/gx_fpd		u:object_r:gx_fpd_exec:s0
 
 # Glove Mode
 /sys/class/tp_glove/tp_glove/glove_enable	u:object_r:proc_touchpanel:s0
@@ -30,9 +30,6 @@
 
 # Custom biometrics
 /(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.0-service-custom u:object_r:hal_fingerprint_default_exec:s0
-
-# Camera
-/system/bin/mm-qcamera-daemon			u:object_r:mm-qcamerad_exec:s0
 
 # Debugfs files
 /sys/kernel/debug/rmt_storage(/.*)?             u:object_r:debugfs_rmt:s0
