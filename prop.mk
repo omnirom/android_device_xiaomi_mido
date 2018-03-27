@@ -190,6 +190,7 @@ persist.radio.mt_sms_ack=20 \
 persist.radio.multisim.config=dsds \
 persist.radio.videopause.mode=1 \
 persist.vendor.radio.apm_sim_not_pwdn=1 \
+persist.vendor.radio.atfwd.start=true \
 persist.vendor.radio.custom_ecc=1 \
 persist.vendor.radio.hw_mbn_update=0 \
 persist.vendor.radio.rat_on=combine \
