@@ -379,12 +379,6 @@ on property:sys.boot_completed=1
     chmod 0664 /sys/devices/soc/qpnp-smbcharger-18/power_supply/battery/subsystem/bms/hi_power
     write /sys/devices/soc/qpnp-smbcharger-18/power_supply/battery/subsystem/bms/hi_power 1
 
-on property:persist.vendor.radio.atfwd.start=false
-    stop vendor.atfwd
-
-on property:vendor.radio.atfwd.start=false
-    stop vendor.atfwd
-
 on property:vold.decrypt=trigger_restart_framework
     restart vendor.camera-provider-2-4
 
@@ -432,6 +426,9 @@ service vendor.atfwd /vendor/bin/ATFWD-daemon
     user system
     group system radio
     writepid /dev/cpuset/system-background/tasks
+
+on property:persist.vendor.radio.atfwd.start=true
+    start vendor.atfwd
 
 service vendor.netmgrd /system/vendor/bin/netmgrd
     class main
