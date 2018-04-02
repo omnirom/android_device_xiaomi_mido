@@ -196,6 +196,7 @@ TARGET_PER_MGR_ENABLED := true
 # Power
 TARGET_PROVIDES_POWERHAL := true
 TARGET_TAP_TO_WAKE_NODE := "/proc/touchpanel/enable_dt2w"
+TARGET_HAS_NO_WIFI_STATS := true
 
 # Properties
 TARGET_SYSTEM_PROP := $(DEVICE_PATH)/system.prop
