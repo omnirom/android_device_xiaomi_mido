@@ -16,5 +16,5 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="config_cpufreq_show_cpus">0,1,2,3,4,5</string>
+    <string name="config_cpufreq_show_cpus">0</string>
 </resources>
