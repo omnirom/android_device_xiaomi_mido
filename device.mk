@@ -127,7 +127,8 @@ PRODUCT_PACKAGES += \
     libdisplayconfig \
     liboverlay \
     libgenlock \
-    libtinyxml
+    libtinyxml \
+    libqdMetaData.system
 
 # Ebtables
 PRODUCT_PACKAGES += \
