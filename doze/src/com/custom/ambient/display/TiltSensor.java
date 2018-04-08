@@ -57,8 +57,8 @@ public class TiltSensor implements SensorEventListener {
 
     public TiltSensor(Context context) {
         mContext = context;
-        mPowerManager = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
-        mSensorManager = (SensorManager) mContext.getSystemService(Context.SENSOR_SERVICE);
+        mPowerManager = mContext.getSystemService(PowerManager.class);
+        mSensorManager = mContext.getSystemService(SensorManager.class);
         if (mSensorManager != null) {
             mIsGlanceGesture = false;
             mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_TILT_DETECTOR);
