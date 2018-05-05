@@ -50,6 +50,10 @@ on init
     chown root system /sys/fs/cgroup/memory/bg/tasks
     chmod 0660 /sys/fs/cgroup/memory/bg/tasks
 
+    # USB HID
+    chmod 0606 /dev/hidg0
+    chmod 0606 /dev/hidg1
+
 on post-fs
     chmod 0755 /sys/kernel/debug/tracing
 
