@@ -163,6 +163,12 @@ on boot
     chown system system /dev/goodix_fp
     chmod 0644 /dev/goodix_fp
 
+    # HID
+    chown system system /dev/hidg0
+    chown system system /dev/hidg1
+    chmod 0644 /dev/hidg0
+    chmod 0644 /dev/hidg1
+
     chown system system /sys/devices/soc/soc:fpc1020/compatible_all
     chmod 0664 /sys/devices/soc/soc:fpc1020/compatible_all
     chown system system /sys/devices/soc/soc:fpc1020/irq
