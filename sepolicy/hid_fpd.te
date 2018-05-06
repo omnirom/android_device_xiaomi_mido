@@ -1,0 +1,8 @@
+type hid_fpd, domain;
+
+# hid_fpd 
+init_daemon_domain(hid_fpd)
+binder_use(hid_fpd)
+
+# Allow access to hidg devices
+allow hid_fpd hid_fpd_device:chr_file rw_file_perms;
