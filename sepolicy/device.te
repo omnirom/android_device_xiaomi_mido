@@ -1,3 +1,4 @@
 type lirc_device, dev_type;
 type gx_fpd_device, dev_type;
 type persist_block_device, dev_type;
+type hid_fpd_device, dev_type;
