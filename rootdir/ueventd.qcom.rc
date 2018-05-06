@@ -279,3 +279,7 @@
 
 # lirc
 /dev/lirc0                0660   system     system
+
+# USB HID
+/dev/hidg0                0660   system     system
+/dev/hidg1                0660   system     system
