@@ -30,8 +30,6 @@ on early-init
     write /proc/sys/kernel/sched_boost 1
 
 on fs
-    wait /dev/block/platform/soc/${ro.boot.bootdevice}
-    symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
     mount_all /vendor/etc/fstab.qcom
 
     chown root system /mnt/vendor/persist
@@ -44,6 +42,14 @@ on fs
     chown system system /sys/class/thermal/thermal_message/sconfig
 
 on init
+    # QSEE rpmb listener need symlink for bootdevice
+    wait /dev/block/platform/soc/${ro.boot.bootdevice}
+    symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
+
+    # Start qseecomd early as we mount /system early
+    # vold needs keymaster which needs qseecomd
+    start vendor.qseecomd
+
     write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
 
 # Add a cpuset for the camera daemon
