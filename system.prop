@@ -164,5 +164,8 @@ persist.timed.enable=true
 # Tcp
 net.tcp.2g_init_rwnd=10
 
+# Usb
+persist.sys.usb.config.extra=none
+
 # Wifi
 wifi.interface=wlan0
