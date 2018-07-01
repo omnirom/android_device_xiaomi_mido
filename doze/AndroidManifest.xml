@@ -7,6 +7,7 @@
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS" />
 
     <protected-broadcast android:name="com.android.systemui.doze.pulse" />
 
@@ -16,7 +17,8 @@
 
     <application
         android:label="XiaomiDoze"
-        android:persistent="true">
+        android:persistent="true"
+        android:supportsRtl="true">
 
         <receiver android:name="com.du.settings.doze.BootCompletedReceiver">
             <intent-filter>
