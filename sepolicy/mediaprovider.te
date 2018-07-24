@@ -1,0 +1,1 @@
+allow mediaprovider media_settings_xml_prop:file { read open getattr };

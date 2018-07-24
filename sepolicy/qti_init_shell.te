@@ -1,4 +1,2 @@
-allow qti_init_shell sysfs:dir { write };
-allow qti_init_shell sysfs_devices_system_cpu:dir { write };
 allow qti_init_shell proc_touchpanel:dir { rw_dir_perms setattr };
 allow qti_init_shell sysfs:file { write };
