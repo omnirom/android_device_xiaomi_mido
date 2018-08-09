@@ -25,3 +25,6 @@ type debugfs_rmt, debugfs_type, fs_type;
 
 # Touchscreen
 type proc_touchpanel, fs_type, sysfs_type;
+
+# XiaomiParts LED
+type sysfs_torch, fs_type, sysfs_type;
