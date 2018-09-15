@@ -104,7 +104,25 @@ on boot
     chmod 0660 /sys/module/bluetooth_power/parameters/power
     chmod 0660 /sys/module/radio_iris_transport/parameters/fmsmd_set
 
-    #Create QMUX deamon socket area
+	# Vibrator permissions
+    chown root system /sys/class/timed_output/vibrator/vtg_level
+    chmod 0660 /sys/class/timed_output/vibrator/vtg_level
+
+    # Kcal permissions
+    chown root system /sys/devices/platform/kcal_ctrl.0/kcal
+    chmod 0660 /sys/devices/platform/kcal_ctrl.0/kcal
+    chown root system /sys/devices/platform/kcal_ctrl.0/kcal_min
+    chmod 0660 /sys/devices/platform/kcal_ctrl.0/kcal_min
+    chown root system /sys/devices/platform/kcal_ctrl.0/kcal_sat
+    chmod 0660 /sys/devices/platform/kcal_ctrl.0/kcal_sat
+    chown root system /sys/devices/platform/kcal_ctrl.0/kcal_hue
+    chmod 0660 /sys/devices/platform/kcal_ctrl.0/kcal_hue
+    chown root system /sys/devices/platform/kcal_ctrl.0/kcal_val
+    chmod 0660 /sys/devices/platform/kcal_ctrl.0/kcal_val
+    chown root system /sys/devices/platform/kcal_ctrl.0/kcal_cont
+    chmod 0660 /sys/devices/platform/kcal_ctrl.0/kcal_cont
+    
+	#Create QMUX deamon socket area
     mkdir /dev/socket/qmux_radio 0770 radio radio
     chmod 2770 /dev/socket/qmux_radio
     mkdir /dev/socket/qmux_audio 0770 media audio
@@ -171,6 +189,12 @@ on boot
     chown system system /sys/class/leds/red/brightness
     chown system system /sys/class/leds/green/brightness
     chown system system /sys/class/leds/blue/brightness
+
+    # Flashlight
+    chown root system /sys/devices/soc/qpnp-flash-led-25/leds/led:torch_0/max_brightness
+    chmod 0660 /sys/devices/soc/qpnp-flash-led-25/leds/led:torch_0/max_brightness
+    chown root system /sys/devices/soc/qpnp-flash-led-25/leds/led:torch_1/max_brightness
+    chmod 0660 /sys/devices/soc/qpnp-flash-led-25/leds/led:torch_1/max_brightness
 
     chown wifi wifi /sys/module/wlan/parameters/fwpath
 
