@@ -6,6 +6,8 @@ LOCAL_SRC_FILES := $(call all-java-files-under, src)
 LOCAL_PACKAGE_NAME := XiaomiParts
 LOCAL_CERTIFICATE := platform
 LOCAL_PRIVILEGED_MODULE := true
+LOCAL_PROGUARD_ENABLED := disabled
+LOCAL_DEX_PREOPT := false
 LOCAL_AAPT_FLAGS := --auto-add-overlay
 LOCAL_RESOURCE_DIR := $(LOCAL_PATH)/res
 LOCAL_PRIVATE_PLATFORM_APIS := true
@@ -17,6 +19,7 @@ package_resource_overlays := $(strip \
       $(addprefix $(dir)/, packages/apps/XiaomiParts/res))))
 
 LOCAL_RESOURCE_DIR := $(package_resource_overlays) $(LOCAL_RESOURCE_DIR)
+
 
 include $(BUILD_PACKAGE)
 

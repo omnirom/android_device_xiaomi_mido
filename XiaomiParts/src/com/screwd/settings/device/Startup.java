@@ -39,9 +39,10 @@ public class Startup extends BroadcastReceiver {
         Boolean shouldRestore = PreferenceManager.getDefaultSharedPreferences(context).getBoolean(DeviceSettings.KEY_RESTORE_ON_BOOT, false); 
         Log.e(TAG, Boolean.toString(shouldRestore));
         if(bootintent.getAction().equals("android.intent.action.BOOT_COMPLETED") && shouldRestore) {
-		        String s = PreferenceManager.getDefaultSharedPreferences(context).getString(DeviceSettings.KEY_RESTORE_DELAY, "5");
-            Log.e(TAG, s);
-            int delay = Integer.valueOf(s);
+//		        String s = PreferenceManager.getDefaultSharedPreferences(context).getString(DeviceSettings.KEY_RESTORE_DELAY, "5");
+            //Log.e(TAG, s);
+            //int delay = Integer.valueOf(s);
+            int delay = 0;
             new Handler().postDelayed(new Runnable() {
             @Override
               public void run() {
