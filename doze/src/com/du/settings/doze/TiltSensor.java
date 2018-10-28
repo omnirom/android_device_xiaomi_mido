@@ -26,6 +26,10 @@ import android.os.PowerManager.WakeLock;
 import android.os.SystemClock;
 import android.util.Log;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+
 public class TiltSensor implements SensorEventListener {
 
     private static final boolean DEBUG = false;
@@ -41,7 +45,11 @@ public class TiltSensor implements SensorEventListener {
     private WakeLock mSensorWakeLock;
     private Context mContext;
 
+    private boolean mTiltGestureEnabled;
+
     private long mEntryTimestamp;
+
+    private final ExecutorService mExecutorService;
 
     public TiltSensor(Context context) {
         mContext = context;
@@ -50,6 +58,7 @@ public class TiltSensor implements SensorEventListener {
         if (mSensorManager != null) {
             mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_TILT_DETECTOR);
         }
+        mExecutorService = Executors.newSingleThreadExecutor();
         mSensorWakeLock = mPowerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,
                 "SensorWakeLock");
     }
@@ -70,20 +79,37 @@ public class TiltSensor implements SensorEventListener {
         }
     }
 
+    private Future<?> submit(Runnable runnable) {
+        return mExecutorService.submit(runnable);
+    }
+
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
         /* Empty */
     }
 
+    // Switching screen OFF - we enable the sensor
     protected void enable() {
         if (DEBUG) Log.d(TAG, "Enabling");
-        mSensorManager.registerListener(this, mSensor,
-                SensorManager.SENSOR_DELAY_NORMAL, BATCH_LATENCY_IN_MS * 1000);
-        mEntryTimestamp = SystemClock.elapsedRealtime();
+        submit(() -> {
+            // We save user settings so at next screen ON call (enable())
+            // we don't need to read them again from the Settings provider
+            mTiltGestureEnabled = Utils.tiltGestureEnabled(mContext);
+            if (mTiltGestureEnabled) {
+                mSensorManager.registerListener(this, mSensor,
+                        SensorManager.SENSOR_DELAY_NORMAL, BATCH_LATENCY_IN_MS * 1000);
+                mEntryTimestamp = SystemClock.elapsedRealtime();
+            }
+        });
     }
 
+    // Switching screen ON - we disable the sensor
     protected void disable() {
         if (DEBUG) Log.d(TAG, "Disabling");
-        mSensorManager.unregisterListener(this, mSensor);
+        submit(() -> {
+            if (mTiltGestureEnabled) {
+                mSensorManager.unregisterListener(this, mSensor);
+            }
+        });
     }
 }
