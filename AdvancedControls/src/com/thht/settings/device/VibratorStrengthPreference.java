@@ -15,7 +15,7 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 *
 */
-package com.screwd.settings.device;
+package com.thht.settings.device;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -30,32 +30,41 @@ import android.widget.TextView;
 import android.widget.Button;
 import android.os.Bundle;
 import android.util.Log;
+import android.os.Vibrator;
 
 import java.util.List;
 
-public class YellowTorchBrightnessPreference extends SeekBarDialogPreference implements
+import com.thht.settings.device.R;
+
+public class VibratorStrengthPreference extends SeekBarDialogPreference implements
         SeekBar.OnSeekBarChangeListener {
 
     private SeekBar mSeekBar;
-    private int mOldBrightness;
+    private int mOldStrength;
     private int mMinValue;
     private int mMaxValue;
     private float offset;
+    private Vibrator mVibrator;
     private TextView mValueText;
     private Button mPlusOneButton;
     private Button mMinusOneButton;
     private Button mRestoreDefaultButton;
 
-    private static final String FILE_BRIGHTNESS = "/sys/devices/soc/qpnp-flash-led-25/leds/led:torch_1/max_brightness";
-    private static final int DEFAULT_VALUE = 200;
+    private static final String FILE_LEVEL = "/sys/devices/virtual/timed_output/vibrator/vtg_level";
+    private static final long testVibrationPattern[] = {0,250};
+    private static final int DEFAULT_VALUE = 2873;
 
-    public YellowTorchBrightnessPreference(Context context, AttributeSet attrs) {
+    public VibratorStrengthPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
-        mMinValue = 0;
-        mMaxValue = 200;
+        // from drivers/platform/msm/qpnp-haptic.c
+        // #define QPNP_HAP_VMAX_MIN_MV		116
+        // #define QPNP_HAP_VMAX_MAX_MV		3596
+        mMinValue = 116;
+        mMaxValue = 3596;
         offset = mMaxValue / 100f;
 
-        setDialogLayoutResource(R.layout.preference_dialog_torch_brightness);
+        mVibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+        setDialogLayoutResource(R.layout.preference_dialog_vibrator_strength);
     }
 
     @Override
@@ -67,12 +76,12 @@ public class YellowTorchBrightnessPreference extends SeekBarDialogPreference imp
     protected void onBindDialogView(View view) {
         super.onBindDialogView(view);
 
-        mOldBrightness = Integer.parseInt(getValue(getContext()));
-        mSeekBar = (SeekBar) view.findViewById(R.id.torchSeekBar);
+        mOldStrength = Integer.parseInt(getValue(getContext()));
+        mSeekBar = (SeekBar) view.findViewById(R.id.vibratorSeekBar);
         mSeekBar.setMax(mMaxValue - mMinValue);
-        mSeekBar.setProgress(mOldBrightness - mMinValue);
+        mSeekBar.setProgress(mOldStrength - mMinValue);
         mValueText = (TextView) view.findViewById(R.id.current_value);
-        mValueText.setText(Integer.toString(Math.round(mOldBrightness / offset)) + "%");
+        mValueText.setText(Integer.toString(Math.round(mOldStrength / offset)) + "%");
         mSeekBar.setOnSeekBarChangeListener(this);
         mPlusOneButton = (Button) view.findViewById(R.id.plus_one);
         mPlusOneButton.setOnClickListener(new View.OnClickListener() {
@@ -104,15 +113,15 @@ public class YellowTorchBrightnessPreference extends SeekBarDialogPreference imp
     }
 
     public static boolean isSupported() {
-        return Utils.fileWritable(FILE_BRIGHTNESS);
+        return Utils.fileWritable(FILE_LEVEL);
     }
 
     public static String getValue(Context context) {
-        return Utils.getFileValue(FILE_BRIGHTNESS, "200");
+        return Utils.getFileValue(FILE_LEVEL, String.valueOf(DEFAULT_VALUE));
     }
 
     private void setValue(String newValue) {
-        Utils.writeValue(FILE_BRIGHTNESS, newValue);
+        Utils.writeValue(FILE_LEVEL, newValue);
     }
 
     public static void restore(Context context) {
@@ -120,8 +129,8 @@ public class YellowTorchBrightnessPreference extends SeekBarDialogPreference imp
             return;
         }
 
-        String storedValue = PreferenceManager.getDefaultSharedPreferences(context).getString(DeviceSettings.KEY_YELLOW_TORCH_BRIGHTNESS, "200"); 
-        Utils.writeValue(FILE_BRIGHTNESS, storedValue);
+        String storedValue = PreferenceManager.getDefaultSharedPreferences(context).getString(DeviceSettings.KEY_VIBSTRENGTH, String.valueOf(DEFAULT_VALUE)); 
+        Utils.writeValue(FILE_LEVEL, storedValue);
     }
 
     public void onProgressChanged(SeekBar seekBar, int progress,
@@ -135,7 +144,8 @@ public class YellowTorchBrightnessPreference extends SeekBarDialogPreference imp
     }
 
     public void onStopTrackingTouch(SeekBar seekBar) {
-        // NA
+        if (mVibrator.hasVibrator())
+            mVibrator.vibrate(testVibrationPattern, -1);
     }
 
     @Override
@@ -146,15 +156,16 @@ public class YellowTorchBrightnessPreference extends SeekBarDialogPreference imp
             final int value = mSeekBar.getProgress() + mMinValue;
             setValue(String.valueOf(value));
             SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getContext()).edit();
-            editor.putString(DeviceSettings.KEY_YELLOW_TORCH_BRIGHTNESS, String.valueOf(value));
+            editor.putString(DeviceSettings.KEY_VIBSTRENGTH, String.valueOf(value));
             editor.commit();
         } else {
             restoreOldState();
         }
+        mVibrator.cancel();
     }
 
     private void restoreOldState() {
-        setValue(String.valueOf(mOldBrightness));
+        setValue(String.valueOf(mOldStrength));
     }
 
     private void singleStepPlus() {

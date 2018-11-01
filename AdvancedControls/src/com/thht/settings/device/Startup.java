@@ -15,7 +15,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-package com.screwd.settings.device;
+package com.thht.settings.device;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -31,7 +31,7 @@ import android.util.Log;
 
 public class Startup extends BroadcastReceiver {
 
-  private static final String TAG = "XiaomiParts";
+  private static final String TAG = "AdvancedControls";
   
   @Override
     public void onReceive(final Context context, final Intent bootintent) {

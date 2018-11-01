@@ -1,4 +1,4 @@
-package com.screwd.settings.device;
+package com.thht.settings.device;
 
 import android.content.ContentResolver;
 import android.content.Context;

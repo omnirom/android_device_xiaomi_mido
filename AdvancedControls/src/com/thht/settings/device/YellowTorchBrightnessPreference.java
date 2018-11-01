@@ -1,4 +1,21 @@
-package com.screwd.settings.device;
+/*
+* Copyright (C) 2016 The OmniROM Project
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 2 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program. If not, see <http://www.gnu.org/licenses/>.
+*
+*/
+package com.thht.settings.device;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -16,28 +33,29 @@ import android.util.Log;
 
 import java.util.List;
 
-public class KcalRGBBluePreference extends SeekBarDialogPreference implements
+public class YellowTorchBrightnessPreference extends SeekBarDialogPreference implements
         SeekBar.OnSeekBarChangeListener {
 
     private SeekBar mSeekBar;
-    private int mOldStrength;
+    private int mOldBrightness;
     private int mMinValue;
     private int mMaxValue;
+    private float offset;
     private TextView mValueText;
     private Button mPlusOneButton;
     private Button mMinusOneButton;
     private Button mRestoreDefaultButton;
 
-    private static final String FILE_LEVEL = "/sys/devices/platform/kcal_ctrl.0/kcal";
-    private static final String DEFAULT_VALUE = "237 237 237";
+    private static final String FILE_BRIGHTNESS = "/sys/devices/soc/qpnp-flash-led-25/leds/led:torch_1/max_brightness";
+    private static final int DEFAULT_VALUE = 200;
 
-    public KcalRGBBluePreference(Context context, AttributeSet attrs) {
+    public YellowTorchBrightnessPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
-        
         mMinValue = 0;
-        mMaxValue = 255;
+        mMaxValue = 200;
+        offset = mMaxValue / 100f;
 
-        setDialogLayoutResource(R.layout.preference_dialog_kcal);
+        setDialogLayoutResource(R.layout.preference_dialog_torch_brightness);
     }
 
     @Override
@@ -49,14 +67,12 @@ public class KcalRGBBluePreference extends SeekBarDialogPreference implements
     protected void onBindDialogView(View view) {
         super.onBindDialogView(view);
 
-        String value = getValue(getContext());
-        String[] rgb = getIndividualRGB(value); 
-        mOldStrength = Integer.parseInt(rgb[2]);
-        mSeekBar = (SeekBar) view.findViewById(R.id.kcalSeekBar);
+        mOldBrightness = Integer.parseInt(getValue(getContext()));
+        mSeekBar = (SeekBar) view.findViewById(R.id.torchSeekBar);
         mSeekBar.setMax(mMaxValue - mMinValue);
-        mSeekBar.setProgress(mOldStrength - mMinValue);
+        mSeekBar.setProgress(mOldBrightness - mMinValue);
         mValueText = (TextView) view.findViewById(R.id.current_value);
-        mValueText.setText(String.valueOf(rgb[2]));
+        mValueText.setText(Integer.toString(Math.round(mOldBrightness / offset)) + "%");
         mSeekBar.setOnSeekBarChangeListener(this);
         mPlusOneButton = (Button) view.findViewById(R.id.plus_one);
         mPlusOneButton.setOnClickListener(new View.OnClickListener() {
@@ -88,15 +104,15 @@ public class KcalRGBBluePreference extends SeekBarDialogPreference implements
     }
 
     public static boolean isSupported() {
-        return Utils.fileWritable(FILE_LEVEL);
+        return Utils.fileWritable(FILE_BRIGHTNESS);
     }
 
     public static String getValue(Context context) {
-        return Utils.getFileValue(FILE_LEVEL, DEFAULT_VALUE);
+        return Utils.getFileValue(FILE_BRIGHTNESS, "200");
     }
 
     private void setValue(String newValue) {
-        Utils.writeValue(FILE_LEVEL, newValue);
+        Utils.writeValue(FILE_BRIGHTNESS, newValue);
     }
 
     public static void restore(Context context) {
@@ -104,18 +120,14 @@ public class KcalRGBBluePreference extends SeekBarDialogPreference implements
             return;
         }
 
-        String storedValue = PreferenceManager.getDefaultSharedPreferences(context).getString(DeviceSettings.KEY_KCAL_RGB_BLUE, DEFAULT_VALUE); 
-        Utils.writeValue(FILE_LEVEL, storedValue);
+        String storedValue = PreferenceManager.getDefaultSharedPreferences(context).getString(DeviceSettings.KEY_YELLOW_TORCH_BRIGHTNESS, "200"); 
+        Utils.writeValue(FILE_BRIGHTNESS, storedValue);
     }
 
     public void onProgressChanged(SeekBar seekBar, int progress,
             boolean fromTouch) {
-                String value = String.valueOf(progress + mMinValue);
-                String[] rgb = getIndividualRGB(getValue(getContext()));
-                rgb[2] = value;
-                String finalValue = combineIndividualRGB(rgb);
-                setValue(finalValue);
-                mValueText.setText(value);
+        setValue(String.valueOf(progress + mMinValue));
+        mValueText.setText(Integer.toString(Math.round((progress + mMinValue) / offset)) + "%");
     }
 
     public void onStartTrackingTouch(SeekBar seekBar) {
@@ -131,13 +143,10 @@ public class KcalRGBBluePreference extends SeekBarDialogPreference implements
         super.onDialogClosed(positiveResult);
 
         if (positiveResult) {
-            String value = String.valueOf(mSeekBar.getProgress() + mMinValue);
-            String[] rgb = getIndividualRGB(getValue(getContext()));
-            rgb[2] = value;
-            String finalValue = combineIndividualRGB(rgb);
-            setValue(finalValue);
+            final int value = mSeekBar.getProgress() + mMinValue;
+            setValue(String.valueOf(value));
             SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getContext()).edit();
-            editor.putString(DeviceSettings.KEY_KCAL_RGB_BLUE, finalValue);
+            editor.putString(DeviceSettings.KEY_YELLOW_TORCH_BRIGHTNESS, String.valueOf(value));
             editor.commit();
         } else {
             restoreOldState();
@@ -145,36 +154,25 @@ public class KcalRGBBluePreference extends SeekBarDialogPreference implements
     }
 
     private void restoreOldState() {
-        String[] rgb = getIndividualRGB(getValue(getContext()));
-        rgb[2] = String.valueOf(mOldStrength);
-        setValue(combineIndividualRGB(rgb));
-    }
-
-    private String[] getIndividualRGB(String rgb) {
-        return rgb.split(" ", 3);
-    }
-
-    private String combineIndividualRGB(String[] rgb) {
-        return String.join(" ", rgb);
+        setValue(String.valueOf(mOldBrightness));
     }
 
     private void singleStepPlus() {
         int currentValue = mSeekBar.getProgress();
         if (currentValue < mMaxValue) {
-            mSeekBar.setProgress(currentValue + 1);
+            mSeekBar.setProgress(currentValue + Math.round(offset));        
         }
     }
 
     private void singleStepMinus() {
         int currentValue = mSeekBar.getProgress();
         if (currentValue > mMinValue) {
-            mSeekBar.setProgress(currentValue - 1);
+            mSeekBar.setProgress(currentValue - Math.round(offset));
         }
     }
 
     private void restoreDefault() {
-        String[] rgb = getIndividualRGB(DEFAULT_VALUE);
-        int defaultValue = Integer.parseInt(rgb[2]);
-        mSeekBar.setProgress(defaultValue);
+        mSeekBar.setProgress(DEFAULT_VALUE);
     }
 }
+

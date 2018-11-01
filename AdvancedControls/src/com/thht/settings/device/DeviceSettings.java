@@ -15,7 +15,7 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 *
 */
-package com.screwd.settings.device;
+package com.thht.settings.device;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -39,6 +39,8 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.util.Log;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.Color;
 
 public class DeviceSettings extends PreferenceActivity implements
         Preference.OnPreferenceChangeListener {
@@ -67,6 +69,9 @@ public class DeviceSettings extends PreferenceActivity implements
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
         addPreferencesFromResource(R.xml.main);
+
+        getListView().setDivider(new ColorDrawable(Color.TRANSPARENT));
+        getListView().setDividerHeight(0);
 
         mVibratorStrength = (VibratorStrengthPreference) findPreference(KEY_VIBSTRENGTH);
         if (mVibratorStrength != null) {

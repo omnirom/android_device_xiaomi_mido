@@ -1,4 +1,4 @@
-package com.screwd.settings.device;
+package com.thht.settings.device;
 
 import android.preference.PreferenceManager;
 import android.content.Context;

@@ -1,21 +1,4 @@
-/*
-* Copyright (C) 2016 The OmniROM Project
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 2 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program. If not, see <http://www.gnu.org/licenses/>.
-*
-*/
-package com.screwd.settings.device;
+package com.thht.settings.device;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -33,29 +16,27 @@ import android.util.Log;
 
 import java.util.List;
 
-public class WhiteTorchBrightnessPreference extends SeekBarDialogPreference implements
+public class KcalScreenHuePreference extends SeekBarDialogPreference implements
         SeekBar.OnSeekBarChangeListener {
 
     private SeekBar mSeekBar;
-    private int mOldBrightness;
+    private int mOldStrength;
     private int mMinValue;
     private int mMaxValue;
-    private float offset;
     private TextView mValueText;
     private Button mPlusOneButton;
     private Button mMinusOneButton;
     private Button mRestoreDefaultButton;
+    
+    private static final int OFFSET = 0;
+    private static final String FILE_LEVEL = "/sys/devices/platform/kcal_ctrl.0/kcal_hue";
+    private static final String DEFAULT_VALUE = "0";
 
-    private static final String FILE_BRIGHTNESS = "/sys/devices/soc/qpnp-flash-led-25/leds/led:torch_0/max_brightness";
-    private static final int DEFAULT_VALUE = 200;
-
-    public WhiteTorchBrightnessPreference(Context context, AttributeSet attrs) {
+    public KcalScreenHuePreference(Context context, AttributeSet attrs) {
         super(context, attrs);
         mMinValue = 0;
-        mMaxValue = 200;
-        offset = mMaxValue / 100f;
-
-        setDialogLayoutResource(R.layout.preference_dialog_torch_brightness);
+        mMaxValue = 1536;
+        setDialogLayoutResource(R.layout.preference_dialog_kcal);
     }
 
     @Override
@@ -67,12 +48,12 @@ public class WhiteTorchBrightnessPreference extends SeekBarDialogPreference impl
     protected void onBindDialogView(View view) {
         super.onBindDialogView(view);
 
-        mOldBrightness = Integer.parseInt(getValue(getContext()));
-        mSeekBar = (SeekBar) view.findViewById(R.id.torchSeekBar);
+        mOldStrength = Integer.parseInt(getValue(getContext()));
+        mSeekBar = (SeekBar) view.findViewById(R.id.kcalSeekBar);
         mSeekBar.setMax(mMaxValue - mMinValue);
-        mSeekBar.setProgress(mOldBrightness - mMinValue);
+        mSeekBar.setProgress(mOldStrength - mMinValue);
         mValueText = (TextView) view.findViewById(R.id.current_value);
-        mValueText.setText(Integer.toString(Math.round(mOldBrightness / offset)) + "%");
+        mValueText.setText(String.valueOf(mOldStrength));
         mSeekBar.setOnSeekBarChangeListener(this);
         mPlusOneButton = (Button) view.findViewById(R.id.plus_one);
         mPlusOneButton.setOnClickListener(new View.OnClickListener() {
@@ -104,15 +85,17 @@ public class WhiteTorchBrightnessPreference extends SeekBarDialogPreference impl
     }
 
     public static boolean isSupported() {
-        return Utils.fileWritable(FILE_BRIGHTNESS);
+        return Utils.fileWritable(FILE_LEVEL);
     }
 
     public static String getValue(Context context) {
-        return Utils.getFileValue(FILE_BRIGHTNESS, "200");
+        int value = Integer.parseInt(Utils.getFileValue(FILE_LEVEL, DEFAULT_VALUE));
+        return String.valueOf(translate(value, true));
     }
 
     private void setValue(String newValue) {
-        Utils.writeValue(FILE_BRIGHTNESS, newValue);
+        String value = String.valueOf(translate(Integer.parseInt(newValue), false));
+        Utils.writeValue(FILE_LEVEL, value);
     }
 
     public static void restore(Context context) {
@@ -120,14 +103,16 @@ public class WhiteTorchBrightnessPreference extends SeekBarDialogPreference impl
             return;
         }
 
-        String storedValue = PreferenceManager.getDefaultSharedPreferences(context).getString(DeviceSettings.KEY_WHITE_TORCH_BRIGHTNESS, "200"); 
-        Utils.writeValue(FILE_BRIGHTNESS, storedValue);
+        String storedValue = PreferenceManager.getDefaultSharedPreferences(context).getString(DeviceSettings.KEY_KCAL_SCR_HUE, DEFAULT_VALUE);
+        String value = String.valueOf(translate(Integer.parseInt(storedValue), false));
+        Utils.writeValue(FILE_LEVEL, value);
     }
 
     public void onProgressChanged(SeekBar seekBar, int progress,
             boolean fromTouch) {
-        setValue(String.valueOf(progress + mMinValue));
-        mValueText.setText(Integer.toString(Math.round((progress + mMinValue) / offset)) + "%");
+        String value = String.valueOf(progress + mMinValue);
+        setValue(value);
+        mValueText.setText(value);
     }
 
     public void onStartTrackingTouch(SeekBar seekBar) {
@@ -146,7 +131,7 @@ public class WhiteTorchBrightnessPreference extends SeekBarDialogPreference impl
             final int value = mSeekBar.getProgress() + mMinValue;
             setValue(String.valueOf(value));
             SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getContext()).edit();
-            editor.putString(DeviceSettings.KEY_WHITE_TORCH_BRIGHTNESS, String.valueOf(value));
+            editor.putString(DeviceSettings.KEY_KCAL_SCR_HUE, String.valueOf(value));
             editor.commit();
         } else {
             restoreOldState();
@@ -154,25 +139,33 @@ public class WhiteTorchBrightnessPreference extends SeekBarDialogPreference impl
     }
 
     private void restoreOldState() {
-        setValue(String.valueOf(mOldBrightness));
+        setValue(String.valueOf(mOldStrength));
+    }
+
+    private static int translate(int value, boolean read) {
+        if (!read)
+            return value + OFFSET;
+        else
+            return value - OFFSET;
     }
 
     private void singleStepPlus() {
         int currentValue = mSeekBar.getProgress();
         if (currentValue < mMaxValue) {
-            mSeekBar.setProgress(currentValue + Math.round(offset));        
+            mSeekBar.setProgress(currentValue + 1);        
         }
     }
 
     private void singleStepMinus() {
         int currentValue = mSeekBar.getProgress();
         if (currentValue > mMinValue) {
-            mSeekBar.setProgress(currentValue - Math.round(offset));
+            mSeekBar.setProgress(currentValue - 1);
         }
     }
 
     private void restoreDefault() {
-        mSeekBar.setProgress(DEFAULT_VALUE);
+        int defaultValue = Integer.parseInt(DEFAULT_VALUE);
+        mSeekBar.setProgress(defaultValue);
     }
 }
 

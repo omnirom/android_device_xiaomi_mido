@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.screwd.settings.device"
+    package="com.thht.settings.device"
     android:sharedUserId="android.uid.system" >
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -16,7 +16,7 @@
         android:theme="@android:style/Theme.DeviceDefault.Settings"
         android:supportsRtl="true" >
         <activity
-            android:name="com.screwd.settings.device.DeviceSettings"
+            android:name="com.thht.settings.device.DeviceSettings"
             android:exported="true"
             android:label="@string/advanced_settings" >
             <intent-filter>
@@ -25,7 +25,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <receiver android:name="com.screwd.settings.device.Startup"
+        <receiver android:name="com.thht.settings.device.Startup"
             android:directBootAware="true"
             android:enabled="true"
             android:exported="true">
@@ -34,7 +34,7 @@
             </intent-filter>
         </receiver>
         <service
-            android:name="com.screwd.settings.device.RestoreService"
+            android:name="com.thht.settings.device.RestoreService"
 						android:directBootAware="true"
             android:enabled="true"
             android:exported="true">

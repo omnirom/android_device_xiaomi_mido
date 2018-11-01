@@ -15,7 +15,7 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 *
 */
-package com.screwd.settings.device;
+package com.thht.settings.device;
 
 import java.io.File;
 import java.io.FileNotFoundException;

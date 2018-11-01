@@ -1,4 +1,4 @@
-package com.screwd.settings.device;
+package com.thht.settings.device;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -16,7 +16,7 @@ import android.util.Log;
 
 import java.util.List;
 
-public class KcalScreenValuePreference extends SeekBarDialogPreference implements
+public class KcalRGBRedPreference extends SeekBarDialogPreference implements
         SeekBar.OnSeekBarChangeListener {
 
     private SeekBar mSeekBar;
@@ -27,15 +27,16 @@ public class KcalScreenValuePreference extends SeekBarDialogPreference implement
     private Button mPlusOneButton;
     private Button mMinusOneButton;
     private Button mRestoreDefaultButton;
-    
-    private static final int OFFSET = 128;
-    private static final String FILE_LEVEL = "/sys/devices/platform/kcal_ctrl.0/kcal_val";
-    private static final String DEFAULT_VALUE = "127";
 
-    public KcalScreenValuePreference(Context context, AttributeSet attrs) {
+    private static final String FILE_LEVEL = "/sys/devices/platform/kcal_ctrl.0/kcal";
+    private static final String DEFAULT_VALUE = "237 237 237";
+
+    public KcalRGBRedPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
+        
         mMinValue = 0;
         mMaxValue = 255;
+
         setDialogLayoutResource(R.layout.preference_dialog_kcal);
     }
 
@@ -48,12 +49,14 @@ public class KcalScreenValuePreference extends SeekBarDialogPreference implement
     protected void onBindDialogView(View view) {
         super.onBindDialogView(view);
 
-        mOldStrength = Integer.parseInt(getValue(getContext()));
+        String value = getValue(getContext());
+        String[] rgb = getIndividualRGB(value); 
+        mOldStrength = Integer.parseInt(rgb[0]);
         mSeekBar = (SeekBar) view.findViewById(R.id.kcalSeekBar);
         mSeekBar.setMax(mMaxValue - mMinValue);
         mSeekBar.setProgress(mOldStrength - mMinValue);
         mValueText = (TextView) view.findViewById(R.id.current_value);
-        mValueText.setText(String.valueOf(mOldStrength));
+        mValueText.setText(String.valueOf(rgb[0]));
         mSeekBar.setOnSeekBarChangeListener(this);
         mPlusOneButton = (Button) view.findViewById(R.id.plus_one);
         mPlusOneButton.setOnClickListener(new View.OnClickListener() {
@@ -89,13 +92,11 @@ public class KcalScreenValuePreference extends SeekBarDialogPreference implement
     }
 
     public static String getValue(Context context) {
-        int value = Integer.parseInt(Utils.getFileValue(FILE_LEVEL, DEFAULT_VALUE));
-        return String.valueOf(translate(value, true));
+        return Utils.getFileValue(FILE_LEVEL, DEFAULT_VALUE);
     }
 
     private void setValue(String newValue) {
-        String value = String.valueOf(translate(Integer.parseInt(newValue), false));
-        Utils.writeValue(FILE_LEVEL, value);
+        Utils.writeValue(FILE_LEVEL, newValue);
     }
 
     public static void restore(Context context) {
@@ -103,16 +104,18 @@ public class KcalScreenValuePreference extends SeekBarDialogPreference implement
             return;
         }
 
-        String storedValue = PreferenceManager.getDefaultSharedPreferences(context).getString(DeviceSettings.KEY_KCAL_SCR_VAL, DEFAULT_VALUE);
-        String value = String.valueOf(translate(Integer.parseInt(storedValue), false));
-        Utils.writeValue(FILE_LEVEL, value);
+        String storedValue = PreferenceManager.getDefaultSharedPreferences(context).getString(DeviceSettings.KEY_KCAL_RGB_RED, DEFAULT_VALUE); 
+        Utils.writeValue(FILE_LEVEL, storedValue);
     }
 
     public void onProgressChanged(SeekBar seekBar, int progress,
             boolean fromTouch) {
-        String value = String.valueOf(progress + mMinValue);
-        setValue(value);
-        mValueText.setText(value);
+            String value = String.valueOf(progress + mMinValue);
+            String[] rgb = getIndividualRGB(getValue(getContext()));
+            rgb[0] = value;
+            String finalValue = combineIndividualRGB(rgb);
+            setValue(finalValue);
+            mValueText.setText(value);
     }
 
     public void onStartTrackingTouch(SeekBar seekBar) {
@@ -128,10 +131,13 @@ public class KcalScreenValuePreference extends SeekBarDialogPreference implement
         super.onDialogClosed(positiveResult);
 
         if (positiveResult) {
-            final int value = mSeekBar.getProgress() + mMinValue;
-            setValue(String.valueOf(value));
+            String value = String.valueOf(mSeekBar.getProgress() + mMinValue);
+            String[] rgb = getIndividualRGB(getValue(getContext()));
+            rgb[0] = value;
+            String finalValue = combineIndividualRGB(rgb);
+            setValue(finalValue);
             SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getContext()).edit();
-            editor.putString(DeviceSettings.KEY_KCAL_SCR_VAL, String.valueOf(value));
+            editor.putString(DeviceSettings.KEY_KCAL_RGB_RED, finalValue);
             editor.commit();
         } else {
             restoreOldState();
@@ -139,20 +145,23 @@ public class KcalScreenValuePreference extends SeekBarDialogPreference implement
     }
 
     private void restoreOldState() {
-        setValue(String.valueOf(mOldStrength));
+        String[] rgb = getIndividualRGB(getValue(getContext()));
+        rgb[0] = String.valueOf(mOldStrength);
+        setValue(combineIndividualRGB(rgb));
     }
 
-    private static int translate(int value, boolean read) {
-        if (!read)
-            return value + OFFSET;
-        else
-            return value - OFFSET;
+    private String[] getIndividualRGB(String rgb) {
+        return rgb.split(" ", 3);
+    }
+
+    private String combineIndividualRGB(String[] rgb) {
+        return String.join(" ", rgb);
     }
 
     private void singleStepPlus() {
         int currentValue = mSeekBar.getProgress();
         if (currentValue < mMaxValue) {
-            mSeekBar.setProgress(currentValue + 1);        
+            mSeekBar.setProgress(currentValue + 1);
         }
     }
 
@@ -164,7 +173,8 @@ public class KcalScreenValuePreference extends SeekBarDialogPreference implement
     }
 
     private void restoreDefault() {
-        int defaultValue = Integer.parseInt(DEFAULT_VALUE);
+        String[] rgb = getIndividualRGB(DEFAULT_VALUE);
+        int defaultValue = Integer.parseInt(rgb[0]);
         mSeekBar.setProgress(defaultValue);
     }
 }

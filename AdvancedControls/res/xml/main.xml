@@ -13,57 +13,58 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/tools">
     <SwitchPreference
         android:key="restore_on_boot"
         android:title="@string/restore_on_boot"
         android:defaultValue="false" />
 	
     <PreferenceCategory
-        android:title="@string/category_vibrator">
-        <com.screwd.settings.device.VibratorStrengthPreference
+        android:title="@string/category_vibrator" > 
+        <com.thht.settings.device.VibratorStrengthPreference
             android:key="vib_strength"
             android:title="@string/vib_strength_title_head"
             android:summary="@string/vib_strength_summary_head" />
     </PreferenceCategory>
     <PreferenceCategory
         android:title="@string/category_torch">
-        <com.screwd.settings.device.YellowTorchBrightnessPreference
+        <com.thht.settings.device.YellowTorchBrightnessPreference
             android:key="yellow_torch_brightness"
             android:title="@string/yellow_torch_brightness_title_head"
-            android:summary="@string/yellow_torch_brightness_summary_head" />
-        <com.screwd.settings.device.WhiteTorchBrightnessPreference
+            android:summary="@string/yellow_torch_brightness_summary_head"/> 
+        <com.thht.settings.device.WhiteTorchBrightnessPreference
             android:key="white_torch_brightness"
             android:title="@string/white_torch_brightness_title_head"
             android:summary="@string/white_torch_brightness_summary_head" />
     </PreferenceCategory>
     <PreferenceCategory
         android:title="@string/category_screen_color">
-        <com.screwd.settings.device.KcalRGBRedPreference
+        <com.thht.settings.device.KcalRGBRedPreference
             android:key="rgb_red"
             android:title="@string/rgb_red" />
-        <com.screwd.settings.device.KcalRGBGreenPreference
+        <com.thht.settings.device.KcalRGBGreenPreference
             android:key="rgb_green"
             android:title="@string/rgb_green" />
-        <com.screwd.settings.device.KcalRGBBluePreference
+        <com.thht.settings.device.KcalRGBBluePreference
             android:key="rgb_blue"
             android:title="@string/rgb_blue" />
     </PreferenceCategory>
     <PreferenceCategory
         android:title="@string/category_kcal_extras">
-        <com.screwd.settings.device.KcalRGBMinPreference
+        <com.thht.settings.device.KcalRGBMinPreference
             android:key="rgb_min"
             android:title="@string/rgb_min" />
-        <com.screwd.settings.device.KcalSatIntensityPreference
+        <com.thht.settings.device.KcalSatIntensityPreference
             android:key="sat_intensity"
             android:title="@string/sat_intensity" />
-        <com.screwd.settings.device.KcalScreenHuePreference
+        <com.thht.settings.device.KcalScreenHuePreference
             android:key="scr_hue"
             android:title="@string/scr_hue" />
-        <com.screwd.settings.device.KcalScreenValuePreference
+        <com.thht.settings.device.KcalScreenValuePreference
             android:key="scr_val"
             android:title="@string/scr_val" />
-        <com.screwd.settings.device.KcalScreenContrPreference
+        <com.thht.settings.device.KcalScreenContrPreference
             android:key="scr_cont"
             android:title="@string/scr_cont" />
     </PreferenceCategory>
