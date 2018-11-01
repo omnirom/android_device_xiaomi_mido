@@ -109,12 +109,12 @@ public class DeviceSettings extends PreferenceActivity implements
         kcalExtrasCategory = (PreferenceCategory)findPreference(KEY_KCAL_EXTRAS);
         
         kcalPresetsPreference = (SwitchPreference) findPreference(KEY_KCAL_PRESETS);
-        shouldRestore = PreferenceManager.getDefaultSharedPreferences(this).getBoolean(DeviceSettings.KEY_KCAL_PRESETS, false); 
-        kcalPresetsPreference.setChecked(shouldRestore);
-        setKcalPresetsDependents(shouldRestore);
+        Boolean shouldRestorePreset = PreferenceManager.getDefaultSharedPreferences(this).getBoolean(DeviceSettings.KEY_KCAL_PRESETS, false); 
+        kcalPresetsPreference.setChecked(shouldRestorePreset);
+        setKcalPresetsDependents(shouldRestorePreset);
         kcalPresetsPreference.setOnPreferenceChangeListener(this);
 
-        String kcalPresetsValue = PreferenceManager.getDefaultSharedPreferences(this).getString(DeviceSettings.KEY_KCAL_PRESETS_LIST, "0");
+        String kcalPresetsValue = shouldRestore && shouldRestorePreset ? PreferenceManager.getDefaultSharedPreferences(this).getString(DeviceSettings.KEY_KCAL_PRESETS_LIST, "0") : "0" ;
         kcalPresetsListPreference.setValue(kcalPresetsValue);
         kcalPresetsPreference.setOnPreferenceChangeListener(this);
 
