@@ -45,6 +45,8 @@ import android.graphics.Color;
 public class DeviceSettings extends PreferenceActivity implements
         Preference.OnPreferenceChangeListener {
 
+    private static final String TAG = "thhtKCAL";
+
     public static final String KEY_VIBSTRENGTH = "vib_strength";
     public static final String KEY_YELLOW_TORCH_BRIGHTNESS = "yellow_torch_brightness";
     public static final String KEY_WHITE_TORCH_BRIGHTNESS = "white_torch_brightness";
@@ -57,11 +59,20 @@ public class DeviceSettings extends PreferenceActivity implements
     public static final String KEY_KCAL_SCR_VAL = "key_kcal_scr_val";
     public static final String KEY_KCAL_SCR_HUE = "key_kcal_scr_hue";
     public static final String KEY_RESTORE_ON_BOOT = "restore_on_boot";
+    public static final String KEY_KCAL_PRESETS = "kcal_presets";
+    public static final String KEY_KCAL_PRESETS_LIST = "presets_list";
+    public static final String KEY_SCREEN_COLOR = "key_screen_color";
+    public static final String KEY_KCAL_EXTRAS = "key_kcal_extras";
+
 
     private VibratorStrengthPreference mVibratorStrength;
     private YellowTorchBrightnessPreference mYellowTorchBrightness;
     private WhiteTorchBrightnessPreference mWhiteTorchBrightness;
     private SwitchPreference restoreOnBootPreference;
+    private SwitchPreference kcalPresetsPreference;
+    private ListPreference kcalPresetsListPreference;
+    private PreferenceCategory screenColorCategory;
+    private PreferenceCategory kcalExtrasCategory;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -92,6 +103,22 @@ public class DeviceSettings extends PreferenceActivity implements
         Boolean shouldRestore = PreferenceManager.getDefaultSharedPreferences(this).getBoolean(DeviceSettings.KEY_RESTORE_ON_BOOT, false); 
         restoreOnBootPreference.setChecked(shouldRestore);
         restoreOnBootPreference.setOnPreferenceChangeListener(this);
+
+        kcalPresetsListPreference = (ListPreference) findPreference(KEY_KCAL_PRESETS_LIST);
+        screenColorCategory = (PreferenceCategory) findPreference(KEY_SCREEN_COLOR);
+        kcalExtrasCategory = (PreferenceCategory)findPreference(KEY_KCAL_EXTRAS);
+        
+        kcalPresetsPreference = (SwitchPreference) findPreference(KEY_KCAL_PRESETS);
+        shouldRestore = PreferenceManager.getDefaultSharedPreferences(this).getBoolean(DeviceSettings.KEY_KCAL_PRESETS, false); 
+        kcalPresetsPreference.setChecked(shouldRestore);
+        setKcalPresetsDependents(shouldRestore);
+        kcalPresetsPreference.setOnPreferenceChangeListener(this);
+
+        String kcalPresetsValue = PreferenceManager.getDefaultSharedPreferences(this).getString(DeviceSettings.KEY_KCAL_PRESETS_LIST, "0");
+        kcalPresetsListPreference.setValue(kcalPresetsValue);
+        kcalPresetsPreference.setOnPreferenceChangeListener(this);
+
+        kcalPresetsListPreference.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -114,12 +141,33 @@ public class DeviceSettings extends PreferenceActivity implements
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
 
-        if (preference == restoreOnBootPreference) {
-            SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
+        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
+        
+        if (preference == restoreOnBootPreference ||
+            preference == kcalPresetsPreference) {
             boolean value = (Boolean) newValue;
-            editor.putBoolean(DeviceSettings.KEY_RESTORE_ON_BOOT, value);
+            if (preference == restoreOnBootPreference)
+                editor.putBoolean(DeviceSettings.KEY_RESTORE_ON_BOOT, value);
+            else if (preference == kcalPresetsPreference) {
+                editor.putBoolean(DeviceSettings.KEY_KCAL_PRESETS, value);
+                setKcalPresetsDependents(value);                
+            }
             editor.commit();
-        }  
+        } 
+        
+        else if (preference == kcalPresetsListPreference) {
+            String currValue = (String) newValue;
+            editor.putString(DeviceSettings.KEY_KCAL_PRESETS_LIST, currValue);
+            KcalPresets.setValue(currValue);
+            editor.commit();
+        }
+
         return true;
+    }
+
+    private void setKcalPresetsDependents(boolean value) {
+        kcalPresetsListPreference.setEnabled(value);
+        screenColorCategory.setEnabled(!value);
+        kcalExtrasCategory.setEnabled(!value);
     }
 }

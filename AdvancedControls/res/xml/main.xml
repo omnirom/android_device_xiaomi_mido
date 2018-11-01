@@ -39,7 +39,20 @@ xmlns:app="http://schemas.android.com/tools">
             android:summary="@string/white_torch_brightness_summary_head" />
     </PreferenceCategory>
     <PreferenceCategory
-        android:title="@string/category_screen_color">
+        android:title="@string/category_kcal_presets">
+        <SwitchPreference
+            android:key="kcal_presets"
+            android:title="@string/kcal_presets_title"/>
+        <ListPreference
+			android:key="presets_list"
+			android:title="@string/presets_list_title"
+			android:entries="@array/presets_entries"
+			android:entryValues="@array/presets_values" 
+            android:defaultValue="0"/>
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="@string/category_screen_color" 
+        android:key="key_screen_color">
         <com.thht.settings.device.KcalRGBRedPreference
             android:key="rgb_red"
             android:title="@string/rgb_red" />
@@ -51,7 +64,8 @@ xmlns:app="http://schemas.android.com/tools">
             android:title="@string/rgb_blue" />
     </PreferenceCategory>
     <PreferenceCategory
-        android:title="@string/category_kcal_extras">
+        android:title="@string/category_kcal_extras"
+        android:key="key_kcal_extras">
         <com.thht.settings.device.KcalRGBMinPreference
             android:key="rgb_min"
             android:title="@string/rgb_min" />

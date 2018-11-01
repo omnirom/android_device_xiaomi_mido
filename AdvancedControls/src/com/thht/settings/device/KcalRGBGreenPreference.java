@@ -95,7 +95,7 @@ public class KcalRGBGreenPreference extends SeekBarDialogPreference implements
         return Utils.getFileValue(FILE_LEVEL, DEFAULT_VALUE);
     }
 
-    private void setValue(String newValue) {
+    public static void setValue(String newValue) {
         Utils.writeValue(FILE_LEVEL, newValue);
     }
 

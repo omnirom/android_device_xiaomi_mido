@@ -120,7 +120,7 @@ public class VibratorStrengthPreference extends SeekBarDialogPreference implemen
         return Utils.getFileValue(FILE_LEVEL, String.valueOf(DEFAULT_VALUE));
     }
 
-    private void setValue(String newValue) {
+    public static void setValue(String newValue) {
         Utils.writeValue(FILE_LEVEL, newValue);
     }
 

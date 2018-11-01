@@ -93,7 +93,7 @@ public class KcalSatIntensityPreference extends SeekBarDialogPreference implemen
         return String.valueOf(translate(value, true));
     }
 
-    private void setValue(String newValue) {
+    public static void setValue(String newValue) {
         String value = String.valueOf(translate(Integer.parseInt(newValue), false));
         Utils.writeValue(FILE_LEVEL, value);
     }

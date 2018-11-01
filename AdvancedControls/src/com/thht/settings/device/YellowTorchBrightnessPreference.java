@@ -111,7 +111,7 @@ public class YellowTorchBrightnessPreference extends SeekBarDialogPreference imp
         return Utils.getFileValue(FILE_BRIGHTNESS, "200");
     }
 
-    private void setValue(String newValue) {
+    public static void setValue(String newValue) {
         Utils.writeValue(FILE_BRIGHTNESS, newValue);
     }
 
