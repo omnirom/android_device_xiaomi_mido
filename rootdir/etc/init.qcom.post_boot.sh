@@ -1802,6 +1802,7 @@ case "$target" in
 
                 # Virtual memory tweaks
                 echo 10 > /proc/sys/vm/swappiness
+                echo 30 > /proc/sys/vm/dirty_ratio
                 echo 10 > /proc/sys/vm/dirty_background_ratio
 
                 # Set Memory parameters
