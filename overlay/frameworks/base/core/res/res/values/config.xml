@@ -567,9 +567,6 @@
      <!-- Button Backlight -->
      <bool name="config_button_brightness_support">true</bool>
 
-     <!-- AlwaysOnDisplay  -->
-    <bool name="config_dozeAlwaysOnDisplayAvailable">true</bool>
-
     <!-- Whether doze feature is enabled by default in settings. -->
     <bool name="config_doze_enabled_by_default">true</bool>
 

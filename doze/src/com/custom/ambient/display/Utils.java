@@ -25,6 +25,8 @@ import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.util.Log;
 
+import com.android.internal.hardware.AmbientDisplayConfiguration;
+
 public final class Utils {
 
     private static final String TAG = "DozeUtils";
@@ -32,6 +34,7 @@ public final class Utils {
 
     private static final String DOZE_INTENT = "com.android.systemui.doze.pulse";
 
+    protected static final String AOD_KEY = "always_on_ambient";
     protected static final String AMBIENT_DISPLAY_KEY = "ambient_display";
     protected static final String PICK_UP_KEY = "pick_up";
     protected static final String GESTURE_HAND_WAVE_KEY = "gesture_hand_wave";
@@ -59,6 +62,27 @@ public final class Utils {
     protected static void stopService(Context context) {
         if (DEBUG) Log.d(TAG, "Stopping service");
         context.stopService(new Intent(context, DozeService.class));
+    }
+
+    protected static boolean isAoDEnabled(Context context) {
+        return Settings.Secure.getInt(context.getContentResolver(),
+                Settings.Secure.DOZE_ALWAYS_ON, 0) != 0;
+    }
+
+    protected static boolean isAoDAvailable(Context context) {
+        final AmbientDisplayConfiguration config = new AmbientDisplayConfiguration(context);
+        return config.alwaysOnAvailable();
+    }
+
+    protected static boolean enableAoD(boolean enable, Context context) {
+        boolean enabled = Settings.Secure.putInt(context.getContentResolver(),
+                Settings.Secure.DOZE_ALWAYS_ON, enable ? 1 : 0);
+        if (enable) {
+            enableHandWave(false, context);
+            enablePocketMode(false, context);
+        }
+
+        return enabled;
     }
 
     protected static boolean isDozeEnabled(Context context) {

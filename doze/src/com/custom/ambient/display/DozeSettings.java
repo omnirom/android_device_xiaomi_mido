@@ -29,6 +29,7 @@ public class DozeSettings extends PreferenceActivity implements OnPreferenceChan
 
     private Context mContext;
 
+    private SwitchPreference mAoDPreference;
     private SwitchPreference mAmbientDisplayPreference;
     private SwitchPreference mPickUpPreference;
     private SwitchPreference mHandwavePreference;
@@ -39,6 +40,20 @@ public class DozeSettings extends PreferenceActivity implements OnPreferenceChan
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.doze_settings);
         mContext = getApplicationContext();
+
+        final ActionBar actionBar = getActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+
+        mAoDPreference =
+            (SwitchPreference) findPreference(Utils.AOD_KEY);
+        if (Utils.isAoDAvailable(mContext)) {
+            mAoDPreference.setChecked(Utils.isAoDEnabled(mContext));
+            mAoDPreference.setOnPreferenceChangeListener(this);
+        } else {
+            getPreferenceScreen().removePreference(mAoDPreference);
+        }
 
         mAmbientDisplayPreference =
             (SwitchPreference) findPreference(Utils.AMBIENT_DISPLAY_KEY);
@@ -61,10 +76,8 @@ public class DozeSettings extends PreferenceActivity implements OnPreferenceChan
         mPocketPreference.setChecked(Utils.pocketGestureEnabled(mContext));
         mPocketPreference.setOnPreferenceChangeListener(this);
 
-        final ActionBar actionBar = getActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
+        if (mAoDPreference == null) return;
+        setPrefs();
     }
 
     @Override
@@ -85,7 +98,13 @@ public class DozeSettings extends PreferenceActivity implements OnPreferenceChan
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         final String key = preference.getKey();
         final boolean value = (Boolean) newValue;
-        if (Utils.AMBIENT_DISPLAY_KEY.equals(key)) {
+
+        if (Utils.AOD_KEY.equals(key)) {
+            mAoDPreference.setChecked(value);
+            Utils.enableAoD(value, mContext);
+            setPrefs();
+            return true;
+        } else if (Utils.AMBIENT_DISPLAY_KEY.equals(key)) {
             mAmbientDisplayPreference.setChecked(value);
             Utils.enableDoze(value, mContext);
             return true;
@@ -103,5 +122,12 @@ public class DozeSettings extends PreferenceActivity implements OnPreferenceChan
             return true;
         }
         return false;
+    }
+
+    private void setPrefs() {
+        final boolean aodEnabled = Utils.isAoDEnabled(mContext);
+        mAmbientDisplayPreference.setEnabled(!aodEnabled);
+        mHandwavePreference.setEnabled(!aodEnabled);
+        mPocketPreference.setEnabled(!aodEnabled);
     }
 }

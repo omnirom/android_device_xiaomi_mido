@@ -17,6 +17,12 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <SwitchPreference
+        android:key="always_on_ambient"
+        android:defaultValue="false"
+        android:title="@string/aod_setting_title"
+        android:summary="@string/aod_setting_summary" />
+
+    <SwitchPreference
         android:key="ambient_display"
         android:defaultValue="true"
         android:title="@string/ambient_display_title"
@@ -35,7 +41,7 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:key="priximity_sensor"
+        android:key="proximity_sensor"
         android:title="@string/priximity_sensor_title" >
 
         <SwitchPreference
