@@ -23,6 +23,10 @@
     <!-- Doze: does this device support STATE_DOZE and STATE_DOZE_SUSPEND?  -->
     <bool name="doze_display_state_supported">true</bool>
 
+    <!-- Whether to artificially interpret all signal strengths as
+         one bar higher than they actually are -->
+    <bool name="config_inflateSignalStrength">true</bool>
+
     <!-- Doze: when to pulse after a buzzworthy notification arrives -->
     <string name="doze_pulse_schedule" translatable="false">10s,30s,60s,180s</string>
  
