@@ -28,6 +28,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.SystemProperties;
 import android.support.v14.preference.PreferenceFragment;
+import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.Preference.OnPreferenceClickListener;
@@ -51,21 +52,29 @@ public class DeviceSettings extends PreferenceFragment implements
     public static final String KEY_YELLOW_TORCH_BRIGHTNESS = "yellow_torch_brightness";
     public static final String KEY_WHITE_TORCH_BRIGHTNESS = "white_torch_brightness";
     public static final String KEY_GLOVE_MODE = "glove_mode";
+    public static final String USB_FASTCHARGE_KEY = "fastcharge";
+    public static final String USB_FASTCHARGE_PATH = "/sys/kernel/fast_charge/force_fast_charge";
 
     private static final String SPECTRUM_KEY = "spectrum";
     private static final String SPECTRUM_SYSTEM_PROPERTY = "persist.spectrum.profile";
+
+    private static final String KEY_CATEGORY_USB_FASTCHARGE = "usb_fastcharge";
 
     private VibratorStrengthPreference mVibratorStrength;
     private YellowTorchBrightnessPreference mYellowTorchBrightness;
     private WhiteTorchBrightnessPreference mWhiteTorchBrightness;
     private TwoStatePreference mGloveMode;
     private ListPreference mSpectrum;
+    private SwitchPreference mFastcharge;
+    private PreferenceCategory mUsbFastcharge;
 
     private static final String GLOVE_MODE_FILE = "/sys/devices/virtual/tp_glove/device/glove_enable";
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.main, rootKey);
+
+        PreferenceScreen prefSet = getPreferenceScreen();
 
         PreferenceScreen mKcalPref = (PreferenceScreen) findPreference("kcal");
         mKcalPref.setOnPreferenceClickListener(new OnPreferenceClickListener() {
@@ -102,6 +111,19 @@ public class DeviceSettings extends PreferenceFragment implements
             mSpectrum.setOnPreferenceChangeListener(this);
             mSpectrum.setSummary(mSpectrum.getEntry());
         }
+
+        if (Utils.fileWritable(USB_FASTCHARGE_PATH)) {
+          mFastcharge = (SwitchPreference) findPreference(USB_FASTCHARGE_KEY);
+          mFastcharge.setChecked(Utils.getFileValueAsBoolean(USB_FASTCHARGE_PATH, false));
+          mFastcharge.setOnPreferenceChangeListener(this);
+        } else {
+          mUsbFastcharge = (PreferenceCategory) prefSet.findPreference("usb_fastcharge");
+          prefSet.removePreference(mUsbFastcharge);
+        }
+    }
+
+    private void setFastcharge(boolean value) {
+            Utils.writeValue(USB_FASTCHARGE_PATH, value ? "1" : "0");
     }
 
     public static void restore(Context context) {
@@ -127,6 +149,14 @@ public class DeviceSettings extends PreferenceFragment implements
             int index = mSpectrum.findIndexOfValue(strvalue);
             mSpectrum.setSummary(mSpectrum.getEntries()[index]);
             SystemProperties.set(SPECTRUM_SYSTEM_PROPERTY, strvalue);
+            return true;
+        } else if (preference == mFastcharge) {
+            boolean value = (Boolean) newValue;
+            mFastcharge.setChecked(value);
+            setFastcharge(value);
+            SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getContext()).edit();
+            editor.putBoolean(USB_FASTCHARGE_KEY, value);
+            editor.commit();
             return true;
         }
         return false;

@@ -59,4 +59,9 @@
     <string name="spectrum_profile_title">Spectrum</string>
     <string name="spectrum_title">Profile</string>
     <string name="spectrum_dialogTitle">Choose your spectrum profile</string>
+
+    <!-- usb fastcharge -->
+    <string name="usb_fastcharge_title">USB Fastcharge</string>
+    <string name="fastcharge_title">Enable USB Fastcharge</string>
+    <string name="fastcharge_summary">Use fastcharge when connected to a computer via usb port</string>
 </resources>
