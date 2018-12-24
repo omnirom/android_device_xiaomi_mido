@@ -33,6 +33,9 @@
 # Kcal
 /sys/devices/platform/kcal_ctrl.0(/.*)?              u:object_r:sysfs_kcal:s0
 
+# Mlipay
+/(vendor|system/vendor)/bin/mlipayd                 u:object_r:hal_mlipay_default_exec:s0
+
 # Rild
 /(vendor|system/vendor)/radio/qcril_database/qcril.db			u:object_r:rild_file:s0
 

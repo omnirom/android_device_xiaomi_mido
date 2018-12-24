@@ -980,6 +980,12 @@ vendor/lib64/libOmxWmaDec.so|0993543bcff3c126548db90344fb1bf1c8f1e8d0
 vendor/lib64/libmm-color-convertor.so|cae7366bd9ef8e677e55dd67be3ebac78aa151d9
 vendor/lib64/libvpplibrary.so|9801e062790202f7aa640c866415be71177908f7
 
+# Mlipay
+etc/init/vendor.xiaomi.hardware.mlipay@1.0-service.rc:vendor/etc/init/vendor.xiaomi.hardware.mlipay@1.0-service.rc
+lib64/vendor.xiaomi.hardware.mlipay@1.0.so:vendor/lib64/vendor.xiaomi.hardware.mlipay@1.0.so
+vendor/bin/mlipayd
+vendor/lib64/libmlipay.so
+
 # Modem - from Tissot PKQ1.180917.001/V10.0.7.0.PDHMIXM
 vendor/lib/libwms.so|61efcd8bc52e28b7a9b978da0af62355b358887c
 vendor/lib64/libwms.so|57d9f33071f4ae42ac77c98fb82f4e1fe8ac4754
