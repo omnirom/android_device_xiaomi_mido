@@ -382,7 +382,6 @@ PRODUCT_PACKAGES += \
     libQWiFiSoftApCfg \
     libwpa_client \
     hostapd \
-    wcnss_service \
     wpa_supplicant \
     wpa_supplicant.conf
 
