@@ -19,14 +19,7 @@
 from hashlib import sha1
 import sys
 
-device='msm8953-common'
-vendor='xiaomi'
-
-lines = [ line for line in open('proprietary-files-qc.txt', 'r') ]
-vendorPath = '../../../vendor/' + vendor + '/' + device + '/proprietary'
-needSHA1 = False
-
-def cleanup():
+def cleanup(lines):
   for index, line in enumerate(lines):
     # Remove '\n' character
     line = line[:-1]
@@ -40,7 +33,7 @@ def cleanup():
       line = line.split('|')[0]
       lines[index] = '%s\n' % (line)
 
-def update():
+def update(lines, device, vendor, vendorPath, needSHA1=False):
   for index, line in enumerate(lines):
     # Remove '\n' character
     line = line[:-1]
@@ -67,13 +60,36 @@ def update():
       hash = sha1(file).hexdigest()
       lines[index] = '%s|%s\n' % (line, hash)
 
-if len(sys.argv) == 2 and sys.argv[1] == '-c':
-  cleanup()
-else:
-  update()
+def gensha1(lines, device, vendor, vendorPath):
+    if len(sys.argv) == 2 and sys.argv[1] == '-c':
+        cleanup(lines)
+    else:
+        update(lines, device, vendor, vendorPath, False)
 
-with open('proprietary-files-qc.txt', 'w') as file:
-  for line in lines:
-    file.write(line)
+def writeback(lines, filename):
+    try:
+        with open(filename, 'w') as file:
+            for line in lines:
+                file.write(line);
+    except IOError as err:
+        print(str(err))
 
-  file.close()
+if __name__ == "__main__":
+    filename1 = 'proprietary-files-qc.txt'
+    filename2 = 'proprietary-files.txt'
+    lines1 = [ line for line in open(filename1, 'r') ]
+    lines2 = [ line for line in open(filename2, 'r') ]
+    
+    device='msm8953-common'
+    vendor='xiaomi'
+    vendorPath = '../../../vendor/' + vendor + '/' + device + '/proprietary'
+    gensha1(lines1, device, vendor, vendorPath)
+    
+    device='mido'
+    vendor='xiaomi'
+    vendorPath = '../../../vendor/' + vendor + '/' + device + '/proprietary'
+    gensha1(lines2, device, vendor, vendorPath)
+
+    writeback(lines1, filename1)
+    writeback(lines2, filename2)
+
