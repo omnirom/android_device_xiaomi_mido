@@ -205,6 +205,9 @@ TARGET_USE_SDCLANG := true
 # Recovery
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
 
+# Shipping API
+PRODUCT_SHIPPING_API_LEVEL := 23
+
 # RIL
 TARGET_RIL_VARIANT := caf
 
