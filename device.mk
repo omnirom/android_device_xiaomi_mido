@@ -126,6 +126,9 @@ PRODUCT_PACKAGES += \
     libmm-qcamera \
     Snap
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/org.codeaurora.snapcam.xml:system/etc/permissions/org.codeaurora.snapcam.xml
+
 # Configstore
 PRODUCT_PACKAGES += \
     android.hardware.configstore@1.0-service
