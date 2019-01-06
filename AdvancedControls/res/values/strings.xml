@@ -37,7 +37,7 @@
     <string name="plus_one">+1</string>
     <string name="minus_one">-1</string>
     <string name="restore_default">Default</string>
-    <string name="restore_on_boot">Restore settings after boot</string>
+    <string name="restore_on_boot">Restore settings across app close/boot</string>
     <string name="category_kcal_presets">Kcal Presets</string>
     <string name="kcal_presets_title">Use kcal preset values</string>
     <string name="presets_list_title">Choose kcal preset</string>
