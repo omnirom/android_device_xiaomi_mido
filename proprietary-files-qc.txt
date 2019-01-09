@@ -48,11 +48,9 @@ vendor/lib64/soundfx/libqcvirt.so
 # ANT+ (vendor)
 vendor/lib64/com.qualcomm.qti.ant@1.0.so
 
-# AptX - from Nokia/Onyx_00WW/B2N_sprout:9/PPR1.180610.011/00WW_3_39B
-vendor/lib/rfsa/adsp/capi_v2_aptX_Classic.so
-vendor/lib/rfsa/adsp/capi_v2_aptX_HD.so
-vendor/lib64/libaptXHD_encoder.so
-vendor/lib64/libaptX_encoder.so
+# AptX - from mata-user 9 PPR1.181005.099 413 release-keys
+lib64/libaptX_encoder.so
+lib64/libaptXHD_encoder.so
 
 # Bluetooth - from Tissot PKQ1.180917.001/V10.0.2.0.PDHMIFK
 vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti
