@@ -641,7 +641,7 @@ vendor/lib/vendor.qti.hardware.tui_comm@1.0.so|2380fd3814008cfb70e7fed4158a050e0
 vendor/lib64/vendor.qti.hardware.tui_comm@1.0.so|acbbf758ec18b79b7fa0b557a55fd700fa76d577
 
 # Wi-Fi - from Tissot PKQ1.180917.001/V10.0.2.0.PDHMIFK
-vendor/bin/wcnss_service
+vendor/bin/wcnss_service|f8ecd38a41b6b7f832380b489e0c9804c34174d8
 
 # Wi-Fi Display
 bin/wfdservice
