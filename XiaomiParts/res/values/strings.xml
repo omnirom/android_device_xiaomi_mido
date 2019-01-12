@@ -64,4 +64,10 @@
     <string name="usb_fastcharge_title">USB Fastcharge</string>
     <string name="fastcharge_title">Enable USB Fastcharge</string>
     <string name="fastcharge_summary">Use fastcharge when connected to a computer via usb port</string>
+
+    <!-- wakeup fix -->
+    <string name="category_wakeup">Fingerprint</string>
+    <string name="slow_wakeup_fix_title">Enable hack to improve wakeup speed</string>
+    <string name="slow_wakeup_fix_summary">Battery drainer!!! Disabled by default</string>
+    
 </resources>

@@ -55,10 +55,15 @@ public class DeviceSettings extends PreferenceFragment implements
     public static final String USB_FASTCHARGE_KEY = "fastcharge";
     public static final String USB_FASTCHARGE_PATH = "/sys/kernel/fast_charge/force_fast_charge";
 
+    private static final String GLOVE_MODE_FILE = "/sys/devices/virtual/tp_glove/device/glove_enable";
+
     private static final String SPECTRUM_KEY = "spectrum";
     private static final String SPECTRUM_SYSTEM_PROPERTY = "persist.spectrum.profile";
 
     private static final String KEY_CATEGORY_USB_FASTCHARGE = "usb_fastcharge";
+
+    public static final String KEY_SLOW_WAKEUP_FIX = "slow_wakeup_fix";
+    public static final String FILE_LEVEL_WAKEUP = "/sys/devices/soc/qpnp-smbcharger-18/power_supply/battery/subsystem/bms/hi_power";
 
     private VibratorStrengthPreference mVibratorStrength;
     private YellowTorchBrightnessPreference mYellowTorchBrightness;
@@ -67,8 +72,7 @@ public class DeviceSettings extends PreferenceFragment implements
     private ListPreference mSpectrum;
     private SwitchPreference mFastcharge;
     private PreferenceCategory mUsbFastcharge;
-
-    private static final String GLOVE_MODE_FILE = "/sys/devices/virtual/tp_glove/device/glove_enable";
+    private SwitchPreference slowWakeupFixPreference;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
@@ -120,6 +124,10 @@ public class DeviceSettings extends PreferenceFragment implements
           mUsbFastcharge = (PreferenceCategory) prefSet.findPreference("usb_fastcharge");
           prefSet.removePreference(mUsbFastcharge);
         }
+
+        slowWakeupFixPreference = (SwitchPreference) findPreference(KEY_SLOW_WAKEUP_FIX);
+        slowWakeupFixPreference.setChecked(Utils.getFileValueAsBoolean(FILE_LEVEL_WAKEUP, false));
+        slowWakeupFixPreference.setOnPreferenceChangeListener(this);
     }
 
     private void setFastcharge(boolean value) {
@@ -158,8 +166,23 @@ public class DeviceSettings extends PreferenceFragment implements
             editor.putBoolean(USB_FASTCHARGE_KEY, value);
             editor.commit();
             return true;
+        } else if (preference == slowWakeupFixPreference) {
+            boolean value = (Boolean) newValue;
+            slowWakeupFixPreference.setChecked(value);
+            setSlowWakeupFix(value);
+            SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getContext()).edit();
+            editor.putBoolean(KEY_SLOW_WAKEUP_FIX, value);
+            editor.commit();
+            return true;
         }
         return false;
+    }
+
+    public static void setSlowWakeupFix(boolean value) {
+        if (value) 
+            Utils.writeValue(FILE_LEVEL_WAKEUP, "1");
+        else
+            Utils.writeValue(FILE_LEVEL_WAKEUP, "0"); 
     }
 
     public static void restoreSpectrumProp(Context context) {

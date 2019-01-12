@@ -44,6 +44,7 @@
 /sys/devices/soc/qpnp-flash-led-25/leds/led:torch_0/max_brightness          u:object_r:sysfs_torch:s0
 /sys/devices/soc/qpnp-flash-led-25/leds/led:torch_1/max_brightness          u:object_r:sysfs_torch:s0
 /sys/class/timed_output/vibrator/vtg_level            u:object_r:sysfs_vibrator:s0
+/sys/devices/soc/qpnp-fg-18/power_supply/bms/hi_power           u:object_r:sysfs_battery_supply:s0
 
 # Thermal
 /sys/class/thermal/thermal_message(/.*)?                      u:object_r:sysfs_thermal:s0

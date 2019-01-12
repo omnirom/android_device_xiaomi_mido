@@ -12,3 +12,10 @@ get_prop(system_app, spectrum_prop);
 
 # Thermal
 allow system_app sysfs_thermal:file write;
+
+#Wakeup
+allow system_app sysfs_battery_supply:file open;
+allow system_app sysfs_battery_supply:file getattr;
+allow system_app sysfs_battery_supply:file write; 
+allow system_app sysfs_battery_supply:dir search;
+allow system_app sysfs_battery_supply:lnk_file read;
