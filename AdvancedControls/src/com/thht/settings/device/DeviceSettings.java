@@ -42,6 +42,8 @@ import android.util.Log;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.Color;
 
+import com.thht.settings.device.Utils;
+
 public class DeviceSettings extends PreferenceActivity implements
         Preference.OnPreferenceChangeListener {
 
@@ -63,13 +65,16 @@ public class DeviceSettings extends PreferenceActivity implements
     public static final String KEY_KCAL_PRESETS_LIST = "presets_list";
     public static final String KEY_SCREEN_COLOR = "key_screen_color";
     public static final String KEY_KCAL_EXTRAS = "key_kcal_extras";
+    public static final String KEY_SLOW_WAKEUP_FIX = "slow_wakeup_fix";
 
+    public static final String FILE_LEVEL_WAKEUP = "/sys/devices/soc/qpnp-smbcharger-18/power_supply/battery/subsystem/bms/hi_power";
 
     private VibratorStrengthPreference mVibratorStrength;
     private YellowTorchBrightnessPreference mYellowTorchBrightness;
     private WhiteTorchBrightnessPreference mWhiteTorchBrightness;
     private SwitchPreference restoreOnBootPreference;
     private SwitchPreference kcalPresetsPreference;
+    private SwitchPreference slowWakeupFixPreference;
     private ListPreference kcalPresetsListPreference;
     private PreferenceCategory screenColorCategory;
     private PreferenceCategory kcalExtrasCategory;
@@ -119,6 +124,11 @@ public class DeviceSettings extends PreferenceActivity implements
         kcalPresetsPreference.setOnPreferenceChangeListener(this);
 
         kcalPresetsListPreference.setOnPreferenceChangeListener(this);
+
+        slowWakeupFixPreference = (SwitchPreference) findPreference(KEY_SLOW_WAKEUP_FIX);
+        Boolean shouldFixSlowWakeUp = PreferenceManager.getDefaultSharedPreferences(this).getBoolean(DeviceSettings.KEY_SLOW_WAKEUP_FIX, false);
+        slowWakeupFixPreference.setChecked(shouldFixSlowWakeUp);
+        slowWakeupFixPreference.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -144,13 +154,17 @@ public class DeviceSettings extends PreferenceActivity implements
         SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
         
         if (preference == restoreOnBootPreference ||
-            preference == kcalPresetsPreference) {
+            preference == kcalPresetsPreference ||
+            preference == slowWakeupFixPreference) {
             boolean value = (Boolean) newValue;
             if (preference == restoreOnBootPreference)
                 editor.putBoolean(DeviceSettings.KEY_RESTORE_ON_BOOT, value);
             else if (preference == kcalPresetsPreference) {
                 editor.putBoolean(DeviceSettings.KEY_KCAL_PRESETS, value);
                 setKcalPresetsDependents(value);                
+            } else if (preference == slowWakeupFixPreference) {
+                editor.putBoolean(DeviceSettings.KEY_SLOW_WAKEUP_FIX, value);
+                setSlowWakeupFix(value);
             }
             editor.commit();
         } 
@@ -169,5 +183,12 @@ public class DeviceSettings extends PreferenceActivity implements
         kcalPresetsListPreference.setEnabled(value);
         screenColorCategory.setEnabled(!value);
         kcalExtrasCategory.setEnabled(!value);
+    }
+
+    public static void setSlowWakeupFix(boolean value) {
+        if (value) 
+            Utils.writeValue(FILE_LEVEL_WAKEUP, "1");
+        else
+            Utils.writeValue(FILE_LEVEL_WAKEUP, "0"); 
     }
 }

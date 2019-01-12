@@ -10,7 +10,7 @@ public class RestoreService extends IntentService {
 
 		private static final String TAG = "RestoreService";
 
-		public RestoreService() {
+	public RestoreService() {
       super(RestoreService.class.getName());
     }
 
@@ -20,6 +20,9 @@ public class RestoreService extends IntentService {
         VibratorStrengthPreference.restore(this);
         WhiteTorchBrightnessPreference.restore(this);
         YellowTorchBrightnessPreference.restore(this);
+
+        Boolean shouldFixSlowWakeUp = intent.getExtras().getBoolean(DeviceSettings.KEY_SLOW_WAKEUP_FIX, false);
+        DeviceSettings.setSlowWakeupFix(shouldFixSlowWakeUp);
 
         Boolean shouldRestorePreset = intent.getExtras().getBoolean(DeviceSettings.KEY_KCAL_PRESETS, false);
 
