@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright (C) 2014-2016 The OmniROM Project
+<?xml version="1.0" encoding="UTF-8"?><!-- Copyright (C) 2014-2016 The OmniROM Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -13,78 +12,111 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/tools">
-    <SwitchPreference
-        android:key="restore_on_boot"
-        android:title="@string/restore_on_boot"
-        android:defaultValue="false" />
-    <SwitchPreference
-        android:key="slow_wakeup_fix"
-        android:title="@string/slow_wakeup_fix_title"
-        android:summary="@string/slow_wakeup_fix_summary"
-        android:defaultValue="false" />	
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Dirac -->
+    <!--<PreferenceCategory
+        android:title="@string/category_sound"
+        android:key="key_category_sound">
+        <Preference
+            android:key="key_dirac"
+            android:persistent="false"
+            android:title="@string/dirac_title"
+            android:summary="@string/dirac_summary">
+            <intent
+                android:action="android.intent.action.MAIN"
+                android:targetPackage="org.lineageos.settings"
+                android:targetClass="org.lineageos.settings.dirac.DiracActivity" />
+        </Preference>
+    </PreferenceCategory>-->
+
+    <!-- Vibrator -->
     <PreferenceCategory
-        android:title="@string/category_vibrator" > 
-        <com.thht.settings.device.VibratorStrengthPreference
-            android:key="vib_strength"
+        android:title="@string/category_vibrator"
+        android:key="key_category_vibrator">
+        <Preference
+            android:key="key_vib_strength"
             android:title="@string/vib_strength_title_head"
             android:summary="@string/vib_strength_summary_head" />
     </PreferenceCategory>
+
+    <!-- Torch -->
     <PreferenceCategory
-        android:title="@string/category_torch">
-        <com.thht.settings.device.YellowTorchBrightnessPreference
-            android:key="yellow_torch_brightness"
+        android:title="@string/category_torch"
+        android:key="key_category_torch">
+        <Preference
+            android:key="key_yellow_torch_brightness"
             android:title="@string/yellow_torch_brightness_title_head"
-            android:summary="@string/yellow_torch_brightness_summary_head"/> 
-        <com.thht.settings.device.WhiteTorchBrightnessPreference
-            android:key="white_torch_brightness"
+            android:summary="@string/yellow_torch_brightness_summary_head" />
+        <Preference
+            android:key="key_white_torch_brightness"
             android:title="@string/white_torch_brightness_title_head"
             android:summary="@string/white_torch_brightness_summary_head" />
     </PreferenceCategory>
+
+    <!-- Kcal presets -->
     <PreferenceCategory
-        android:title="@string/category_kcal_presets">
+        android:title="@string/category_kcal_presets"
+        android:key="key_category_kcal_presets">
         <SwitchPreference
-            android:key="kcal_presets"
-            android:title="@string/kcal_presets_title"/>
+            android:key="key_kcal_presets"
+            android:title="@string/kcal_presets_title" />
         <ListPreference
-			android:key="presets_list"
-			android:title="@string/presets_list_title"
-			android:entries="@array/presets_entries"
-			android:entryValues="@array/presets_values" 
-            android:defaultValue="0"/>
+            android:key="key_kcal_presets_list"
+            android:title="@string/presets_list_title"
+            android:entries="@array/presets_entries"
+            android:entryValues="@array/presets_values"
+            android:defaultValue="0" />
     </PreferenceCategory>
+
+    <!-- Kcal RGB -->
     <PreferenceCategory
-        android:title="@string/category_screen_color" 
-        android:key="key_screen_color">
-        <com.thht.settings.device.KcalRGBRedPreference
-            android:key="rgb_red"
+        android:title="@string/category_screen_color"
+        android:key="key_category_screen_color">
+        <Preference
+            android:key="key_kcal_rgb_red"
             android:title="@string/rgb_red" />
-        <com.thht.settings.device.KcalRGBGreenPreference
-            android:key="rgb_green"
+        <Preference
+            android:key="key_kcal_rgb_green"
             android:title="@string/rgb_green" />
-        <com.thht.settings.device.KcalRGBBluePreference
-            android:key="rgb_blue"
+        <Preference
+            android:key="key_kcal_rgb_blue"
             android:title="@string/rgb_blue" />
     </PreferenceCategory>
+
+    <!-- Kcal Extras -->
     <PreferenceCategory
         android:title="@string/category_kcal_extras"
-        android:key="key_kcal_extras">
-        <com.thht.settings.device.KcalRGBMinPreference
-            android:key="rgb_min"
+        android:key="key_category_kcal_extras">
+        <Preference
+            android:key="key_kcal_rgb_min"
             android:title="@string/rgb_min" />
-        <com.thht.settings.device.KcalSatIntensityPreference
-            android:key="sat_intensity"
+        <Preference
+            android:key="key_kcal_sat_intensity"
             android:title="@string/sat_intensity" />
-        <com.thht.settings.device.KcalScreenHuePreference
-            android:key="scr_hue"
+        <Preference
+            android:key="key_kcal_scr_hue"
             android:title="@string/scr_hue" />
-        <com.thht.settings.device.KcalScreenValuePreference
-            android:key="scr_val"
+        <Preference
+            android:key="key_kcal_scr_val"
             android:title="@string/scr_val" />
-        <com.thht.settings.device.KcalScreenContrPreference
-            android:key="scr_cont"
+        <Preference
+            android:key="key_kcal_scr_cont"
             android:title="@string/scr_cont" />
     </PreferenceCategory>
 
+    <!-- Miscellaneous -->
+    <PreferenceCategory
+        android:title="@string/category_misc"
+        android:key="key_category_misc">
+        <SwitchPreference
+            android:key="key_restore_on_boot"
+            android:title="@string/restore_on_boot"
+            android:defaultValue="false" />
+        <SwitchPreference
+            android:key="key_slow_wakeup_fix"
+            android:title="@string/slow_wakeup_fix_title"
+            android:summary="@string/slow_wakeup_fix_summary"
+            android:defaultValue="false" />
+    </PreferenceCategory>
 </PreferenceScreen>

@@ -9,12 +9,13 @@
 
     <uses-sdk
         android:minSdkVersion="27"
-        android:targetSdkVersion="28" />
+        android:targetSdkVersion="27" />
     <application
         android:label="@string/advanced_settings"
         android:icon="@drawable/launcher"
-        android:theme="@android:style/Theme.DeviceDefault.Settings"
-        android:supportsRtl="true" >
+        android:theme="@style/AppTheme"
+        android:supportsRtl="true"
+        android:configChanges="orientation|keyboardHidden|screenSize">
         <activity
             android:name="com.thht.settings.device.DeviceSettings"
             android:exported="true"
@@ -35,9 +36,8 @@
         </receiver>
         <service
             android:name="com.thht.settings.device.RestoreService"
-						android:directBootAware="true"
             android:enabled="true"
             android:exported="true">
-				</service>
+		</service>
     </application>
 </manifest>

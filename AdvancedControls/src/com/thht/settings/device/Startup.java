@@ -20,36 +20,34 @@ package com.thht.settings.device;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-import android.provider.Settings;
-import android.text.TextUtils;
 import android.os.Handler;
-import java.lang.Runnable;
+import android.preference.PreferenceManager;
 import android.util.Log;
+
+import com.thht.settings.device.helpers.StaticMembers;
 
 
 public class Startup extends BroadcastReceiver {
 
-  private static final String TAG = "AdvancedControls";
-  
-  @Override
+    private static final String TAG = "AdvancedControls";
+
+    @Override
     public void onReceive(final Context context, final Intent bootintent) {
-     
-        Boolean shouldRestore = PreferenceManager.getDefaultSharedPreferences(context).getBoolean(DeviceSettings.KEY_RESTORE_ON_BOOT, false); 
-        Boolean shouldRestorePreset = PreferenceManager.getDefaultSharedPreferences(context).getBoolean(DeviceSettings.KEY_KCAL_PRESETS, false); 
-        Boolean shouldFixSlowWakeup = PreferenceManager.getDefaultSharedPreferences(context).getBoolean(DeviceSettings.KEY_SLOW_WAKEUP_FIX, false);
+
+        Boolean shouldRestore = PreferenceManager.getDefaultSharedPreferences(context).getBoolean(StaticMembers.KEY_RESTORE_ON_BOOT, false);
+        final Boolean shouldRestorePreset = PreferenceManager.getDefaultSharedPreferences(context).getBoolean(StaticMembers.KEY_KCAL_PRESETS, false);
+        final Boolean shouldFixSlowWakeup = PreferenceManager.getDefaultSharedPreferences(context).getBoolean(StaticMembers.KEY_SLOW_WAKEUP_FIX, false);
         Log.e(TAG, Boolean.toString(shouldRestore));
-        if(bootintent.getAction().equals("android.intent.action.BOOT_COMPLETED") && shouldRestore) {
+        if (bootintent.getAction().equals("android.intent.action.BOOT_COMPLETED") && shouldRestore) {
             new Handler().postDelayed(new Runnable() {
-            @Override
-              public void run() {
-                Intent in = new Intent(context, RestoreService.class);
-                in.putExtra(DeviceSettings.KEY_KCAL_PRESETS, shouldRestorePreset);
-                in.putExtra(DeviceSettings.KEY_SLOW_WAKEUP_FIX, shouldFixSlowWakeup);
-                context.startService(in);
-              }
-           }, 0);
-        } 
+                @Override
+                public void run() {
+                    Intent in = new Intent(context, RestoreService.class);
+                    in.putExtra(StaticMembers.KEY_KCAL_PRESETS, shouldRestorePreset);
+                    in.putExtra(StaticMembers.KEY_SLOW_WAKEUP_FIX, shouldFixSlowWakeup);
+                    context.startService(in);
+                }
+            }, 0);
+        }
     }
 }
