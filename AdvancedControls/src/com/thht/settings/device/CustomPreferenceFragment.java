@@ -111,7 +111,7 @@ public class CustomPreferenceFragment extends PreferenceFragment implements
                     StaticMembers.KEY_YELLOW_TORCH_BRIGHTNESS).
                     show(getFragmentManager(), "YellowTorch");
         } else if (preference == mWTorchPref) {
-            TorchBrightnessDialogFragment.newInstance(StaticMembers.FILE_LEVEL_TORCH_YELLOW,
+            TorchBrightnessDialogFragment.newInstance(StaticMembers.FILE_LEVEL_TORCH_WHITE,
                     StaticMembers.KEY_WHITE_TORCH_BRIGHTNESS).
                     show(getFragmentManager(), "WhiteTorch");
         } else if (preference == mVibratorPref) {
