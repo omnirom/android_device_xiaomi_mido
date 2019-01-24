@@ -21,10 +21,10 @@
     <integer-array name="config_doze_brightness_sensor_to_brightness">
         <item>-1</item> <!-- 0: OFF -->
         <item>2</item> <!-- 1: NIGHT -->
-        <item>7</item> <!-- 2: LOW -->
+        <item>13</item> <!-- 2: LOW -->
         <item>27</item> <!-- 3: HIGH -->
         <item>28</item> <!-- 4: SUN -->
     </integer-array>
 
-    <bool name="hasDozeBrightnessSensor">false</bool>
+    <bool name="hasDozeBrightnessSensor">true</bool>
 </resources>
