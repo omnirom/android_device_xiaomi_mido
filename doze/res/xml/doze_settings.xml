@@ -58,4 +58,13 @@
 
     </PreferenceCategory>
 
+    <Preference
+        android:key="doze_brightness"
+        android:title="@string/doze_brightness_title"
+        android:summary="@string/doze_brightness_summary">
+    <intent
+        android:action="android.settings.APPLICATION_DETAILS_SETTINGS"
+        android:targetPackage="com.custom.ambient.display"
+        android:targetClass="com.custom.ambient.display.DozeBrightness" />
+    </Preference>
 </PreferenceScreen>

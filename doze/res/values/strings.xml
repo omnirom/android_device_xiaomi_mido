@@ -32,4 +32,15 @@
 
     <string name="aod_setting_title">Always ON Ambient</string>
     <string name="aod_setting_summary">Always show Ambient Display when sleeping</string>
+
+    <string name="doze_brightness_title">Ambient brightness</string>
+    <string name="doze_brightness_summary">Configure Ambient brightness values</string>
+    <string name="night_brightness_value">Night brightness</string>
+    <string name="low_brightness_value">Low light brightness</string>
+    <string name="high_brightness_value">Medium light brightness</string>
+    <string name="sun_brightness_value">Sun light brightness</string>
+
+    <string name="reset_hidden_apps">Reset all</string>
+
+    <string name="footer_info">If Always ON Ambient is enabled, brightness gets recalculated to follow hardware and PowerManager specifications for AoD, so don\'t consider above values as absolute ones.</string>
 </resources>
