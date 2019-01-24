@@ -43,9 +43,10 @@ public class DeviceSettings extends AppCompatActivity {
                 ServiceManager.getService(Context.OVERLAY_SERVICE));
         boolean useDarkTheme = ThemeAccentUtils.isUsingDarkTheme(
                 overlayManager, ActivityManager.getCurrentUser());
-        boolean useBlackTheme = ThemeAccentUtils.isUsingBlackTheme(
-                overlayManager, ActivityManager.getCurrentUser());
-        if (useDarkTheme || useBlackTheme) {
+        //boolean useBlackTheme = ThemeAccentUtils.isUsingBlackTheme(
+        //        overlayManager, ActivityManager.getCurrentUser());
+        //if (useDarkTheme || useBlackTheme) {
+        if (useDarkTheme) {
             AppCompatDelegate.setDefaultNightMode(
                 AppCompatDelegate.MODE_NIGHT_YES);
         }
@@ -58,6 +59,4 @@ public class DeviceSettings extends AppCompatActivity {
     }
 
 }
-
-
 
