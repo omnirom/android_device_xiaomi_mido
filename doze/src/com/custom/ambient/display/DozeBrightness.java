@@ -83,8 +83,8 @@ public class DozeBrightness extends PreferenceActivity implements PreferenceFrag
             final ContentResolver resolver = getActivity().getContentResolver();
 
             mParser = new KeyValueListParser(',');
-            final String value = Settings.Global.getString(getActivity().getContentResolver(),
-                    Settings.Global.ALWAYS_ON_DISPLAY_CONSTANTS);
+            final String value = Settings.System.getString(getActivity().getContentResolver(),
+                    Settings.System.ALWAYS_ON_DISPLAY_CONSTANTS_CUST);
             try {
                 mParser.setString(value);
             } catch (IllegalArgumentException e) {
@@ -163,13 +163,8 @@ public class DozeBrightness extends PreferenceActivity implements PreferenceFrag
             }
             String brightnessValues = b.toString();
 
-            // TODO: get also other keys from the Parser, if any, and set them back to ALWAYS_ON_DISPLAY_CONSTANTS
-            // atm we are safe anyway because ALWAYS_ON_DISPLAY_CONSTANTS is unset by default and
-            // SystemUI AlwaysOnDisplayPolicy sets other defaults by itself (then DozeScreenBrightness loads
-            // values straight from the policy).
-
-            Settings.Global.putString(ctx.getContentResolver(),
-                    Settings.Global.ALWAYS_ON_DISPLAY_CONSTANTS, brightnessValues);
+            Settings.System.putString(ctx.getContentResolver(),
+                    Settings.System.ALWAYS_ON_DISPLAY_CONSTANTS_CUST, brightnessValues);
         }
 
         public void resetSeekBars(int[] values) {
