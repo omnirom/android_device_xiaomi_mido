@@ -164,7 +164,7 @@ public class TorchBrightnessDialogFragment extends DialogFragment implements See
     }
     
     public static void restore(String fileLevel, Context context, String preferenceKey, String defaultValue) {
-        if (!isSupported()) {
+        if (!isSupported(fileLevel)) {
             return;
         }
         String storedValue = PreferenceManager.getDefaultSharedPreferences(context).getString(preferenceKey, defaultValue);
