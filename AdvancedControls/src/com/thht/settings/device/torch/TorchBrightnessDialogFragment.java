@@ -156,6 +156,7 @@ public class TorchBrightnessDialogFragment extends DialogFragment implements See
 
     // restore stored value of kernel node 
     public static void restore(String fileLevel, Context context, String defaultValue) {
+        mFileLevel = fileLevel;
         if (!isSupported()) {
             return;
         }
@@ -164,7 +165,8 @@ public class TorchBrightnessDialogFragment extends DialogFragment implements See
     }
     
     public static void restore(String fileLevel, Context context, String preferenceKey, String defaultValue) {
-        if (!isSupported(fileLevel)) {
+        mFileLevel = fileLevel;
+        if (!isSupported()) {
             return;
         }
         String storedValue = PreferenceManager.getDefaultSharedPreferences(context).getString(preferenceKey, defaultValue);

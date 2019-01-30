@@ -174,6 +174,7 @@ public class KcalExtrasDialogFragment extends DialogFragment implements SeekBar.
 
     // restore stored value of kernel node
     public static void restore(String fileLevel, Context context, String defaultValue) {
+        mFileLevel = fileLevel;
         if (!isSupported()) {
             return;
         }
@@ -184,6 +185,7 @@ public class KcalExtrasDialogFragment extends DialogFragment implements SeekBar.
     
     // restore stored value of kernel node
     public static void restore(String fileLevel, Context context, String preferenceKey, String defaultValue) {
+        mFileLevel = fileLevel;
         if (!isSupported()) {
             return;
         }
