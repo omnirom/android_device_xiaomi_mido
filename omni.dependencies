@@ -30,23 +30,6 @@
     "revision": "android-9.0"
   },
   {
-    "repository": "android_external_ant-wireless_antradio-library",
-    "target_path": "external/ant-wireless/antradio-library",
-    "revision": "android-8.1"
-  },
-  {
-    "remote": "omnirom",
-    "repository": "android_external_ant-wireless_ant_service",
-    "target_path": "external/ant-wireless/ant_service",
-    "revision": "android-8.1"
-  },
-  {
-    "remote": "omnirom",
-    "repository": "android_external_ant-wireless_ant_native",
-    "target_path": "external/ant-wireless/ant_native",
-    "revision": "android-8.1"
-  },
-  {
     "remote": "omnirom",
     "repository": "android_vendor_qcom_opensource_commonsys",
     "target_path": "vendor/qcom/opensource/commonsys",
