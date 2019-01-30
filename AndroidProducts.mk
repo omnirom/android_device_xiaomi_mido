@@ -14,4 +14,4 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/du.mk
+    $(LOCAL_DIR)/omni_mido.mk

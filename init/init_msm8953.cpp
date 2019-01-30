@@ -28,10 +28,13 @@
 #include <fcntl.h>
 #include <stdlib.h>
 #include <sys/sysinfo.h>
+#include <android-base/logging.h>
 
-#include "vendor_init.h"
 #include "property_service.h"
 #include "log.h"
+
+namespace android {
+namespace init {
 
 char const *heapgrowthlimit;
 char const *heapminfree;
@@ -66,3 +69,6 @@ void vendor_load_properties()
     property_set("dalvik.vm.heapminfree", heapminfree);
     property_set("dalvik.vm.heapmaxfree", "8m");
 }
+
+}  // namespace init
+}  // namespace android
