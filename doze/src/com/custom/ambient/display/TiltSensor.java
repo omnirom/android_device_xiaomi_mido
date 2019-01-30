@@ -21,6 +21,8 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.hardware.TriggerEvent;
+import android.hardware.TriggerEventListener;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 import android.os.SystemClock;
@@ -46,8 +48,10 @@ public class TiltSensor implements SensorEventListener {
     private Context mContext;
 
     private boolean mTiltGestureEnabled;
+    private boolean mIsGlanceGesture;
 
     private long mEntryTimestamp;
+    private boolean mEnabled;
 
     private final ExecutorService mExecutorService;
 
@@ -56,7 +60,12 @@ public class TiltSensor implements SensorEventListener {
         mPowerManager = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
         mSensorManager = (SensorManager) mContext.getSystemService(Context.SENSOR_SERVICE);
         if (mSensorManager != null) {
+            mIsGlanceGesture = false;
             mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_TILT_DETECTOR);
+            if (mSensor == null) {
+                mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_GLANCE_GESTURE, true);
+                mIsGlanceGesture = true;
+            }
         }
         mExecutorService = Executors.newSingleThreadExecutor();
         mSensorWakeLock = mPowerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,
@@ -96,8 +105,17 @@ public class TiltSensor implements SensorEventListener {
             // we don't need to read them again from the Settings provider
             mTiltGestureEnabled = Utils.tiltGestureEnabled(mContext);
             if (mTiltGestureEnabled) {
-                mSensorManager.registerListener(this, mSensor,
-                        SensorManager.SENSOR_DELAY_NORMAL, BATCH_LATENCY_IN_MS * 1000);
+                if (!mIsGlanceGesture) {
+                    mSensorManager.registerListener(this, mSensor,
+                            SensorManager.SENSOR_DELAY_NORMAL, BATCH_LATENCY_IN_MS * 1000);
+                } else {
+                    if (!mEnabled) {
+                        if (!mSensorManager.requestTriggerSensor(mGlanceListener, mSensor)) {
+                            throw new RuntimeException("Failed to requestTriggerSensor for sensor " + mSensor);
+                        }
+                        mEnabled = true;
+                    }
+                }
                 mEntryTimestamp = SystemClock.elapsedRealtime();
             }
         });
@@ -108,8 +126,27 @@ public class TiltSensor implements SensorEventListener {
         if (DEBUG) Log.d(TAG, "Disabling");
         submit(() -> {
             if (mTiltGestureEnabled) {
-                mSensorManager.unregisterListener(this, mSensor);
+                if (!mIsGlanceGesture) {
+                    mSensorManager.unregisterListener(this, mSensor);
+                } else {
+                    if (mEnabled) {
+                        mSensorManager.cancelTriggerSensor(mGlanceListener, mSensor);
+                        mEnabled = false;
+                    }
+                }
             }
         });
     }
+
+    private TriggerEventListener mGlanceListener = new TriggerEventListener() {
+        @Override
+        public void onTrigger(TriggerEvent event) {
+            if (DEBUG) Log.d(TAG, "triggered");
+
+            Utils.launchDozePulse(mContext);
+            if (!mSensorManager.requestTriggerSensor(mGlanceListener, mSensor)) {
+                throw new RuntimeException("Failed to requestTriggerSensor for sensor " + mSensor);
+            }
+        }
+    };
 }
