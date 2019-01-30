@@ -78,6 +78,7 @@ public final class Utils {
         boolean enabled = Settings.Secure.putInt(context.getContentResolver(),
                 Settings.Secure.DOZE_ALWAYS_ON, enable ? 1 : 0);
         if (enable) {
+            enablePickUp(false, context);
             enableHandWave(false, context);
             enablePocketMode(false, context);
         }

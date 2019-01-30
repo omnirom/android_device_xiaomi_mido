@@ -80,6 +80,8 @@ public class DozeBrightness extends PreferenceActivity implements PreferenceFrag
 
             setPreferencesFromResource(R.xml.doze_brightness, rootKey);
 
+            getActivity().setTitle(R.string.doze_brightness_title);
+
             final ContentResolver resolver = getActivity().getContentResolver();
 
             mParser = new KeyValueListParser(',');
