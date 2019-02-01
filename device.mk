@@ -20,7 +20,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_m.mk)
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
-DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay-lineage
 
 # Screen density
 PRODUCT_AAPT_CONFIG := normal
@@ -29,9 +28,6 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080
-
-# HWUI and Dalvik VM overrides
-$(call inherit-product, device/xiaomi/mido/phone-xxhdpi-3072-dalvik-heap.mk)
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -121,7 +117,7 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-service \
     camera.msm8953 \
     libmm-qcamera \
-    Snap
+    SnapdragonCamera2
 
 # Configstore
 PRODUCT_PACKAGES += \
@@ -152,7 +148,9 @@ PRODUCT_PACKAGES += \
 
 # Doze mode
 PRODUCT_PACKAGES += \
-    XiaomiDoze
+    OmniDoze \
+    OmniParts \
+    OmniDisplayManager
 
 # OMNI Charger Images
 PRODUCT_PACKAGES += \

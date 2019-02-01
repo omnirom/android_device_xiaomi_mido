@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2014-2016 The OmniROM Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:key="display"
+        android:title="@string/display_title">
+        <!-- PreferenceScreen
+                 android:key="kcal"
+                 android:fragment="org.omnirom.device.DisplayCalibration"
+                 android:summary="@string/kcal_summary"
+                 android:title="@string/kcal_title" / -->
+        <Preference
+            android:key="device_doze"
+            android:persistent="false"
+            android:title="@string/device_doze_title" >
+            <intent android:action="android.intent.action.MAIN"
+                 android:targetPackage="org.lineageos.settings.doze"
+                 android:targetClass="org.lineageos.settings.doze.DozeSettingsActivity"/>
+        </Preference>
+    </PreferenceCategory>
+
+    <!-- PreferenceCategory
+        android:key="batt"
+        android:title="@string/battery_settings_title" >
+         <SwitchPreference
+            android:key="persist.sys.le_fast_chrg_enable"
+            android:defaultValue="false"
+            android:title="@string/qc_title"
+            android:summary="@string/qc_summary" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="camera_pref"
+        android:title="@string/camera_pref_title" >
+
+        <SwitchPreference
+            android:key="persist.camera.focus_fix"
+            android:defaultValue="false"
+            android:title="@string/camera_focus_fix_title"
+            android:summary="@string/camera_focus_fix_summary" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="volte_pref"
+        android:title="@string/volte_pref_title" >
+        <SwitchPreference
+            android:key="persist.volte.fix"
+            android:defaultValue="false"
+            android:title="@string/volte_fix_title"
+            android:summary="@string/volte_fix_summary" />
+     </PreferenceCategory>
+
+     <SwitchPreference
+        android:key="persist.qfp.wup_display"
+        android:defaultValue="false"
+        android:title="@string/qfp_wup_title"
+        android:summary="@string/qfp_wup_summary" />
+
+     <SwitchPreference
+        android:key="persist.ps.fb_boost"
+        android:defaultValue="false"
+        android:title="@string/fb_boost_title"
+        android:summary="@string/fb_boost_summary" />
+
+     <SwitchPreference
+        android:key="persist.hw.0d_disable"
+        android:defaultValue="false"
+        android:title="@string/hw_0d_disable_title"
+        android:summary="@string/hw_0d_disable_summary" /-->
+
+
+
+    private static final String KEY_DIRAC_SOUND_ENHANCER = "dirac_enhancer";
+    private static final String KEY_DIRAC_HEADSET_TYPE = "dirac_headsets";
+    private static final String KEY_DIRAC_MUSIC_MODE = "dirac_mode";
+
+    private static final String KEY_MISOUND_SOUND_ENHANCER = "mi_sound_enhancer";
+    private static final String KEY_MISOUND_HEADSET_TYPE = "mi_sound_headsets";
+    private static final String KEY_MISOUND_MUSIC_MODE = "mi_sound_mode";
+
+
+    <PreferenceCategory
+        android:key="dirac_settings"
+        android:title="@string/dirac_settings" >
+
+    	<SwitchPreference
+    	    android:key="dirac_enhancer"
+    	    android:title="@string/dirac_enhancer"
+    	    android:persistent="false" />
+        <ListPreference
+    	    android:key="dirac_headsets"
+    	    android:title="@string/dirac_headsets"
+    	    android:entries="@array/listentries"
+    	    android:entryValues="@array/listvalues" 
+            android:summary="%s"/>
+
+        <ListPreference
+            android:key="dirac_preset"
+            android:entries="@array/dirac_preset_entries"
+            android:entryValues="@array/dirac_preset_values"
+            android:defaultValue="0,0,0,0,0,0,0"
+            android:title="@string/dirac_preset_title"
+            android:summary="%s" />
+
+        <!-- ListPreference
+    	    android:key="dirac_mode"
+    	    android:title="@string/dirac_mode"
+    	    android:entries="@array/dirac_mode_entries"
+    	    android:entryValues="@array/dirac_mode_values"/ -->
+
+    </PreferenceCategory>
+
+    <!-- PreferenceCategory
+        android:key="misound_settings"
+        android:title="@string/misound_settings" >
+
+    	<SwitchPreference
+    	    android:key="mi_sound_enhancer"
+    	    android:title="@string/mi_sound_enhancer"
+    	    android:persistent="false" />
+        <ListPreference
+    	    android:key="mi_sound_headsets"
+    	    android:title="@string/mi_sound_headsets"
+    	    android:entries="@array/listentries"
+    	    android:entryValues="@array/listvalues" />
+        <ListPreference
+    	    android:key="mi_sound_mode"
+    	    android:title="@string/mi_sound_mode"
+    	    android:entries="@array/dirac_mode_entries"
+    	    android:entryValues="@array/dirac_mode_values"/>
+
+    </PreferenceCategory -->
+</PreferenceScreen>
