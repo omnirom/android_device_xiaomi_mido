@@ -42,26 +42,26 @@
     "revision": "android-9.0"
   },
   {
-    "remote": "github",
-    "repository": "LineageOS/android_external_ant-wireless_ant_native",
+    "remote": "omnirom",
+    "repository": "android_external_ant-wireless_ant_native",
     "target_path": "external/ant-wireless/ant_native",
-    "revision": "lineage-16.0"
+    "revision": "android-9.0"
   },
   { 
-    "remote": "github",
-    "repository": "LineageOS/android_external_ant-wireless_antradio-library",
+    "remote": "omnirom",
+    "repository": "android_external_ant-wireless_antradio-library",
     "target_path": "external/ant-wireless/antradio-library",
-    "revision": "lineage-16.0"
+    "revision": "android-9.0"
   },
   {
-    "remote": "github",
-    "repository": "LineageOS/android_external_ant-wireless_ant_service",
+    "remote": "omnirom",
+    "repository": "android_external_ant-wireless_ant_service",
     "target_path": "external/ant-wireless/ant_service",
-    "revision": "lineage-16.0"
+    "revision": "android-9.0"
   },
   {
-    "remote": "github",
-    "repository": "RinKirito/kernel_xiaomi_msm8953",
+    "remote": "omnirom",
+    "repository": "android_kernel_xiaomi_msm8953",
     "target_path": "kernel/xiaomi/msm8953",
     "revision": "android-9.0"
   },
@@ -75,12 +75,6 @@
     "remote": "omnirom",
     "repository": "android_packages_apps_SnapdragonCamera2",
     "target_path": "packages/apps/SnapdragonCamera2",
-    "revision": "android-9.0"
-  },
-  {
-    "remote": "omnirom",
-    "repository": "android_packages_apps_OmniDisplayManager",
-    "target_path": "packages/apps/OmniDisplayManager",
     "revision": "android-9.0"
   }
 ]
