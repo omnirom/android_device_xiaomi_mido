@@ -16,11 +16,13 @@
     <string name="xiaomidoze_display_title">Advanced settings</string>
 	<string name="xiaomidoze_display_summary">Ambient display toggle, Pick up pulse, Hand wave pulse</string>
     <string name="ambient_display_title">Ambient display</string>
+
+    <string name="ambient_display_notifications">New notifications</string>
     <string name="ambient_display_summary">Wake screen when you receive notifications</string>
 
     <!-- Tilt sensor -->
     <string name="tilt_sensor_title">Tilt sensor</string>
-    <string name="pick_up_title">Pick up</string>
+    <string name="pick_up_title">Lift to check phone</string>
     <string name="pick_up_summary">Pulse notifications when device is picked up</string>
 
     <!-- Proximity sensor -->
@@ -30,8 +32,8 @@
     <string name="pocket_gesture_title">Pocket</string>
     <string name="pocket_gesture_summary">Pulse notifications on removal from pocket</string>
 
-    <string name="aod_setting_title">Always ON Ambient</string>
-    <string name="aod_setting_summary">Always show Ambient Display when sleeping</string>
+    <string name="aod_setting_title">Always on</string>
+    <string name="aod_setting_summary">Show time, notification icons and other info. Increased battery usage.</string>
 
     <string name="doze_brightness_title">Ambient brightness</string>
     <string name="doze_brightness_summary">Configure Ambient brightness values</string>
@@ -42,5 +44,5 @@
 
     <string name="reset_hidden_apps">Reset all</string>
 
-    <string name="footer_info">If Always ON Ambient is enabled, brightness gets recalculated to follow hardware and PowerManager specifications for AoD, so don\'t consider above values as absolute ones.</string>
+    <string name="footer_info">If Always on is enabled, brightness gets recalculated to follow hardware specifications, so don\'t consider above values as absolute ones.</string>
 </resources>
