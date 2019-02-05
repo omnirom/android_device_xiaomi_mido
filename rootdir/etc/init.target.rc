@@ -40,6 +40,9 @@ on fs
     mkdir /mnt/vendor/persist/bms 0700 root system
     restorecon_recursive /mnt/vendor/persist
 
+    chmod 0664 /sys/class/thermal/thermal_message/sconfig
+    chown system system /sys/class/thermal/thermal_message/sconfig
+
 on init
     write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
 
