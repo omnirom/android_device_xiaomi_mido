@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9351244f_a51a4c9a",
+        "filename": "sepolicy/vendor/system_app.te",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002322
+      },
+      "writtenOn": "2019-02-09T18:03:42Z",
+      "side": 1,
+      "message": "Be cafereul, you have a space at the end.\nAnd if you want to avoid repetition of lines, you can do this\n* before\nallow system_app sysfs_battery_supply: file open;\nallow system_app sysfs_battery_supply: file getattr;\nallow system_app sysfs_battery_supply: file write;\n* after\nallow system_app sysfs_battery_supply: file { getattr open write };",
+      "revId": "d940411817730cc00be7fc73a15596a8850b1c1b",
+      "serverId": "56841c99-7c94-43d4-bf0b-cb4707e66d55",
+      "unresolved": false
+    }
+  ]
+}
