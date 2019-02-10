@@ -206,7 +206,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 net.tcp.2g_init_rwnd=10
 
 # Touch optimize
-persist.vendor.qti.inputopts.enable=true
+PRODUCT_PROPERTY_OVERRIDES += \
+persist.vendor.qti.inputopts.enable=true \
 persist.vendor.qti.inputopts.movetouchslop=0.6
 
 # Usb
