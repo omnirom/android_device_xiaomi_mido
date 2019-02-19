@@ -583,4 +583,7 @@
     <!-- Whether notify fingerprint client of successful cancelled authentication -->
     <bool name="config_notifyClientOnFingerprintCancelSuccess">true</bool>
 
+    <!-- Whether to allow sending active app broadcast -->
+    <bool name="config_allowActivePackageBroadcast">true</bool>
+
 </resources>
