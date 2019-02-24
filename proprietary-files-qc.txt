@@ -594,7 +594,7 @@ vendor/lib64/vendor.qti.ims.callinfo@1.0.so
 vendor/lib64/vendor.qti.imsrtpservice@1.0-service-Impl.so
 vendor/lib64/vendor.qti.imsrtpservice@1.0.so
 
-# Sensors - from Tissot PKQ1.180917.001/V10.0.2.0.PDHMIFK
+# Sensors - from Tissot PKQ1.180917.001.V10.0.5.0.PDHMIXM
 vendor/bin/sensors.qti
 vendor/lib/hw/activity_recognition.msm8953.so
 vendor/lib/libsensor1.so
