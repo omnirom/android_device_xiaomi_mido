@@ -31,7 +31,7 @@ public class Preferences {
         }
         SharedPreferences.Editor editor = context.getSharedPreferences(PREFS_NAME, MODE_PRIVATE).edit();
         editor.putInt(packageName, profileId);
-        editor.commit();
+        editor.apply();
     }
     public static int getProfileId(Context context, String packageName){
         if (TextUtils.isEmpty(packageName)){

@@ -164,7 +164,7 @@ public class DeviceSettings extends PreferenceFragment implements
             setFastcharge(value);
             SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getContext()).edit();
             editor.putBoolean(USB_FASTCHARGE_KEY, value);
-            editor.commit();
+            editor.apply();
             return true;
         } else if (preference == slowWakeupFixPreference) {
             boolean value = (Boolean) newValue;
@@ -172,7 +172,7 @@ public class DeviceSettings extends PreferenceFragment implements
             setSlowWakeupFix(value);
             SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getContext()).edit();
             editor.putBoolean(KEY_SLOW_WAKEUP_FIX, value);
-            editor.commit();
+            editor.apply();
             return true;
         }
         return false;

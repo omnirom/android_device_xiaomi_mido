@@ -78,7 +78,7 @@ public class VibratorStrengthPreference extends ProperSeekBarPreference {
         Utils.writeValue(FILE_LEVEL, newValue);
         SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getContext()).edit();
         editor.putString(DeviceSettings.KEY_VIBSTRENGTH, newValue);
-        editor.commit();
+        editor.apply();
         mVibrator.vibrate(testVibrationPattern, -1);
     }
 

@@ -70,7 +70,7 @@ public class WhiteTorchBrightnessPreference extends ProperSeekBarPreference {
         Utils.writeValue(FILE_BRIGHTNESS, newValue);
         SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getContext()).edit();
         editor.putString(DeviceSettings.KEY_WHITE_TORCH_BRIGHTNESS, newValue);
-        editor.commit();
+        editor.apply();
     }
 
     @Override
