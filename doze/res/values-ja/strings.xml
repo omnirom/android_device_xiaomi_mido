@@ -13,26 +13,27 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- Label for feature switch [CHAR LIMIT=30] -->
-  <string name="switch_bar_on">ON</string>
-  <!-- Label for feature switch [CHAR LIMIT=30] -->
-  <string name="switch_bar_off">OFF</string>
-  <string name="ambient_display_title">アンビエント表示</string>
-  <string name="ambient_display_summary">通知を受信したときに画面を点灯する</string>
-  <string name="ambient_display_summary_on">通知を受信したときに画面を点灯する</string>
-  <string name="ambient_display_summary_off">通知を受信したときに画面を点灯しない</string>
-  <!-- Tilt sensor -->
-  <string name="tilt_sensor_title">傾きセンサー</string>
-  <string name="pick_up_title">持ち上げ</string>
-  <string name="pick_up_summary">端末を持ち上げたときに通知を点滅表示する</string>
-  <!-- Proximity sensor -->
-  <string name="priximity_sensor_title">接近センサー</string>
-  <string name="hand_wave_gesture_title">手を振る</string>
-  <string name="hand_wave_gesture_summary">手を振ったときに通知を点滅表示する</string>
-  <string name="pocket_gesture_title">ポケット</string>
-  <string name="pocket_gesture_summary">ポケットから取り出したときに通知を点滅表示する</string>
-  <!-- Help text -->
-  <string name="dlg_ok">OK</string>
-  <string name="doze_settings_help_title">ヘルプ</string>
-  <string name="doze_settings_help_text">これらの機能は、Doze通知点滅表示を起動するためにセンサーイベントを使用します。それによって、電池の使用量が多くなります。</string>
+    <string name="ambient_display_title">Ambient display</string>
+    <string name="ambient_display_notifications">New notifications</string>
+    <string name="ambient_display_summary">Wake screen when you receive notifications</string>
+    <!-- Tilt sensor -->
+    <string name="tilt_sensor_title">Tilt sensor</string>
+    <string name="pick_up_title">Lift to check phone</string>
+    <string name="pick_up_summary">Pulse notifications when device is picked up</string>
+    <!-- Proximity sensor -->
+    <string name="proximity_sensor_title">Proximity sensor</string>
+    <string name="hand_wave_gesture_title">Hand wave</string>
+    <string name="hand_wave_gesture_summary">Pulse notifications on hand wave</string>
+    <string name="pocket_gesture_title">Pocket</string>
+    <string name="pocket_gesture_summary">Pulse notifications on removal from pocket</string>
+    <string name="aod_setting_title">Always on</string>
+    <string name="aod_setting_summary">Show time, notification icons and other info. Increased battery usage.</string>
+    <string name="doze_brightness_title">Ambient brightness</string>
+    <string name="doze_brightness_summary">Configure Ambient brightness values</string>
+    <string name="night_brightness_value">Night brightness</string>
+    <string name="low_brightness_value">Low light brightness</string>
+    <string name="high_brightness_value">Medium light brightness</string>
+    <string name="sun_brightness_value">Sun light brightness</string>
+    <string name="reset_hidden_apps">Reset all</string>
+    <string name="footer_info">If Always on is enabled, brightness gets recalculated to follow hardware specifications, so don\'t consider above values as absolute ones.</string>
 </resources>

@@ -13,22 +13,27 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- Label for feature switch [CHAR LIMIT=30] -->
-  <!-- Label for feature switch [CHAR LIMIT=30] -->
-  <string name="ambient_display_title">Tela ambiente</string>
-  <string name="ambient_display_summary">Ligar a tela ao receber notificações</string>
-  <!-- Tilt sensor -->
-  <string name="tilt_sensor_title">Sensor de inclinação</string>
-  <string name="pick_up_title">Pegar</string>
-  <string name="pick_up_summary">Pulsar notificações ao pegar o dispositivo</string>
-  <!-- Proximity sensor -->
-  <string name="priximity_sensor_title">Sensor de proximidade</string>
-  <string name="hand_wave_gesture_title">Acenar com a mão</string>
-  <string name="hand_wave_gesture_summary">Pulsar notificações ao acenar com a mão</string>
-  <string name="pocket_gesture_title">Bolso</string>
-  <string name="pocket_gesture_summary">Pulsar notificações ao retirar do bolso</string>
-  <!-- Help text -->
-  <string name="dlg_ok">OK</string>
-  <string name="doze_settings_help_title">Ajuda</string>
-  <string name="doze_settings_help_text">Esses recursos monitoram o sensor para que o dispositivo possa despertar do estado de repouso e pulsar notificações. O sensor escolhido só é habilitado quando o dispositivo recebe uma notificação, isso ajuda a reduzir o uso de bateria. Há também uma opção para ativar o sensor escolhido assim que a tela desliga, isso causará o maior uso da bateria.</string>
+    <string name="ambient_display_title">Tela Ambiente</string>
+    <string name="ambient_display_notifications">Novas Notificações</string>
+    <string name="ambient_display_summary">Ativar tela ao receber notificações</string>
+    <!-- Tilt sensor -->
+    <string name="tilt_sensor_title">Sensor de inclinação</string>
+    <string name="pick_up_title">Levantar o smartphone para verificá-lo</string>
+    <string name="pick_up_summary">Pulsar notificações quando pegar o dispositivo</string>
+    <!-- Proximity sensor -->
+    <string name="proximity_sensor_title">Sensor de proximidade</string>
+    <string name="hand_wave_gesture_title">Movimento da mão</string>
+    <string name="hand_wave_gesture_summary">Pulsar notificações no movimento da mão</string>
+    <string name="pocket_gesture_title">Bolso</string>
+    <string name="pocket_gesture_summary">Pulsar notificações ao retirar do bolso</string>
+    <string name="aod_setting_title">Sempre ligado</string>
+    <string name="aod_setting_summary">Mostrar hora, ícones de notificação e outras informações. Aumenta o uso de bateria.</string>
+    <string name="doze_brightness_title">Luminosidade do ambiente</string>
+    <string name="doze_brightness_summary">Configurar valores de brilho ambiente</string>
+    <string name="night_brightness_value">Brilho do modo noturno</string>
+    <string name="low_brightness_value">Brilho da luz</string>
+    <string name="high_brightness_value">Brilho médio</string>
+    <string name="sun_brightness_value">Brilho da luz</string>
+    <string name="reset_hidden_apps">Restaurar tudo</string>
+    <string name="footer_info">Se sempre ativado, o brilho será recalculado para seguir especificações de hardware, então não considere valores acima como valores absolutos.</string>
 </resources>
