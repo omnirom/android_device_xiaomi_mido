@@ -225,8 +225,8 @@ vendor/lib64/vendor.qti.gnss@2.0.so
 vendor/lib64/vendor.qti.gnss@2.1.so
 
 # Graphics - from Tissot PKQ1.180917.001/V10.0.2.0.PDHMIFK
-lib/libsdm-disp-apis.so:vendor/lib/libsdm-disp-apis.so
-lib64/libsdm-disp-apis.so:vendor/lib64/libsdm-disp-apis.so
+vendor/lib/libsdm-disp-apis.so
+vendor/lib64/libsdm-disp-apis.so
 vendor/lib/egl/eglSubDriverAndroid.so
 vendor/lib/egl/libEGL_adreno.so
 vendor/lib/egl/libGLESv1_CM_adreno.so
