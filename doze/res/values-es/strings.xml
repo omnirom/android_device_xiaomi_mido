@@ -31,9 +31,9 @@
     <string name="doze_brightness_title">Brillo ambiente</string>
     <string name="doze_brightness_summary">Configurar valores del brillo ambiente</string>
     <string name="night_brightness_value">Brillo nocturno</string>
-    <string name="low_brightness_value">Low light brightness</string>
-    <string name="high_brightness_value">Medium light brightness</string>
-    <string name="sun_brightness_value">Sun light brightness</string>
-    <string name="reset_hidden_apps">Reset all</string>
-    <string name="footer_info">If Always on is enabled, brightness gets recalculated to follow hardware specifications, so don\'t consider above values as absolute ones.</string>
+    <string name="low_brightness_value">Brillo de luz nocturna</string>
+    <string name="high_brightness_value">Brillo medio</string>
+    <string name="sun_brightness_value">Brillo de luz al sol</string>
+    <string name="reset_hidden_apps">Restablecer todo</string>
+    <string name="footer_info">Si siempre está habilitado, el brillo se recalcula para seguir las especificaciones de hardware, por lo que no considere valores superiores como absolutos.</string>
 </resources>

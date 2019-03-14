@@ -15,15 +15,15 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="ambient_display_title">Inaktivitätsdisplay</string>
     <string name="ambient_display_notifications">Neue Benachrichtigungen</string>
-    <string name="ambient_display_summary">Wake screen when you receive notifications</string>
+    <string name="ambient_display_summary">Bildschirm bei neuen Benachrichtigungen einschalten</string>
     <!-- Tilt sensor -->
-    <string name="tilt_sensor_title">Tilt sensor</string>
-    <string name="pick_up_title">Lift to check phone</string>
-    <string name="pick_up_summary">Pulse notifications when device is picked up</string>
+    <string name="tilt_sensor_title">Neigungssensor</string>
+    <string name="pick_up_title">Für Benachrichtigungen anheben</string>
+    <string name="pick_up_summary">Puls-Benachrichtigungen, wenn Gerät aufgeholt wird</string>
     <!-- Proximity sensor -->
     <string name="proximity_sensor_title">Näherungssensor</string>
-    <string name="hand_wave_gesture_title">Hand wave</string>
-    <string name="hand_wave_gesture_summary">Pulse notifications on hand wave</string>
+    <string name="hand_wave_gesture_title">Winken</string>
+    <string name="hand_wave_gesture_summary">Benachrichtigungen durch Winken einblenden</string>
     <string name="pocket_gesture_title">Taschenmodus</string>
     <string name="pocket_gesture_summary">Benachrichtigungen einblenden, wenn das Gerät aus der Tasche geholt wird</string>
     <string name="aod_setting_title">Immer an</string>
@@ -33,7 +33,7 @@
     <string name="night_brightness_value">Nacht Helligkeit</string>
     <string name="low_brightness_value">Niedrige Lichthelligkeit</string>
     <string name="high_brightness_value">Mittlere Lichthelligkeit</string>
-    <string name="sun_brightness_value">Sun light brightness</string>
+    <string name="sun_brightness_value">Sonnenlicht Helligkeit</string>
     <string name="reset_hidden_apps">Alles zurücksetzen</string>
-    <string name="footer_info">If Always on is enabled, brightness gets recalculated to follow hardware specifications, so don\'t consider above values as absolute ones.</string>
+    <string name="footer_info">Wenn \"Always on\" aktiviert ist, wird die Helligkeit neu berechnet, um die Hardware-Spezifikationen zu befolgen, also nicht als absolute Werte betrachten.</string>
 </resources>

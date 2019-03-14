@@ -13,27 +13,27 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="ambient_display_title">Ambient display</string>
-    <string name="ambient_display_notifications">New notifications</string>
-    <string name="ambient_display_summary">Wake screen when you receive notifications</string>
+    <string name="ambient_display_title">Ekran Ambient</string>
+    <string name="ambient_display_notifications">Nowe powiadomienia</string>
+    <string name="ambient_display_summary">Wybudź ekran, po otrzymaniu powiadomienia</string>
     <!-- Tilt sensor -->
-    <string name="tilt_sensor_title">Tilt sensor</string>
-    <string name="pick_up_title">Lift to check phone</string>
-    <string name="pick_up_summary">Pulse notifications when device is picked up</string>
+    <string name="tilt_sensor_title">Czujnik pochylenia</string>
+    <string name="pick_up_title">Pomachaj aby sprawdzić telefon</string>
+    <string name="pick_up_summary">Pulsujące powiadomienia, kiedy urządzenie zostanie podniesione</string>
     <!-- Proximity sensor -->
-    <string name="proximity_sensor_title">Proximity sensor</string>
-    <string name="hand_wave_gesture_title">Hand wave</string>
-    <string name="hand_wave_gesture_summary">Pulse notifications on hand wave</string>
-    <string name="pocket_gesture_title">Pocket</string>
-    <string name="pocket_gesture_summary">Pulse notifications on removal from pocket</string>
-    <string name="aod_setting_title">Always on</string>
-    <string name="aod_setting_summary">Show time, notification icons and other info. Increased battery usage.</string>
-    <string name="doze_brightness_title">Ambient brightness</string>
-    <string name="doze_brightness_summary">Configure Ambient brightness values</string>
-    <string name="night_brightness_value">Night brightness</string>
-    <string name="low_brightness_value">Low light brightness</string>
-    <string name="high_brightness_value">Medium light brightness</string>
-    <string name="sun_brightness_value">Sun light brightness</string>
-    <string name="reset_hidden_apps">Reset all</string>
-    <string name="footer_info">If Always on is enabled, brightness gets recalculated to follow hardware specifications, so don\'t consider above values as absolute ones.</string>
+    <string name="proximity_sensor_title">Czujnik zbliżeniowy</string>
+    <string name="hand_wave_gesture_title">Machnięcie ręką</string>
+    <string name="hand_wave_gesture_summary">Puls powiadomienia przy machnięciu ręką</string>
+    <string name="pocket_gesture_title">Kieszeń</string>
+    <string name="pocket_gesture_summary">Pulsujące powiadomienia po wyjęciu z kieszeni</string>
+    <string name="aod_setting_title">Zawsze włączone</string>
+    <string name="aod_setting_summary">Pokaż godzinę, ikony powiadomień i inne informacje. Zwiększa użycie baterii.</string>
+    <string name="doze_brightness_title">Jasność ekranu Ambient</string>
+    <string name="doze_brightness_summary">Skonfiguruj jasność ekranu Ambient</string>
+    <string name="night_brightness_value">Nocna jasność</string>
+    <string name="low_brightness_value">Niska jasność</string>
+    <string name="high_brightness_value">Średnia jasność</string>
+    <string name="sun_brightness_value">Wysoka jasność</string>
+    <string name="reset_hidden_apps">Resetuj wszystko</string>
+    <string name="footer_info">Jeżeli tryb Always On jest włączony, jasność jest ustalana na podstawie specyfikacji urządzenia, więc nie traktuj powyższych wartości jako bezwzględnych.</string>
 </resources>

@@ -13,27 +13,27 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="ambient_display_title">Affichage ambient</string>
+    <string name="ambient_display_title">Affichage en mode Veille</string>
     <string name="ambient_display_notifications">Nouvelles notifications</string>
-    <string name="ambient_display_summary">Activer l\'écran quand vous recevez des notifications</string>
+    <string name="ambient_display_summary">Activer l\'écran lors de la réception de notifications</string>
     <!-- Tilt sensor -->
-    <string name="tilt_sensor_title">Capteur d’inclinaison</string>
+    <string name="tilt_sensor_title">Accéléromètre</string>
     <string name="pick_up_title">Saisir le téléphone pour le consulter</string>
     <string name="pick_up_summary">Afficher les notifications lorsque l\'appareil est pris en main</string>
     <!-- Proximity sensor -->
     <string name="proximity_sensor_title">Capteur de proximité</string>
-    <string name="hand_wave_gesture_title">Passage de la main</string>
-    <string name="hand_wave_gesture_summary">Afficher les notifications au passage de la main</string>
+    <string name="hand_wave_gesture_title">Geste de la main</string>
+    <string name="hand_wave_gesture_summary">Afficher les notifications au passage de la main devant l\'appareil</string>
     <string name="pocket_gesture_title">Poche</string>
     <string name="pocket_gesture_summary">Afficher les notifications lorsque l\'appareil est retiré de la poche</string>
-    <string name="aod_setting_title">Toujours allumé</string>
+    <string name="aod_setting_title">Toujours activé</string>
     <string name="aod_setting_summary">Afficher l’heure, les icônes de notification et autres infos. Utilisation de la batterie accrue.</string>
-    <string name="doze_brightness_title">Luminosité ambiante</string>
-    <string name="doze_brightness_summary">Configurer les valeurs de luminosité ambiante</string>
+    <string name="doze_brightness_title">Luminosité en mode Veille</string>
+    <string name="doze_brightness_summary">Régler les valeurs de luminosité en mode Veille</string>
     <string name="night_brightness_value">Éclairage nocturne</string>
     <string name="low_brightness_value">Luminosité faible</string>
     <string name="high_brightness_value">Luminosité moyenne</string>
     <string name="sun_brightness_value">Luminosité élevée</string>
     <string name="reset_hidden_apps">Tout réinitialiser</string>
-    <string name="footer_info">Si Always on est activé, la luminosité sera recalculée pour suivre les spécifications matérielles, donc ne considérez pas les valeurs ci-dessus comme absolues.</string>
+    <string name="footer_info">Si le mode Toujours activé est défini, la luminosité est adaptée aux spécifications matérielles et à celles du gestionnaire d\'alimentation. Les valeurs ci-dessus ne sont donc pas inconditionnellement prises en compte.</string>
 </resources>

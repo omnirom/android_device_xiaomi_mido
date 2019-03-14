@@ -13,27 +13,27 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="ambient_display_title">Ambient display</string>
-    <string name="ambient_display_notifications">New notifications</string>
-    <string name="ambient_display_summary">Wake screen when you receive notifications</string>
+    <string name="ambient_display_title">Környezeti kijelző</string>
+    <string name="ambient_display_notifications">Új értesítések</string>
+    <string name="ambient_display_summary">Képernyő ébresztése értesítések fogadásakor</string>
     <!-- Tilt sensor -->
-    <string name="tilt_sensor_title">Tilt sensor</string>
-    <string name="pick_up_title">Lift to check phone</string>
-    <string name="pick_up_summary">Pulse notifications when device is picked up</string>
+    <string name="tilt_sensor_title">Forgatás érzékelő</string>
+    <string name="pick_up_title">A képernyő megtekintéséhez emelje fel a telefont</string>
+    <string name="pick_up_summary">Értesítések felvillantása amikor felemeli a telefont</string>
     <!-- Proximity sensor -->
-    <string name="proximity_sensor_title">Proximity sensor</string>
-    <string name="hand_wave_gesture_title">Hand wave</string>
-    <string name="hand_wave_gesture_summary">Pulse notifications on hand wave</string>
-    <string name="pocket_gesture_title">Pocket</string>
-    <string name="pocket_gesture_summary">Pulse notifications on removal from pocket</string>
-    <string name="aod_setting_title">Always on</string>
-    <string name="aod_setting_summary">Show time, notification icons and other info. Increased battery usage.</string>
-    <string name="doze_brightness_title">Ambient brightness</string>
-    <string name="doze_brightness_summary">Configure Ambient brightness values</string>
-    <string name="night_brightness_value">Night brightness</string>
-    <string name="low_brightness_value">Low light brightness</string>
-    <string name="high_brightness_value">Medium light brightness</string>
-    <string name="sun_brightness_value">Sun light brightness</string>
-    <string name="reset_hidden_apps">Reset all</string>
+    <string name="proximity_sensor_title">Közelségérzékelő</string>
+    <string name="hand_wave_gesture_title">Lebegő simítás</string>
+    <string name="hand_wave_gesture_summary">Értesítések felvillantása lebegő simításnál</string>
+    <string name="pocket_gesture_title">Zseb</string>
+    <string name="pocket_gesture_summary">Pulzáló értesítések zsebből kivételt követően</string>
+    <string name="aod_setting_title">Mindig bekapcsolva</string>
+    <string name="aod_setting_summary">Idő, értesítési ikon és egyéb információk mutatása. Megnöveli az akkumulátor használatát.</string>
+    <string name="doze_brightness_title">Környezeti kijelző fényerő</string>
+    <string name="doze_brightness_summary">Környezeti kijelző fényerejének beállítása</string>
+    <string name="night_brightness_value">Éjszakai fényerő</string>
+    <string name="low_brightness_value">Alacsony fény fényerő</string>
+    <string name="high_brightness_value">Közepes fény fényerő</string>
+    <string name="sun_brightness_value">Napsütés fényerő</string>
+    <string name="reset_hidden_apps">Az összes visszaállítása</string>
     <string name="footer_info">If Always on is enabled, brightness gets recalculated to follow hardware specifications, so don\'t consider above values as absolute ones.</string>
 </resources>

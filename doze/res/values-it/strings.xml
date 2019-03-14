@@ -26,7 +26,7 @@
     <string name="hand_wave_gesture_summary">Mostra le notifiche al passaggio della mano</string>
     <string name="pocket_gesture_title">Tasca</string>
     <string name="pocket_gesture_summary">Mostra le notifiche quando estrai il dispositivo dalla tasca</string>
-    <string name="aod_setting_title">Always on</string>
+    <string name="aod_setting_title">Sempre acceso</string>
     <string name="aod_setting_summary">Mostra ora, icone di notifica e altre informazioni. Maggior consumo della batteria.</string>
     <string name="doze_brightness_title">Luminosità per Ambient Display</string>
     <string name="doze_brightness_summary">Configura i valori di luminosità per Ambient Display</string>
