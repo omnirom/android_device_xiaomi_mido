@@ -568,4 +568,7 @@
     <!-- Specify custom blanking delay of the display -->
     <integer name="config_screen_off_delay">0</integer>
 
+    <!-- Hall sensor for flipflap -->
+    <bool name="config_deviceHasHallSensor">true</bool>
+
 </resources>
