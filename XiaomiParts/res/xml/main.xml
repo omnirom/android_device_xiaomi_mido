@@ -15,6 +15,28 @@
 -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory
+        android:title="@string/graphics_title">
+        <PreferenceScreen
+            android:key="kcal"
+            android:fragment="com.lineageos.settings.device.DisplayCalibration"
+            android:summary="@string/kcal_summary"
+            android:title="@string/kcal_title" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="spectrum_profile"
+        android:title="@string/spectrum_profile_title" >
+
+        <ListPreference
+            android:key="spectrum"
+            android:title="@string/spectrum_title"
+            android:defaultValue="0"
+            android:entries="@array/spectrum_profiles"
+            android:entryValues="@array/spectrum_values"
+            android:dialogTitle="@string/spectrum_dialogTitle" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:title="@string/category_vibrator">
         <com.lineageos.settings.device.VibratorStrengthPreference
             android:key="vib_strength"
@@ -29,15 +51,6 @@
         <com.lineageos.settings.device.WhiteTorchBrightnessPreference
             android:key="white_torch_brightness"
             android:title="@string/white_torch_brightness_title_head" />
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:title="@string/graphics_title">
-        <PreferenceScreen
-            android:key="kcal"
-            android:fragment="com.lineageos.settings.device.DisplayCalibration"
-            android:summary="@string/kcal_summary"
-            android:title="@string/kcal_title" />
     </PreferenceCategory>
 
     <PreferenceCategory

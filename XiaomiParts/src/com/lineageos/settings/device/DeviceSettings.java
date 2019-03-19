@@ -19,11 +19,14 @@ package com.lineageos.settings.device;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.SystemProperties;
 import android.support.v14.preference.PreferenceFragment;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
@@ -49,10 +52,14 @@ public class DeviceSettings extends PreferenceFragment implements
     public static final String KEY_WHITE_TORCH_BRIGHTNESS = "white_torch_brightness";
     public static final String KEY_GLOVE_MODE = "glove_mode";
 
+    private static final String SPECTRUM_KEY = "spectrum";
+    private static final String SPECTRUM_SYSTEM_PROPERTY = "persist.spectrum.profile";
+
     private VibratorStrengthPreference mVibratorStrength;
     private YellowTorchBrightnessPreference mYellowTorchBrightness;
     private WhiteTorchBrightnessPreference mWhiteTorchBrightness;
     private TwoStatePreference mGloveMode;
+    private ListPreference mSpectrum;
 
     private static final String GLOVE_MODE_FILE = "/sys/devices/virtual/tp_glove/device/glove_enable";
 
@@ -88,6 +95,13 @@ public class DeviceSettings extends PreferenceFragment implements
         mGloveMode = (TwoStatePreference) findPreference(KEY_GLOVE_MODE);
         mGloveMode.setChecked(PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean(DeviceSettings.KEY_GLOVE_MODE, false));
         mGloveMode.setOnPreferenceChangeListener(this);
+
+        mSpectrum = (ListPreference) findPreference(SPECTRUM_KEY);
+        if( mSpectrum != null ) {
+            mSpectrum.setValue(SystemProperties.get(SPECTRUM_SYSTEM_PROPERTY, "0"));
+            mSpectrum.setOnPreferenceChangeListener(this);
+            mSpectrum.setSummary(mSpectrum.getEntry());
+        }
     }
 
     public static void restore(Context context) {
@@ -107,7 +121,19 @@ public class DeviceSettings extends PreferenceFragment implements
             SharedPreferences.Editor prefChange = PreferenceManager.getDefaultSharedPreferences(getContext()).edit();
             prefChange.putBoolean(KEY_GLOVE_MODE, enabled).commit();
             Utils.writeValue(GLOVE_MODE_FILE, enabled ? "1" : "0");
+            return true;
+        } else if (preference == mSpectrum) {
+            String strvalue = (String) newValue;
+            int index = mSpectrum.findIndexOfValue(strvalue);
+            mSpectrum.setSummary(mSpectrum.getEntries()[index]);
+            SystemProperties.set(SPECTRUM_SYSTEM_PROPERTY, strvalue);
+            return true;
         }
-        return true;
+        return false;
+    }
+
+    public static void restoreSpectrumProp(Context context) {
+        String spectrumStoredValue = PreferenceManager.getDefaultSharedPreferences(context).getString(SPECTRUM_KEY, "0");
+        SystemProperties.set(SPECTRUM_SYSTEM_PROPERTY, spectrumStoredValue);
     }
 }
