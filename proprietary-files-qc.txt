@@ -317,6 +317,9 @@ vendor/firmware/a506_zap.mdt
 vendor/firmware/a530_pfp.fw
 vendor/firmware/a530_pm4.fw
 
+# Ipacm - from Tissot
+vendor/bin/ipacm
+
 # Keystore - from Tissot PKQ1.180917.001/V10.0.2.0.PDHMIFK
 vendor/lib/hw/keystore.msm8953.so
 vendor/lib64/hw/keystore.msm8953.so
