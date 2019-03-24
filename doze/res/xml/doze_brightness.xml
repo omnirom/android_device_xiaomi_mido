@@ -19,24 +19,28 @@
     <com.custom.ambient.display.preference.CustomSeekBarPreference
         android:key="night"
         android:title="@string/night_brightness_value"
+        allowEditText="true"
         android:max="255"
         min="1" />
 
     <com.custom.ambient.display.preference.CustomSeekBarPreference
         android:key="low"
         android:title="@string/low_brightness_value"
+        allowEditText="true"
         android:max="255"
         min="1" />
 
     <com.custom.ambient.display.preference.CustomSeekBarPreference
         android:key="high"
         android:title="@string/high_brightness_value"
+        allowEditText="true"
         android:max="255"
         min="1" />
 
     <com.custom.ambient.display.preference.CustomSeekBarPreference
         android:key="sun"
         android:title="@string/sun_brightness_value"
+        allowEditText="true"
         android:max="255"
         min="1" />
 
