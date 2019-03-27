@@ -38,9 +38,6 @@ on fs
     mkdir /mnt/vendor/persist/bms 0700 root system
     restorecon_recursive /mnt/vendor/persist
 
-    chmod 0664 /sys/class/thermal/thermal_message/sconfig
-    chown system system /sys/class/thermal/thermal_message/sconfig
-
 on init
     # QSEE rpmb listener need symlink for bootdevice
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
