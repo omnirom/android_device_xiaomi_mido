@@ -4,6 +4,7 @@ allow system_server vendor_camera_prop:file { open read getattr };
 # input files
 r_dir_file(system_server, idc_file)
 r_dir_file(system_server, keylayout_file)
+r_dir_file(system_server, keylayout_file_sysfs)
 
 # Thermal
 allow system_server thermal_service:service_manager find;
