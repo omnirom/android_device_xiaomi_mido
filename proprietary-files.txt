@@ -10,7 +10,11 @@ etc/acdbdata/QRD/QRD_Speaker_cal.acdb:vendor/etc/acdbdata/QRD/QRD_Speaker_cal.ac
 # Audio dirac - from xiaomi
 lib/soundfx/libdirac.so
 lib/libDiracAPI_SHARED.so
+vendor/etc/drc/drc_cfg_5.1.txt
+vendor/etc/drc/drc_cfg_AZ.txt
 vendor/etc/diracmobile.config
+vendor/etc/surround_sound_3mic/surround_sound_rec_5.1.cfg
+vendor/etc/surround_sound_3mic/surround_sound_rec_AZ.cfg
 
 # Camera
 bin/mm-qcamera-daemon:vendor/bin/mm-qcamera-daemon
