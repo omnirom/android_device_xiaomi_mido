@@ -33,6 +33,7 @@ etc/acdbdata/QRD/QRD_Speaker_cal.acdb:vendor/etc/acdbdata/QRD/QRD_Speaker_cal.ac
 # Audio dirac - from xiaomi
 lib/soundfx/libdirac.so
 lib/libDiracAPI_SHARED.so
+vendor/etc/diracvdd.bin
 vendor/etc/drc/drc_cfg_5.1.txt
 vendor/etc/drc/drc_cfg_AZ.txt
 vendor/etc/diracmobile.config
