@@ -4,6 +4,9 @@
 # Camera
 /data/vendor/qcam(/.*)?                         u:object_r:camera_socket:s0
 
+# Charging Limiter
+/sys/kernel/charger_limiter/charging_limit		u:object_r:charging_limiter_sysfs:s0
+
 # Fpc Fingerprint
 /data/fpc(/.*)?					u:object_r:fpc_data_file:s0
 /dev/socket/fpce(/.*)?				u:object_r:fpce_socket:s0
