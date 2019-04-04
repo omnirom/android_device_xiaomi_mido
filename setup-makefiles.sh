@@ -20,9 +20,7 @@ set -e
 
 # Required!
 export DEVICE=mido
-export DEVICE_COMMON=msm8953-common
 export VENDOR=xiaomi
-
 export DEVICE_BRINGUP_YEAR=2017
 
 # Load extract_utils and do some sanity checks
@@ -38,30 +36,16 @@ if [ ! -f "${HELPER}" ]; then
 fi
 source "${HELPER}"
 
+INITIAL_COPYRIGHT_YEAR="$DEVICE_BRINGUP_YEAR"
+
 # Initialize the helper
-setup_vendor "${DEVICE_COMMON}" "${VENDOR}" "${AOSP_ROOT}" true
+setup_vendor "${DEVICE}" "${VENDOR}" "${AOSP_ROOT}" false
 
 # Copyright headers and guards
-write_headers "mido"
+write_headers
 
-# The standard common blobs
-write_makefiles "${MY_DIR}/proprietary-files-qc.txt" true
+# The standard device blobs
+write_makefiles "${MY_DIR}/../${DEVICE}/proprietary-files.txt" true
 
 # Finish
 write_footers
-
-if [ -s "${MY_DIR}/../${DEVICE}/proprietary-files.txt" ]; then
-    # Reinitialize the helper for device
-
-    INITIAL_COPYRIGHT_YEAR="$DEVICE_BRINGUP_YEAR"
-    setup_vendor "${DEVICE}" "${VENDOR}" "${AOSP_ROOT}" false
-
-    # Copyright headers and guards
-    write_headers
-
-    # The standard device blobs
-    write_makefiles "${MY_DIR}/../${DEVICE}/proprietary-files.txt" true
-
-    # Finish
-    write_footers
-fi
