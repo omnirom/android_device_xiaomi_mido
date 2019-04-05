@@ -95,6 +95,7 @@ debug.sf.disable_hwc=0 \
 debug.sf.hw=0 \
 debug.sf.gpu_comp_tiling=1 \
 debug.performance.tuning=1 \
+debug.sf.latch_unsignaled=1 \
 debug.sf.recomputecrop=0 \
 dev.pm.dyn_samplingrate=1 \
 persist.demo.hdmirotationlock=false \
@@ -219,6 +220,10 @@ net.tcp.2g_init_rwnd=10
 PRODUCT_PROPERTY_OVERRIDES += \
 persist.vendor.qti.inputopts.enable=true \
 persist.vendor.qti.inputopts.movetouchslop=0.6
+
+# UI
+PRODUCT_PROPERTY_OVERRIDES += \
+sys.use_fifo_ui=1
 
 # Usb
 PRODUCT_PROPERTY_OVERRIDES += \
