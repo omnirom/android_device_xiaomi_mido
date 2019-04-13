@@ -1295,8 +1295,6 @@ vendor/lib64/libwfdhdcpcp.so|c4f8b9368ca91157695144438d02fe5f31af635d
 
 # Wi-Fi - from Tissot PKQ1.180917.001/V10.0.7.0.PDHMIXM
 vendor/bin/wcnss_service|f8ecd38a41b6b7f832380b489e0c9804c34174d8
-vendor/firmware/wlan/prima/WCNSS_cfg.dat|1672af1c3d4f04804f31d4b79a6e59ea4a8b1926
-vendor/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin|5e97baa4957609519835074071c879fbaf462266
 
 # WiFi+Bt fix
 vendor/bin/hw/android.hardware.bluetooth@1.0-service 
