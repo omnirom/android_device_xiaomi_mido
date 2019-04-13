@@ -15,12 +15,6 @@
 -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory
-        android:title="@string/battery_charging_limiter_title">
-        <com.lineageos.settings.device.BatteryChargingLimiterPreference
-            android:key="battery_charging_limite"
-            android:title="@string/battery_charging_limiter_desc" />
-    </PreferenceCategory>
-    <PreferenceCategory
         android:title="@string/category_wakeup">
         <SwitchPreference
             android:key="slow_wakeup_fix"

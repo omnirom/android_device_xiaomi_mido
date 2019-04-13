@@ -57,6 +57,5 @@ public class Startup extends BroadcastReceiver {
         boolean shouldFixSlowWakeup = PreferenceManager.getDefaultSharedPreferences(context).getBoolean(DeviceSettings.KEY_SLOW_WAKEUP_FIX, false);
         Utils.writeValue(DeviceSettings.FILE_LEVEL_WAKEUP, shouldFixSlowWakeup ? "1" : "0" );
         DisplayCalibration.restore(context);
-        BatteryChargingLimiterPreference.restore(context);
     }
 }

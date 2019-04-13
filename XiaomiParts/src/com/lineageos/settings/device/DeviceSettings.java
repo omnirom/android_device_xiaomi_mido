@@ -48,7 +48,6 @@ import android.util.Log;
 public class DeviceSettings extends PreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 
-    public static final String KEY_BATTERY_CHARGING_LIMITER = "battery_charging_limiter";
     public static final String KEY_VIBSTRENGTH = "vib_strength";
     public static final String KEY_YELLOW_TORCH_BRIGHTNESS = "yellow_torch_brightness";
     public static final String KEY_WHITE_TORCH_BRIGHTNESS = "white_torch_brightness";
@@ -74,7 +73,6 @@ public class DeviceSettings extends PreferenceFragment implements
     private SwitchPreference mFastcharge;
     private PreferenceCategory mUsbFastcharge;
     private SwitchPreference slowWakeupFixPreference;
-    private BatteryChargingLimiterPreference mBatteryChargingLimiter;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
@@ -130,11 +128,6 @@ public class DeviceSettings extends PreferenceFragment implements
         slowWakeupFixPreference = (SwitchPreference) findPreference(KEY_SLOW_WAKEUP_FIX);
         slowWakeupFixPreference.setChecked(Utils.getFileValueAsBoolean(FILE_LEVEL_WAKEUP, false));
         slowWakeupFixPreference.setOnPreferenceChangeListener(this);
-
-        mBatteryChargingLimiter = (BatteryChargingLimiterPreference) findPreference(KEY_BATTERY_CHARGING_LIMITER);
-        if (mBatteryChargingLimiter != null) {
-            mBatteryChargingLimiter.setEnabled(BatteryChargingLimiterPreference.isSupported());
-        }
     }
 
     private void setFastcharge(boolean value) {

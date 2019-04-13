@@ -67,9 +67,5 @@
     <string name="category_wakeup">Fingerprint</string>
     <string name="slow_wakeup_fix_title">Improve wakeup speed</string>
     <string name="slow_wakeup_fix_summary">Disabled by default as it drains battery!!!</string>
-
-    <!-- Charging Limiter -->
-    <string name="battery_charging_limiter_title">Battery</string>
-    <string name="battery_charging_limiter_desc">Set limit to stop battery charging</string>
-
+    
 </resources>

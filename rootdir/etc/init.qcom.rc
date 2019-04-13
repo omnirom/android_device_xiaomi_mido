@@ -112,10 +112,6 @@ on boot
     chown system system /sys/bus/i2c/devices/3-0038/disable_keys
     chmod 0666 /sys/bus/i2c/devices/3-0038/disable_keys
 
-    # Charging limiter
-    chown system system /sys/kernel/charger_limiter/charging_limit
-    chmod 0660 /sys/kernel/charger_limiter/charging_limit
-
 	# Vibrator permissions
     chown root system /sys/devices/virtual/timed_output/vibrator/vtg_level
     chmod 0660 /sys/devices/virtual/timed_output/vibrator/vtg_level
