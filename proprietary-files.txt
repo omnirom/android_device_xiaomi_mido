@@ -823,12 +823,12 @@ vendor/lib64/libloc_externalDr.so|0527ae9d0bc5b67a21f337cba66f2e9d89f7383b
 vendor/lib64/liblocationservice.so|f9e6a94c260abafa857d2bcc96f23adef56527e7
 vendor/lib64/liblocationservice_glue.so|d423896f97fa4a1c3f9fecda11df97baf3fa0969
 vendor/lib64/liblowi_client.so|34f65f866c950733c72d5a4f0de00580d2ac3cf5
-vendor/lib64/liblowi_wifihal.so|cdb5477319b7acf35978eaae741192392d2c875f
+vendor/lib64/liblowi_wifihal.so|a72819c88a88c26784281287a6f7c37435632fcf
 vendor/lib64/libquipc_os_api.so|0dd27d3164e69f076563b48c3945bcac66833783
 vendor/lib64/libslimclient.so|2b0dac28f15c722ee68b8cfab792064d338fd0d3
 vendor/lib64/libulp2.so|275cb2f94d8b59fe8bfd8a28a5c1c39994c4569c
 vendor/lib64/libxtadapter.so|d404e8c5c6e14a556926ba772ca99aa51cbd6a36
-vendor/lib64/libxtwifi_ulp_adaptor.so|58b20fbdbb500add11784acce0808c7198c96c34
+vendor/lib64/libxtwifi_ulp_adaptor.so|078124cc018badf89c1f5588e9102e9f7c034da2
 vendor/lib64/vendor.qti.gnss@1.0.so|4dfa66f66b406c1aff3d32bb44382898beaaa39a
 vendor/lib64/vendor.qti.gnss@1.1.so|a622c409e1d20d2799904e47d8fb07753e830d7a
 vendor/lib64/vendor.qti.gnss@1.2.so|104f245c358ab202a57211f99898406cd5ad8e0e
@@ -1297,3 +1297,16 @@ vendor/lib64/libwfdhdcpcp.so|c4f8b9368ca91157695144438d02fe5f31af635d
 vendor/bin/wcnss_service|f8ecd38a41b6b7f832380b489e0c9804c34174d8
 vendor/firmware/wlan/prima/WCNSS_cfg.dat|1672af1c3d4f04804f31d4b79a6e59ea4a8b1926
 vendor/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin|5e97baa4957609519835074071c879fbaf462266
+
+# WiFi+Bt fix
+vendor/bin/hw/android.hardware.bluetooth@1.0-service 
+vendor/bin/hw/android.hardware.wifi@1.0-service 
+vendor/etc/init/android.hardware.bluetooth@1.0-service.rc 
+vendor/etc/init/android.hardware.wifi@1.0-service.rc 
+vendor/etc/wifi/p2p_supplicant_overlay.conf 
+vendor/etc/wifi/WCNSS_qcom_cfg.ini 
+vendor/etc/wifi/wpa_supplicant.conf 
+vendor/etc/wifi/wpa_supplicant_overlay.conf 
+vendor/lib64/libkeystore-engine-wifi-hidl.so 
+vendor/lib64/libkeystore-wifi-hidl.so
+vendor/lib64/libwifi-hal.so

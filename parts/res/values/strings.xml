@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2014-2017 The OmniROM Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+    <!-- App -->
+    <string name="app_name">Device Extras</string>
+    <string name="advanced_settings">Advanced</string>
+
+    <!-- Ambient display -->
+    <string name="display_title">Display</string>
+    <string name="device_doze_title">Ambient display</string>
+
+    <!-- Battery -->
+    <string name="battery_settings_title">Battery</string>
+    <string name="qc_title">Quick Charge</string>
+    <string name="qc_summary">Enable/disable quick charge settings</string>
+
+    <!-- Camera -->
+    <string name="camera_pref_title">Camera</string>
+    <string name="camera_focus_fix_title">Autofocus Fix</string>
+    <string name="camera_focus_fix_summary">For devices with autofocus problem</string>
+
+    <!-- Kcal -->
+    <string name="kcal_title">Display color</string>
+    <string name="kcal_summary">Display color calibration using KCAL</string>
+    <string name="kcal_enabled_title">Enable KCAL</string>
+    <string name="kcal_enabled_summary">Turn on display calibration using KCAL</string>
+    <string name="kcal_red">Red</string>
+    <string name="kcal_green">Green</string>
+    <string name="kcal_blue">Blue</string>
+    <string name="kcal_saturation">Saturation</string>
+    <string name="kcal_contrast">Constrast</string>
+    <string name="menu_reset">Reset</string>
+    <string name="kcal_color_temp">Color temperature (K)</string>
+
+    <!-- Volte -->
+    <string name="volte_pref_title">VoLTE Hack</string>
+    <string name="volte_fix_title">Enable VoLTE</string>
+    <string name="volte_fix_summary">requires reboot,sim settings resets after every reboot</string>
+
+    <!-- HALL Sensor -->
+    <string name="hall_srv_title">HALL Sensor</string>
+    <string name="hall_srv_summary">Enable HALL sensor driver</string>
+
+    <!-- FB Boost -->
+    <string name="fb_boost_title">Boost on Draw</string>
+    <string name="fb_boost_summary">Boost CPU on frame draw. Could increase battery drain while screen is on</string>
+
+    <string name="qfp_wup_title">Wakeup on FP</string>
+    <string name="qfp_wup_summary">Wakeup on FP immediately on finger detect before authentication. Reboot required!</string>
+
+    <string name="qfp_enable_title">Enable FP</string>
+    <string name="qfp_enable_summary">Enable Fingerprint Sensor</string>
+
+    <string name="hw_0d_disable_title">Disable HW Keys</string>
+    <string name="hw_0d_disable_summary">Disable HW Keys</string>
+
+</resources>
