@@ -1,2 +1,1 @@
 dontaudit storaged storaged:capability {sys_admin};
-dontaudit sysinit sysinit:capability {sys_admin};
