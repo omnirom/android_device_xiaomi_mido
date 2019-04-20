@@ -180,7 +180,7 @@ BOARD_VENDORIMAGE_PARTITION_SIZE := 872415232
 TARGET_PER_MGR_ENABLED := true
 
 # Power
-TARGET_TAP_TO_WAKE_NODE := "/sys/devices/soc/78b7000.i2c/i2c-3/3-0038/enable_dt2w"
+TARGET_TAP_TO_WAKE_NODE := "/devices/soc/78b7000.i2c/i2c-3/3-0038/enable_dt2w"
 TARGET_HAS_NO_WIFI_STATS := true
 
 # Qualcomm
