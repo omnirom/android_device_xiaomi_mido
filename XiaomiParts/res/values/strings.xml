@@ -16,7 +16,7 @@
 <resources>
     <string name="app_name">XiaomiParts</string>
     <string name="advanced_settings">XiaomiParts</string>
-    <string name="advanced_settings_summary">Additional device specific settings</string>
+    <string name="advanced_settings_summary">Vibrator and Torch</string>
     <string name="category_vibrator">Vibrator</string>
     <string name="vib_strength_title_head">Strength of the vibrator</string>
     <string name="category_torch">Torch</string>
@@ -52,20 +52,4 @@
     <string name="extreme_amoled">Extreme Amoled</string>
     <string name="warm_amoled">Warm Amoled</string>
     <string name="hybrid_mamba">Hybrid Mamba</string>
-
-    <!-- Spectrum Profiles -->
-    <string name="spectrum_profile_title">Spectrum</string>
-    <string name="spectrum_title">Profile</string>
-    <string name="spectrum_dialogTitle">Choose your spectrum profile</string>
-
-    <!-- usb fastcharge -->
-    <string name="usb_fastcharge_title">USB Fastcharge</string>
-    <string name="fastcharge_title">Enable USB Fastcharge</string>
-    <string name="fastcharge_summary">Use fastcharge when connected to a computer via usb port</string>
-
-    <!-- wakeup fix -->
-    <string name="category_wakeup">Fingerprint</string>
-    <string name="slow_wakeup_fix_title">Improve wakeup speed</string>
-    <string name="slow_wakeup_fix_summary">Disabled by default as it drains battery!!!</string>
-    
 </resources>

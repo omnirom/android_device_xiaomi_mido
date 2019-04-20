@@ -8,8 +8,5 @@ ro.boot.fpsensor           u:object_r:fingerprint_prop:s0
 # Mlipay
 persist.sys.ifaa           u:object_r:ifaa_prop:s0
 
-# Spectrum
-persist.spectrum.profile   u:object_r:spectrum_prop:s0
-
 wlan.driver.config         u:object_r:wifi_prop:s0
 wlan.driver.ath            u:object_r:wifi_prop:s0

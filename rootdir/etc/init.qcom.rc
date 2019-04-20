@@ -27,7 +27,6 @@
 
 import /vendor/etc/init/hw/init.qcom.usb.rc
 import /vendor/etc/init/hw/init.target.rc
-import /init.spectrum.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
@@ -186,10 +185,6 @@ on boot
 
     # Legacy ril-daemon is now disabled by default
     enable ril-daemon
-
-    # USB Fastcharge
-    chown system system /sys/kernel/fast_charge/force_fast_charge
-    chmod 0660 /sys/kernel/fast_charge/force_fast_charge
 
     # KCAL permissions
     chown system system /sys/devices/platform/kcal_ctrl.0/kcal
