@@ -361,3 +361,7 @@ service vendor.power_off_alarm /vendor/bin/power_off_alarm
     group system
     disabled
     oneshot
+
+on property:init.svc.qcom-post-boot=stopped
+    # Reduce swappiness
+    write /proc/sys/vm/swappiness 0
