@@ -153,7 +153,7 @@ PRODUCT_PACKAGES += \
     libtinyxml
 
 # Device-specific settings
-#PRODUCT_PACKAGES += \
+PRODUCT_PACKAGES += \
     XiaomiParts
 
 # DRM
