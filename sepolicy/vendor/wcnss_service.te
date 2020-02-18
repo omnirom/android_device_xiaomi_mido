@@ -1,1 +1,2 @@
+allow wcnss_service wifi_data_file:dir search;
 set_prop(wcnss_service, wifi_prop);

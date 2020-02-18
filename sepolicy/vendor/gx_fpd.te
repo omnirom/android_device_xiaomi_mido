@@ -40,3 +40,5 @@ r_dir_file(gx_fpd, firmware_file)
 allow gx_fpd default_android_service:service_manager find;
 
 add_service(gx_fpd, gx_fpd_service);
+
+allow gx_fpd vendor_file:dir read;

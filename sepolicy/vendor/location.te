@@ -1,0 +1,1 @@
+allow location vendor_file:dir read;

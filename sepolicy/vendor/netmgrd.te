@@ -1,1 +1,3 @@
+allow netmgrd system_file:file execute_no_trans;
+allow netmgrd vendor_file:dir read;
 set_prop(netmgrd, vendor_xlat_prop)

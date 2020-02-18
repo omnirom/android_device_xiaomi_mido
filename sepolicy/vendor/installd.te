@@ -1,1 +1,2 @@
 allow installd adsprpcd_file:filesystem quotaget;
+allow installd adb_data_file:dir search;

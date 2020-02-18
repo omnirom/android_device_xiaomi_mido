@@ -1,0 +1,1 @@
+allow vndservicemanager vendor_file:dir read;

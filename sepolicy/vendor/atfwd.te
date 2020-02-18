@@ -1,0 +1,1 @@
+allow atfwd vendor_file:dir read;
