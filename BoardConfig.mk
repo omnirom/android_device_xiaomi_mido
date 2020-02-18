@@ -194,7 +194,9 @@ VENDOR_SECURITY_PATCH := 2020-01-01
 include device/qcom/sepolicy/sepolicy_legacy.mk
 include vendor/omni/sepolicy/sepolicy.mk
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(DEVICE_PATH)/sepolicy/private
-BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
+BOARD_SEPOLICY_DIRS += \
+	$(DEVICE_PATH)/sepolicy/vendor \
+	$(DEVICE_PATH)/sepolicy/vendor/msm8953
 
 # Treble
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
