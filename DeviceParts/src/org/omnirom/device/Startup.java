@@ -45,7 +45,8 @@ public class Startup extends BroadcastReceiver {
              if (!imported) {
                  SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
                   boolean enabled = sharedPrefs.getBoolean(DeviceSettings.HW_KEY_SWITCH, false);
-            Settings.System.putInt(context.getContentResolver(), HWKeySwitch.SETTINGS_KEY, enabled ? 1 : 0);
+                 Settings.System.putInt(context.getContentResolver(), HWKeySwitch.SETTINGS_KEY, enabled ? 1 : 0);
+                 Settings.System.putInt(context.getContentResolver(), "omni_device_setting_imported", 1);
 
       }
 }
