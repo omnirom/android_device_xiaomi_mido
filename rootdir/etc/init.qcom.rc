@@ -36,6 +36,11 @@ on early-init
 
 on post-fs
     chmod 0755 /sys/kernel/debug/tracing
+    # Key Disabler
+    chown system system /proc/touchpanel/capacitive_keys_disable
+    chmod 0666 /proc/touchpanel/capacitive_keys_disable
+    chown system system /sys/bus/i2c/devices/3-0038/disable_keys
+    chmod 0666 /sys/bus/i2c/devices/3-0038/disable_keys
 
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
