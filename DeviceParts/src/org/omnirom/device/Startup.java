@@ -27,9 +27,38 @@ import android.text.TextUtils;
 
 public class Startup extends BroadcastReceiver {
 
+     private static void restore(String file, boolean enabled) {
+        if (file == null) {
+            return;
+        }
+        Utils.writeValue(file, enabled ? "1" : "0");
+    }
+
+    private static void restore(String file, String value) {
+        if (file == null) {
+            return;
+        }
+        Utils.writeValue(file, value);
+    }
+       private void maybeImportOldSettings(Context context) {
+        boolean imported = Settings.System.getInt(context.getContentResolver(), "omni_device_setting_imported", 0) != 0;
+             if (!imported) {
+                 SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
+                  boolean enabled = sharedPrefs.getBoolean(DeviceSettings.HW_KEY_SWITCH, false);
+            Settings.System.putInt(context.getContentResolver(), HWKeySwitch.SETTINGS_KEY, enabled ? 1 : 0);
+
+      }
+}
+          public static void restoreAfterUserSwitch(Context context) {
+              boolean enabled =Settings.System.getInt(context.getContentResolver(), HWKeySwitch.SETTINGS_KEY, 0) != 0;
+              restore(HWKeySwitch.getFile(), enabled);
+}
+
     @Override
     public void onReceive(final Context context, final Intent bootintent) {
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
 
+        maybeImportOldSettings(context);
+        restoreAfterUserSwitch(context);
     }
 }

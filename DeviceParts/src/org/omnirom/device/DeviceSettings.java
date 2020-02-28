@@ -40,9 +40,18 @@ import android.util.Log;
 public class DeviceSettings extends PreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 
+    public static final String KEY_SETTINGS_PREFIX = "device_setting_";
+    public static final String HW_KEY_SWITCH = "hwd";
+    private static TwoStatePreference mHWKeySwitch;
+
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.main, rootKey);
+
+        mHWKeySwitch = (TwoStatePreference) findPreference(HW_KEY_SWITCH);
+        mHWKeySwitch.setEnabled(HWKeySwitch.isSupported());
+        mHWKeySwitch.setChecked(HWKeySwitch.isCurrentlyEnabled(this.getContext()));
+        mHWKeySwitch.setOnPreferenceChangeListener(new HWKeySwitch(getContext()));
 
     }
 
