@@ -28,7 +28,14 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity-alias
+
+         <receiver android:name="org.omnirom.device.Startup" >
+            <intent-filter android:priority="100" >
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+    
+       <activity-alias
             android:name="org.omnirom.device.DeviceSettings"
             android:exported="true"
             android:label="@string/advanced_settings"
