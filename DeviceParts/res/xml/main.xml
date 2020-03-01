@@ -39,4 +39,15 @@
         </Preference>
 
         </PreferenceCategory>
+
+	<PreferenceCategory
+	android:key="category_misc"
+        android:title="@string/misc">
+         <SwitchPreference
+            android:key="dt2w"
+            android:title="@string/double_tap_wake_title"
+	    android:summary="@string/double_tap_wake_summary"/> 
+ 
+       </PreferenceCategory>
+
 </PreferenceScreen>

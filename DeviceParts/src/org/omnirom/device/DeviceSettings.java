@@ -49,7 +49,9 @@ public class DeviceSettings extends PreferenceFragment implements
     public static final String HW_KEY_SWITCH = "hwd";
     private static final String KEYS_SHOW_NAVBAR_KEY = "navigation_bar_show";
     private static final String KEYS_NAVBAR_CATEGORY = "category_navigationbar";
+    public static final String DOUB_TAP = "dt2w";
     private static TwoStatePreference mHWKeySwitch;
+    private static TwoStatePreference mDoubleTapWake;
     private SwitchPreference mEnableNavBar;
 
     @Override
@@ -61,6 +63,11 @@ public class DeviceSettings extends PreferenceFragment implements
         mHWKeySwitch.setChecked(HWKeySwitch.isCurrentlyEnabled(this.getContext()));
         mHWKeySwitch.setOnPreferenceChangeListener(new HWKeySwitch(getContext()));
        
+        mDoubleTapWake = (TwoStatePreference) findPreference(DOUB_TAP);
+        mDoubleTapWake.setEnabled(DoubTap.isSupported());
+        mDoubleTapWake.setChecked(DoubTap.isCurrentlyEnabled(this.getContext()));
+        mDoubleTapWake.setOnPreferenceChangeListener(new DoubTap(getContext()));
+
         PreferenceScreen prefScreen = getPreferenceScreen(); 
 
        final boolean navBarDevice = getResources().getBoolean(

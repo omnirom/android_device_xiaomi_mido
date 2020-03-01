@@ -23,4 +23,7 @@
     <string name="navigation_title">Navigation</string>
     <string name="button_backlight_title">Button backlight</string>
     <string name="button_backlight_summary">Configure brightness of capacitive buttons</string>
+    <string name="misc">Misc.</string>
+    <string name="double_tap_wake_title">Enable double tap to wake</string>
+    <string name="double_tap_wake_summary">Control double tap to wake</string>
 </resources>

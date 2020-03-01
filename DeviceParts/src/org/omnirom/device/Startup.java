@@ -46,6 +46,10 @@ public class Startup extends BroadcastReceiver {
                  SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
                   boolean enabled = sharedPrefs.getBoolean(DeviceSettings.HW_KEY_SWITCH, false);
                  Settings.System.putInt(context.getContentResolver(), HWKeySwitch.SETTINGS_KEY, enabled ? 1 : 0);
+
+                 enabled = sharedPrefs.getBoolean(DeviceSettings.DOUB_TAP, false);
+                 Settings.System.putInt(context.getContentResolver(), DoubTap.SETTINGS_KEY, enabled ? 1 : 0);
+
                  Settings.System.putInt(context.getContentResolver(), "omni_device_setting_imported", 1);
 
       }
@@ -53,6 +57,9 @@ public class Startup extends BroadcastReceiver {
           public static void restoreAfterUserSwitch(Context context) {
               boolean enabled =Settings.System.getInt(context.getContentResolver(), HWKeySwitch.SETTINGS_KEY, 0) != 0;
               restore(HWKeySwitch.getFile(), enabled);
+
+              enabled =Settings.System.getInt(context.getContentResolver(), DoubTap.SETTINGS_KEY, 0) != 0;
+              restore(DoubTap.getFile(), enabled);
 }
 
     @Override
