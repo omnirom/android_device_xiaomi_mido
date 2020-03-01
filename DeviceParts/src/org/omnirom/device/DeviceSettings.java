@@ -21,13 +21,16 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.res.Resources;
 import android.content.Intent;
+import android.content.Context;
 import android.os.Bundle;
 import androidx.preference.PreferenceFragment;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
+import android.preference.PreferenceActivity;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.TwoStatePreference;
+import androidx.preference.SwitchPreference;
 import android.provider.Settings;
 import android.text.TextUtils;
 import android.view.MenuItem;
@@ -37,12 +40,17 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.util.Log;
 
+import com.android.internal.util.omni.DeviceUtils;
+
 public class DeviceSettings extends PreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 
     public static final String KEY_SETTINGS_PREFIX = "device_setting_";
     public static final String HW_KEY_SWITCH = "hwd";
+    private static final String KEYS_SHOW_NAVBAR_KEY = "navigation_bar_show";
+    private static final String KEYS_NAVBAR_CATEGORY = "category_navigationbar";
     private static TwoStatePreference mHWKeySwitch;
+    private SwitchPreference mEnableNavBar;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
@@ -52,13 +60,35 @@ public class DeviceSettings extends PreferenceFragment implements
         mHWKeySwitch.setEnabled(HWKeySwitch.isSupported());
         mHWKeySwitch.setChecked(HWKeySwitch.isCurrentlyEnabled(this.getContext()));
         mHWKeySwitch.setOnPreferenceChangeListener(new HWKeySwitch(getContext()));
+       
+        PreferenceScreen prefScreen = getPreferenceScreen(); 
+
+       final boolean navBarDevice = getResources().getBoolean(
+                com.android.internal.R.bool.config_showNavigationBar);
+        mEnableNavBar = (SwitchPreference) prefScreen.findPreference(KEYS_SHOW_NAVBAR_KEY);
+        if (navBarDevice) {
+            final PreferenceCategory navBarCategory =
+                (PreferenceCategory) prefScreen.findPreference(KEYS_NAVBAR_CATEGORY);
+            navBarCategory.removePreference(mEnableNavBar);
+        } else {
+            boolean showNavBarDefault = DeviceUtils.deviceSupportNavigationBar(getActivity());
+            boolean showNavBar = Settings.System.getInt(getContext().getContentResolver(),
+                    Settings.System.OMNI_NAVIGATION_BAR_SHOW, showNavBarDefault ? 1 : 0) == 1;
+            mEnableNavBar.setChecked(showNavBar);
+        }
 
     }
 
     @Override
     public boolean onPreferenceTreeClick(Preference preference) {
-        return super.onPreferenceTreeClick(preference);
-    }
+	if (preference == mEnableNavBar) {
+	boolean checked = ((SwitchPreference)preference).isChecked();
+	Settings.System.putInt(getContext().getContentResolver(),
+	Settings.System.OMNI_NAVIGATION_BAR_SHOW, checked ? 1:0);
+	return true;
+	}
+	return super.onPreferenceTreeClick(preference);
+	}
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
