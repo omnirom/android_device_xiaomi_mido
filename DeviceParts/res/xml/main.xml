@@ -15,18 +15,28 @@
 -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-         <SwitchPreference
-            android:key="hwd"
-            android:title="@string/disable_hw_keys" />
-
 	<PreferenceCategory
             android:key="category_navigationbar"
-            android:title="@string/navigationbar_title">
+            android:title="@string/navigation_title">
 
             <SwitchPreference
                 android:key="navigation_bar_show"
                 android:title="@string/navigation_bar_show_title"
                 android:summary="@string/navigation_bar_show_summary"
                 android:persistent="false" />
-        </PreferenceCategory>         
+
+         <SwitchPreference
+            android:key="hwd"
+            android:title="@string/disable_hw_keys"
+	    android:summary="@string/disable_hw_keys_summary"/>
+
+        <Preference
+            android:title="@string/button_backlight_title"
+            android:summary="@string/button_backlight_summary">
+            <intent android:action="android.intent.action.MAIN"
+                    android:targetPackage="com.android.settings"
+                    android:targetClass="com.android.settings.Settings$ButtonBrightnessSettingsActivity" />
+        </Preference>
+
+        </PreferenceCategory>
 </PreferenceScreen>
