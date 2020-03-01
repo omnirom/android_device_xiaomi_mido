@@ -17,4 +17,7 @@
     <string name="app_name">Redmi Note 4</string>
     <string name="advanced_settings">Device Features</string>
     <string name="disable_hw_keys">Disable capacitive keys</string>
+    <string name="navigation_bar_show_title">Show navigation bar</string>
+    <string name="navigation_bar_show_summary">Force enable navigation bar</string>
+    <string name="navigationbar_title">Navigation Bar</string>
 </resources>

@@ -19,4 +19,14 @@
             android:key="hwd"
             android:title="@string/disable_hw_keys" />
 
+	<PreferenceCategory
+            android:key="category_navigationbar"
+            android:title="@string/navigationbar_title">
+
+            <SwitchPreference
+                android:key="navigation_bar_show"
+                android:title="@string/navigation_bar_show_title"
+                android:summary="@string/navigation_bar_show_summary"
+                android:persistent="false" />
+        </PreferenceCategory>         
 </PreferenceScreen>
