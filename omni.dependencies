@@ -42,6 +42,12 @@
     "revision": "android-10"
   },
   {
+    "remote": "omnirom",
+    "repository": "android_vendor_qcom_opensource_commonsys",
+    "target_path": "vendor/qcom/opensource/commonsys",
+    "revision": "android-10"
+  },
+  {
     "remove": "android_vendor_qcom_opensource_display-commonsys-intf"
   }
 ]
