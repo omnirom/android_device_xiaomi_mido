@@ -1,1 +1,2 @@
 allow vold proc_touchpanel:dir r_dir_perms;
+allow vold_prepare_subdirs self:capability sys_admin;

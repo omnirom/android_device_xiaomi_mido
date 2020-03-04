@@ -16,3 +16,5 @@ allow untrusted_app_27 proc_vmstat:file { getattr };
 allow untrusted_app_27 proc_zoneinfo:file { getattr open read };
 allow untrusted_app_27 sysfs_net:dir search;
 allow untrusted_app_27 vendor_file:file { execute getattr read };
+allow untrusted_app_27 input_device:dir search;
+allow untrusted_app_27 sysfs_kgsl_proc:dir search;
