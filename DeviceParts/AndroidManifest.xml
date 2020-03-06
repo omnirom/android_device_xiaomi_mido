@@ -17,7 +17,8 @@
         android:theme="@style/AppTheme"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         tools:replace="android:appComponentFactory"
-        android:supportsRtl="true" >
+        android:supportsRtl="true"
+        android:persistent="true">
         <activity
             android:name="org.omnirom.device.DeviceSettingsActivity"
             android:exported="false"
@@ -45,5 +46,11 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity-alias>
+
+        <service
+            android:name=".DiracService"
+            android:enabled="true"
+
+            android:stopWithTask="false" />
     </application>
 </manifest>
