@@ -50,6 +50,10 @@ public class DeviceSettings extends PreferenceFragment implements
     private static final String KEYS_SHOW_NAVBAR_KEY = "navigation_bar_show";
     private static final String KEYS_NAVBAR_CATEGORY = "category_navigationbar";
     public static final String DOUB_TAP = "dt2w";
+    // Dirac
+    private static final String PREF_ENABLE_DIRAC = "dirac_enabled";
+    private static final String PREF_HEADSET = "dirac_headset_pref";
+    private static final String PREF_PRESET = "dirac_preset_pref";
     private static TwoStatePreference mHWKeySwitch;
     private static TwoStatePreference mDoubleTapWake;
     private SwitchPreference mEnableNavBar;
@@ -62,13 +66,13 @@ public class DeviceSettings extends PreferenceFragment implements
         mHWKeySwitch.setEnabled(HWKeySwitch.isSupported());
         mHWKeySwitch.setChecked(HWKeySwitch.isCurrentlyEnabled(this.getContext()));
         mHWKeySwitch.setOnPreferenceChangeListener(new HWKeySwitch(getContext()));
-       
+
         mDoubleTapWake = (TwoStatePreference) findPreference(DOUB_TAP);
         mDoubleTapWake.setEnabled(DoubTap.isSupported());
         mDoubleTapWake.setChecked(DoubTap.isCurrentlyEnabled(this.getContext()));
         mDoubleTapWake.setOnPreferenceChangeListener(new DoubTap(getContext()));
 
-        PreferenceScreen prefScreen = getPreferenceScreen(); 
+        PreferenceScreen prefScreen = getPreferenceScreen();
 
        final boolean navBarDevice = getResources().getBoolean(
                 com.android.internal.R.bool.config_showNavigationBar);
@@ -83,6 +87,29 @@ public class DeviceSettings extends PreferenceFragment implements
                     Settings.System.OMNI_NAVIGATION_BAR_SHOW, showNavBarDefault ? 1 : 0) == 1;
             mEnableNavBar.setChecked(showNavBar);
         }
+        boolean enhancerEnabled;
+        try {
+            enhancerEnabled = DiracService.sDiracUtils.isDiracEnabled();
+        } catch (java.lang.NullPointerException e) {
+            getContext().startService(new Intent(getContext(), DiracService.class));
+            try {
+                enhancerEnabled = DiracService.sDiracUtils.isDiracEnabled();
+            } catch (NullPointerException ne) {
+                // Avoid crash
+                ne.printStackTrace();
+                enhancerEnabled = false;
+            }
+        }
+
+        SwitchPreference enableDirac = (SwitchPreference) findPreference(PREF_ENABLE_DIRAC);
+        enableDirac.setOnPreferenceChangeListener(this);
+        enableDirac.setChecked(enhancerEnabled);
+
+        ListPreference headsetType = (ListPreference) findPreference(PREF_HEADSET);
+        headsetType.setOnPreferenceChangeListener(this);
+
+        ListPreference preset = (ListPreference) findPreference(PREF_PRESET);
+        preset.setOnPreferenceChangeListener(this);
 
     }
 
@@ -98,7 +125,38 @@ public class DeviceSettings extends PreferenceFragment implements
 	}
 
     @Override
-    public boolean onPreferenceChange(Preference preference, Object newValue) {
+    public boolean onPreferenceChange(Preference preference, Object value) {
+        final String key = preference.getKey();
+        switch (key) {
+            case PREF_ENABLE_DIRAC:
+                try {
+                    DiracService.sDiracUtils.setEnabled((boolean) value);
+                } catch (java.lang.NullPointerException e) {
+                    getContext().startService(new Intent(getContext(), DiracService.class));
+                    DiracService.sDiracUtils.setEnabled((boolean) value);
+                }
+                break;
+
+            case PREF_HEADSET:
+                try {
+                    DiracService.sDiracUtils.setHeadsetType(Integer.parseInt(value.toString()));
+                } catch (java.lang.NullPointerException e) {
+                    getContext().startService(new Intent(getContext(), DiracService.class));
+                    DiracService.sDiracUtils.setHeadsetType(Integer.parseInt(value.toString()));
+                }
+                break;
+
+            case PREF_PRESET:
+                try {
+                    DiracService.sDiracUtils.setLevel(String.valueOf(value));
+                } catch (java.lang.NullPointerException e) {
+                    getContext().startService(new Intent(getContext(), DiracService.class));
+                    DiracService.sDiracUtils.setLevel(String.valueOf(value));
+                }
+                break;
+            default:
+                break;
+}
         return true;
     }
 }

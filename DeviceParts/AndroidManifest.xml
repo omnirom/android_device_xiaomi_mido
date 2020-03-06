@@ -56,6 +56,9 @@
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
                 android:value="org.omnirom.omnigears.ButtonBrightnessSettings" />
         </activity>
-
+        <service
+            android:name=".DiracService"
+            android:enabled="true"
+            android:stopWithTask="false" />
     </application>
 </manifest>

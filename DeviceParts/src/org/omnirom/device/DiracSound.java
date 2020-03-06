@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package org.lineageos.settings.dirac;
+package org.omnirom.device;
 
 import android.media.audiofx.AudioEffect;
 
 import java.util.UUID;
 
-public class DiracSound extends AudioEffect {
+class DiracSound extends AudioEffect {
 
     private static final int DIRACSOUND_PARAM_HEADSET_TYPE = 1;
     private static final int DIRACSOUND_PARAM_EQ_LEVEL = 2;
@@ -28,49 +28,48 @@ public class DiracSound extends AudioEffect {
 
     private static final UUID EFFECT_TYPE_DIRACSOUND =
             UUID.fromString("e069d9e0-8329-11df-9168-0002a5d5c51b");
-    private static final String TAG = "DiracSound";
 
-    public DiracSound(int priority, int audioSession) {
+    DiracSound(int priority, int audioSession) {
         super(EFFECT_TYPE_NULL, EFFECT_TYPE_DIRACSOUND, priority, audioSession);
     }
 
-    public void setMusic(int enable) throws IllegalStateException,
-            IllegalArgumentException, UnsupportedOperationException {
-        checkStatus(setParameter(DIRACSOUND_PARAM_MUSIC, enable));
-    }
-
-    public int getMusic() throws IllegalStateException,
+    int getMusic() throws IllegalStateException,
             IllegalArgumentException, UnsupportedOperationException {
         int[] value = new int[1];
         checkStatus(getParameter(DIRACSOUND_PARAM_MUSIC, value));
         return value[0];
     }
 
-    public void setHeadsetType(int type) throws IllegalStateException,
+    void setMusic(int enable) throws IllegalStateException,
             IllegalArgumentException, UnsupportedOperationException {
-        checkStatus(setParameter(DIRACSOUND_PARAM_HEADSET_TYPE, type));
+        checkStatus(setParameter(DIRACSOUND_PARAM_MUSIC, enable));
     }
 
-    public int getHeadsetType() throws IllegalStateException,
+    int getHeadsetType() throws IllegalStateException,
             IllegalArgumentException, UnsupportedOperationException {
         int[] value = new int[1];
         checkStatus(getParameter(DIRACSOUND_PARAM_HEADSET_TYPE, value));
         return value[0];
     }
 
-    public void setLevel(int band, float level) throws IllegalStateException,
+    void setHeadsetType(int type) throws IllegalStateException,
+            IllegalArgumentException, UnsupportedOperationException {
+        checkStatus(setParameter(DIRACSOUND_PARAM_HEADSET_TYPE, type));
+    }
+
+    void setLevel(int band, float level) throws IllegalStateException,
             IllegalArgumentException, UnsupportedOperationException {
         checkStatus(setParameter(new int[]{DIRACSOUND_PARAM_EQ_LEVEL, band},
                 String.valueOf(level).getBytes()));
     }
 
-    public float getLevel(int band) throws IllegalStateException,
+    float getLevel(int band) throws IllegalStateException,
             IllegalArgumentException, UnsupportedOperationException {
         int[] param = new int[2];
         byte[] value = new byte[10];
         param[0] = DIRACSOUND_PARAM_EQ_LEVEL;
         param[1] = band;
         checkStatus(getParameter(param, value));
-        return new Float(new String(value)).floatValue();
+        return Float.valueOf(new String(value));
     }
 }
