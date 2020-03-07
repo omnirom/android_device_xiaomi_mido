@@ -373,5 +373,5 @@ on property:init.svc.qcom-post-boot=stopped
 
 service goodix_script /vendor/bin/init.goodix.sh
     class late_start
-    user root
+    user system
     oneshot
