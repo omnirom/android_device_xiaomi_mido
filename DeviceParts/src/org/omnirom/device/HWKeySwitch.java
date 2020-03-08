@@ -59,6 +59,7 @@ public static boolean isCurrentlyEnabled(Context context) {
         Boolean enabled = (Boolean) newValue;
         Settings.System.putInt(mContext.getContentResolver(), SETTINGS_KEY, enabled ? 1 : 0);
         Utils.writeValue(getFile(), enabled ? "1" : "0");
+        Settings.System.putInt(mContext.getContentResolver(), Settings.System.OMNI_BUTTON_BACKLIGHT_ENABLE , enabled ? 0 : 1);
         return true;
     }
 }
