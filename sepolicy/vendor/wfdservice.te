@@ -1,0 +1,130 @@
+type wfd_debug_prop, property_type, extended_core_property_type;
+typeattribute wfdservice coredomain;
+
+#Allow wfdservice to use Binder IPC
+binder_use(wfdservice)
+
+#Allow for interaction with Display HAL
+binder_call(wfdservice, surfaceflinger)
+binder_call(surfaceflinger, wfdservice)
+
+#Allow apps to interact with wfdservice
+binder_call(wfdservice, platform_app)
+binder_call(platform_app, wfdservice)
+binder_call(wfdservice, system_app)
+binder_call(system_app, wfdservice)
+
+#Allow access to Audio Flinger APIs
+binder_call(wfdservice, audioserver)
+
+#Allow access to Permission Controller in System Server
+binder_call(wfdservice, system_server)
+
+# Mark wfdservice as a Binder service domain
+binder_service(wfdservice)
+
+#Allow access to PCM sound card
+allow wfdservice audio_device:chr_file rw_file_perms;
+allow wfdservice audio_device:dir r_dir_perms;
+
+#Allow access to /dev/graphics/fb* for screen capture
+allow wfdservice graphics_device:chr_file rw_file_perms;
+
+#Allow access to encoder for YUV statistics
+allow wfdservice gpu_device:chr_file rw_file_perms;
+
+#Allow access to /dev/video/* devices for encoding/decoding
+allow wfdservice video_device:chr_file rw_file_perms;
+allow wfdservice video_device:dir r_dir_perms;
+
+#Allow access to uhid driver for HID event injection
+allow wfdservice uhid_device:chr_file rw_file_perms;
+
+#Allow PROT_EXEC for 3rd party library loaded by wfdservice
+allow wfdservice self:process execmem;
+
+userdebug_or_eng(`
+#Allow access to read mmosal_logmask file in /data partition
+  allow wfdservice system_data_file:file r_file_perms;
+#Allow access to dump encoder/decoder dumps in /data/misc/media
+  allow wfdservice media_data_file:dir w_dir_perms;
+  allow wfdservice media_data_file:file create_file_perms;
+')
+
+#Allow access to /data/media for dumping
+allow wfdservice media_rw_data_file:dir create_dir_perms;
+allow wfdservice media_rw_data_file:file create_file_perms;
+
+allow wfdservice self:netlink_kobject_uevent_socket create_socket_perms_no_ioctl;
+
+# Allow access to input_device for touch input detection
+allow wfdservice input_device:dir r_dir_perms;
+allow wfdservice input_device:chr_file r_file_perms;
+
+#Allow setting of net_admin capability so that libnl API's can be used
+allow wfdservice self:capability net_admin;
+
+#allow binder call to hal_omx_server from wfdservice
+binder_call(wfdservice, hal_omx_server);
+
+#Allow wfdservice to query interface name of network (p2p etc.)
+allow wfdservice self:netlink_socket create_socket_perms_no_ioctl;
+allow wfdservice self:netlink_generic_socket create_socket_perms_no_ioctl;
+
+#Allow ion device access
+allow wfdservice ion_device:chr_file r_file_perms;
+
+#Allow udp socket ioctl
+allow wfdservice self:udp_socket ioctl;
+
+# ioctlcmd=8bff
+allowxperm wfdservice self:udp_socket ioctl priv_sock_ioctls;
+
+#Allow access to proc/net/arp
+allow wfdservice proc_net:file r_file_perms;
+
+#Allow for property access
+userdebug_or_eng(`
+get_prop(wfdservice, wfd_debug_prop)
+')
+
+#allow access to sysfs to know HDMI repeater state
+allow wfdservice sysfs_graphics:file rw_file_perms;
+allow wfdservice sysfs_graphics:dir r_dir_perms;
+
+#Allow hardware binder use
+hwbinder_use(wfdservice)
+get_prop(wfdservice, hwservicemanager_prop)
+
+#Allow hal graphics mapper permissions
+hal_client_domain(wfdservice, hal_graphics_composer);
+
+#Allow hal graphics allocator permissions
+hal_client_domain(wfdservice, hal_graphics_allocator);
+
+hal_client_domain(wfdservice, wifidisplayhalservice);
+
+#Denial seen - SELinux : avc:  denied  { find } for interface=com.qualcomm.qti.wifidisplayhal::IHDCPSession
+#pid=3530 scontext=u:r:wfdservice:s0 tcontext=u:object_r:wifidisplayhalservice_hwservice:s0 tclass=hwservice_manager
+allow wfdservice wifidisplayhalservice_hwservice:hwservice_manager find;
+
+#Allow for property access
+get_prop(wfdservice, vendor_gralloc_prop)
+
+# Add the rule for wfd to access /proc/asound/pcm file
+r_dir_file(wfdservice, proc_asound)
+
+# Add the rule for wfd to access /proc/asound/card0/state file
+r_dir_file(wfdservice, proc_audiod)
+
+# More
+allow wfdservice media_rw_data_file:dir search;
+allow wfdservice proc_asound:dir search;
+allow wfdservice proc_net:file read;
+allow wfdservice uhid_device:chr_file { read write };
+allow wfdservice proc_asound:file read;
+allow wfdservice proc_net:file open;
+allow wfdservice uhid_device:chr_file open;
+allow wfdservice wfd_debug_prop:file { getattr read };
+allow wfdservice wfd_debug_prop:file open;
+allow wfdservice vendor_video_prop:file { read open getattr };
