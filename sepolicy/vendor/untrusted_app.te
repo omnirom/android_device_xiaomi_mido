@@ -18,3 +18,7 @@ allow untrusted_app_27 sysfs_net:dir search;
 allow untrusted_app_27 vendor_file:file { execute getattr read };
 allow untrusted_app_27 input_device:dir search;
 allow untrusted_app_27 sysfs_kgsl_proc:dir search;
+allow untrusted_app persist_camera_prop:file read;
+allow untrusted_app_27 proc_qtaguid_stat:file read;
+allow untrusted_app_27 rootfs:dir read;
+allow untrusted_app rootfs:dir open;

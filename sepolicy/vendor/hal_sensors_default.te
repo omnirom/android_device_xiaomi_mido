@@ -1,0 +1,1 @@
+allow hal_sensors_default sensors_dbg_prop:file { open read getattr };

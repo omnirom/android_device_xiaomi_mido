@@ -1,0 +1,1 @@
+allow hal_dpmQmiMgr vendor_file:dir read;
