@@ -194,6 +194,7 @@ vendor/lib/libmmcamera_rohm_brcg064gwz_3_eeprom.so
 vendor/lib/libmmcamera_s5k3l8.so
 vendor/lib/libmmcamera_s5k3l8_mono.so
 vendor/lib/libmmcamera_s5k3l8_ofilm.so
+vendor/lib/libchromatix_s5k5l8_ofilm_snapshot.so|93a214e31f6a592ea361d817f8500c45d87bdfb3
 vendor/lib/libmmcamera_s5k3l8_qtech.so
 vendor/lib/libmmcamera_s5k3l8_sunny.so
 vendor/lib/libmmcamera_s5k5e8_ofilm.so
