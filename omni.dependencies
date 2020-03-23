@@ -55,5 +55,11 @@
   },
   {
     "remove": "android_vendor_qcom_opensource_display-commonsys-intf"
+  },
+  {
+    "remove": "android_frameworks_opt_telephony"
+  },
+  {
+    "remove": "android_packages_services_Telephony"
   }
 ]
