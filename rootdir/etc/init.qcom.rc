@@ -374,3 +374,6 @@ service vendor.power_off_alarm /vendor/bin/power_off_alarm
 on property:init.svc.qcom-post-boot=stopped
     # Reduce swappiness
     write /proc/sys/vm/swappiness 0
+
+on property:dev.bootcomplete=1
+    setprop sys.io.scheduler "bfq"
