@@ -79,4 +79,19 @@
             android:title="@string/dirac_preset_title" />
     </PreferenceCategory>
 
+    <PreferenceCategory
+	android:key="Display"
+        android:title="@string/display_title">
+
+	<Preference
+	        android:key="display_manager"
+        	android:title="@string/display_calibration"
+		android:summary="@string/display_calibration_summary">
+        	<intent
+        	     	android:targetPackage="org.omnirom.omnidisplaymanager"
+             		android:targetClass="org.omnirom.omnidisplaymanager.ColorSettingsActivity" />
+	</Preference>
+ 
+    </PreferenceCategory>
+
 </PreferenceScreen>
