@@ -54,12 +54,6 @@
     "revision": "android-10"
   },
   {
-    "remote": "omnirom",
-    "repository": "android_packages_apps_OmniDisplayManager",
-    "target_path": "packages/apps/OmniDisplayManager",
-    "revision": "android-10"
-  },
-  {
     "remove": "android_vendor_qcom_opensource_display-commonsys-intf"
   },
   {
