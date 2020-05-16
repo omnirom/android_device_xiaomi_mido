@@ -204,7 +204,7 @@ function 8953_sched_dcvs_hmp()
 
     #governor settings
     echo 1 > /sys/devices/system/cpu/cpu0/online
-    echo "interactive" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+#    echo "interactive" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
     echo "19000 1401600:39000" > /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay
     echo 85 > /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load
     echo 20000 > /sys/devices/system/cpu/cpufreq/interactive/timer_rate
