@@ -13,6 +13,8 @@ allow system_app proc_touchpanel:file rw_file_perms;
 allow system_server proc_touchpanel:dir search;
 allow system_server proc_touchpanel:file rw_file_perms;
 allow system_server proc_touchpanel:lnk_file read;
+allow system_app sysfs_kcal:dir search;
+allow system_app sysfs_kcal:file rw_file_perms;
 
 # WFD
 allow system_app wfd_debug_prop:file { open read getattr };

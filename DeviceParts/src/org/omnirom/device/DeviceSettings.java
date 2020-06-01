@@ -26,6 +26,7 @@ import android.os.Bundle;
 import androidx.preference.PreferenceFragment;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceScreen;
@@ -110,6 +111,16 @@ public class DeviceSettings extends PreferenceFragment implements
 
         ListPreference preset = (ListPreference) findPreference(PREF_PRESET);
         preset.setOnPreferenceChangeListener(this);
+
+        PreferenceScreen mKcalPref = (PreferenceScreen) findPreference("kcal");
+        mKcalPref.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+             @Override
+             public boolean onPreferenceClick(Preference preference) {
+                 Intent intent = new Intent(getActivity().getApplicationContext(), DisplayCalibration.class);
+                 startActivity(intent);
+                 return true;
+             }
+        });
 
     }
 

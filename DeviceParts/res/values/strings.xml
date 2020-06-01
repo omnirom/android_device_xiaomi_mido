@@ -75,7 +75,15 @@
 
     <!-- Display -->
     <string name="display_title">Display</string>
-    <string name="display_calibration">Display calibration</string>
-    <string name="display_calibration_summary">Calibrate display colours</string>
+    <string name="display_calibration_title">Display calibration</string>
+    <string name="display_calibration_summary">Calibrate display colours using KCAL</string>
+    <string name="kcal_title">Display colours</string>
+    <string name="kcal_enabled_title">Enable KCAL</string>
+    <string name="kcal_enabled_summary">Turn on display calibration using KCAL</string>
+    <string name="kcal_red">Red</string>
+    <string name="kcal_green">Green</string>
+    <string name="kcal_blue">Blue</string>
+    <string name="kcal_saturation">Saturation</string>
+    <string name="kcal_contrast">Contrast</string>
 
 </resources>

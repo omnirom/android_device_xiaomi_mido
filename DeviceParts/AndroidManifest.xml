@@ -57,15 +57,17 @@
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
                 android:value="org.omnirom.omnigears.ButtonBrightnessSettings" />
         </activity>
-        <activity
-            android:name="org.omnirom.omnidisplaymanager.ColorSettingsActivity"
-            android:label="@string/display_calibration"
-            android:launchMode="singleInstance" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
+
+	<activity
+        android:name="org.omnirom.device.DisplayCalibration"
+        android:exported="true"
+        android:label="@string/kcal_title" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.DEFAULT" />
+        </intent-filter>
+	</activity>
+
         <service
             android:name=".DiracService"
             android:enabled="true"
