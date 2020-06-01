@@ -83,15 +83,12 @@
 	android:key="Display"
         android:title="@string/display_title">
 
-	<Preference
-	        android:key="display_manager"
-        	android:title="@string/display_calibration"
-		android:summary="@string/display_calibration_summary">
-        	<intent
-        	     	android:targetPackage="org.omnirom.omnidisplaymanager"
-             		android:targetClass="org.omnirom.omnidisplaymanager.ColorSettingsActivity" />
-	</Preference>
- 
+	<PreferenceScreen
+		android:key="kcal"
+		android:fragment="org.omnirom.device.DisplayCalibration"
+		android:title="@string/display_calibration_title"
+		android:summary="@string/display_calibration_summary"/>
+
     </PreferenceCategory>
 
 </PreferenceScreen>

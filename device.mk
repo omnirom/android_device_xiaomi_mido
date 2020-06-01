@@ -158,8 +158,7 @@ PRODUCT_PACKAGES += \
 
 # Device-specific settings
 PRODUCT_PACKAGES += \
-    DeviceParts \
-    OmniDisplayManager
+    DeviceParts
 
 # DRM
 PRODUCT_PACKAGES += \

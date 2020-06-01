@@ -69,5 +69,6 @@ public class Startup extends BroadcastReceiver {
         maybeImportOldSettings(context);
         restoreAfterUserSwitch(context);
         context.startService(new Intent(context, DiracService.class));
+	DisplayCalibration.restore(context);
     }
 }

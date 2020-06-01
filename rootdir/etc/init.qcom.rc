@@ -41,6 +41,15 @@ on post-fs
     chmod 0666 /proc/touchpanel/capacitive_keys_disable
     chown system system /sys/bus/i2c/devices/3-0038/disable_keys
     chmod 0666 /sys/bus/i2c/devices/3-0038/disable_keys
+    # KCAL
+    chown system system /sys/devices/platform/kcal_ctrl.0/kcal
+    chown system system /sys/devices/platform/kcal_ctrl.0/kcal_enable
+    chown system system /sys/devices/platform/kcal_ctrl.0/kcal_cont
+    chown system system /sys/devices/platform/kcal_ctrl.0/kcal_sat
+    chmod 0660 /sys/devices/platform/kcal_ctrl.0/kcal
+    chmod 0660 /sys/devices/platform/kcal_ctrl.0/kcal_enable
+    chmod 0660 /sys/devices/platform/kcal_ctrl.0/kcal_cont
+    chmod 0660 /sys/devices/platform/kcal_ctrl.0/kcal_sat
 
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
