@@ -158,7 +158,8 @@ PRODUCT_PACKAGES += \
 
 # Device-specific settings
 PRODUCT_PACKAGES += \
-    DeviceParts
+    DeviceParts \
+    RemovePackages
 
 # DRM
 PRODUCT_PACKAGES += \
