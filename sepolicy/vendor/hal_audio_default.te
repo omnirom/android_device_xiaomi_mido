@@ -1,4 +1,4 @@
 dontaudit hal_audio_default sysfs:dir { open read };
-allow hal_audio_default diag_device:chr_file { read write };
-get_prop(hal_audio_default, dirac_prop)
-set_prop(hal_audio_default, dirac_prop)
+allow hal_audio_default diag_device:chr_file { open read write };
+get_prop(hal_audio_default, dirac_prop);
+set_prop(hal_audio_default, dirac_prop);
