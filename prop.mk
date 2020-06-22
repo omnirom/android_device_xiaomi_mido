@@ -53,7 +53,8 @@ persist.camera.gyro.disable=0 \
 persist.camera.isp.clock.optmz=0 \
 persist.camera.stats.test=5 \
 persist.vendor.qti.telephony.vt_cam_interface=1 \
-vidc.enc.dcvs.extra-buff-count=2
+vidc.enc.dcvs.extra-buff-count=2 \
+vendor.camera.hal1.packagelist=com.facebook.katana,com.facebook.orca,com.instagram.android,com.viber.voip,com.whatsapp
 
 # Cne
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -83,6 +84,7 @@ ro.opengles.version=196610 \
 ro.qualcomm.cabl=0 \
 ro.surface_flinger.max_frame_buffer_acquired_buffers=3 \
 ro.vendor.display.cabl=2 \
+vendor.display.enable_default_color_mode=1 \
 sdm.debug.disable_skip_validate=1 \
 vendor.display.disable_skip_validate=1 \
 vendor.gralloc.enable_fb_ubwc=1
