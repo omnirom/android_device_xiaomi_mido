@@ -1,1 +1,2 @@
 allow vendor_per_mgr vendor_file:dir read;
+allow vendor_per_mgr self:capability net_raw;
