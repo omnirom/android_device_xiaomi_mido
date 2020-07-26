@@ -32,6 +32,8 @@
 #include "property_service.h"
 #include "log/log.h"
 
+char const *heapgrowthlimit;
+char const *heapsize;
 char const *heaptargetutilization;
 char const *heapminfree;
 char const *heapmaxfree;
@@ -47,17 +49,43 @@ void check_device()
 
     sysinfo(&sys);
 
+    // set different Davlik heap properties for 2 GB
     if (sys.totalram > 2048ull * 1024 * 1024) {
+        heapgrowthlimit = "192m";
+        heapsize = "512m";
         // from phone-xhdpi-4096-dalvik-heap.mk
         heaptargetutilization = "0.6";
         heapminfree = "8m";
         heapmaxfree = "16m";
     } else {
+        // from go_defaults_common.prop
+        heapgrowthlimit = "128m";
+        heapsize = "256m";
         // from phone-xhdpi-2048-dalvik-heap.mk
         heaptargetutilization = "0.75";
         heapminfree = "512k";
         heapmaxfree = "8m";
-   }
+    }
+
+    // set Go tweaks for LMK for 2/3 GB
+    if (sys.totalram < 3072ull * 1024 * 1024) {
+        property_set("ro.lmk.critical_upgrade", "true");
+        property_set("ro.lmk.upgrade_pressure", "40");
+        property_set("ro.lmk.downgrade_pressure", "60");
+        property_set("ro.lmk.kill_heaviest_task", "false");
+    }
+
+    // set rest of Go tweaks for 2 GB
+    if (sys.totalram < 2048ull * 1024 * 1024) {
+        // set lowram options and enable traced by default
+        property_set("ro.config.low_ram", "true");
+        property_set("persist.traced.enable", "true");
+        property_set("ro.statsd.enable", "true");
+        // set threshold to filter unused apps
+        property_set("pm.dexopt.downgrade_after_inactive_days", "10");
+        // set the compiler filter for shared apks to quicken
+        property_set("pm.dexopt.shared", "quicken");
+    }
 }
 
 void vendor_load_properties()
@@ -65,8 +93,8 @@ void vendor_load_properties()
     check_device();
 
     property_set("dalvik.vm.heapstartsize", "8m");
-    property_set("dalvik.vm.heapgrowthlimit", "192m");
-    property_set("dalvik.vm.heapsize", "512m");
+    property_set("dalvik.vm.heapgrowthlimit", heapgrowthlimit);
+    property_set("dalvik.vm.heapsize", heapsize);
     property_set("dalvik.vm.heaptargetutilization", heaptargetutilization);
     property_set("dalvik.vm.heapminfree", heapminfree);
     property_set("dalvik.vm.heapmaxfree", heapmaxfree);

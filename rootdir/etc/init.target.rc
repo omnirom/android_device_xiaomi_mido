@@ -169,3 +169,6 @@ service ppd /vendor/bin/mm-pp-dpps
     group system graphics
     socket pps stream 0660 system system
     disabled
+
+on property:ro.config.low_ram=true
+    mount none /vendor/etc/permissions/go_handheld_core_hardware.xml /vendor/etc/permissions/handheld_core_hardware.xml bind
