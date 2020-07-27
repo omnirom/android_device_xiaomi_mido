@@ -3,3 +3,4 @@ allow netmgrd system_file:file execute_no_trans;
 allow netmgrd vendor_file:dir read;
 allow netmgrd diag_device:chr_file { read };
 set_prop(netmgrd, vendor_xlat_prop)
+dontaudit netmgrd system_file:file execute;
