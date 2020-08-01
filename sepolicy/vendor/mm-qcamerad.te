@@ -4,5 +4,6 @@ allow mm-qcamerad persist_sensors_file:file rw_file_perms;
 allow mm-qcamerad sysfs:file { open read };
 allow mm-qcamerad sysfs_graphics:file { open read };
 allow mm-qcamerad camera_prop:file { open read getattr };
+allow mm-qcamerad vendor_audio_prop:file { getattr open read };
 
 set_prop(mm-qcamerad, vendor_camera_prop);

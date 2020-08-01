@@ -34,6 +34,7 @@
 /(vendor|system/vendor)/bin/hw/android\.hardware\.ir@1\.0-service\.xiaomi_mido					u:object_r:hal_ir_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.light@2\.0-service\.xiaomi_mido                           u:object_r:hal_light_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.usb@1\.0-service\.basic_mido					u:object_r:hal_usb_default_exec:s0
+/(vendor|system/vendor)/lib(64)?/hw/android\.hardware\.graphics\.mapper@2\.0-impl-2\.1\.so			u:object_r:same_process_hal_file:s0
 
 # Ir
 /dev/lirc[0-9]*					u:object_r:lirc_device:s0
