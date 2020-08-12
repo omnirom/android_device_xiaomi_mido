@@ -1,0 +1,1 @@
+allow hal_rcsservice vendor_file:dir read;
