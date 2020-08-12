@@ -1,1 +1,0 @@
-allow drmserver vendor_audio_prop:file { getattr open read };

@@ -1,5 +1,4 @@
 allow init wcnss_device:chr_file write;
-allow init socket_device:sock_file { create setattr unlink };
 allow qti_init_shell {
     fm_prop
 }:property_service set;
