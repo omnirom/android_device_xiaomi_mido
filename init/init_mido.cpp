@@ -29,7 +29,6 @@
 #include <stdlib.h>
 #include <sys/sysinfo.h>
 
-#include "vendor_init.h"
 #include "property_service.h"
 #include "log/log.h"
 
@@ -39,6 +38,9 @@
 char const *heaptargetutilization;
 char const *heapminfree;
 char const *heapmaxfree;
+
+namespace android {
+namespace init {
 
 void check_device()
 {
@@ -81,3 +83,6 @@ void vendor_load_properties()
     property_override("dalvik.vm.heapminfree", heapminfree);
     property_override("dalvik.vm.heapmaxfree", heapmaxfree);
 }
+
+} // android 
+} // init
