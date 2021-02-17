@@ -990,6 +990,10 @@ vendor/lib/libvqzip.so|f85628ea634df1c31d69380d960ad7ea3396e7b2
 vendor/lib64/libmmosal.so|e9fdb48163e92b089cea0c397723a8416436c272
 vendor/lib64/libvpplibrary.so|0308510be8b2ea4cb8ba7278ad249eea53f3fb2c
 
+# Media - libstagefright
+vendor/lib/libstagefright_foundation.so|aafe5bce66329889747fb117318b15362bc24cb4
+vendor/lib64/libstagefright_foundation.so|b15ac631befc222cf7c284d97e34a0e671c64f15
+
 # Perf - from LA.UM.9.6.2.r1-03300-89xx.0
 system_ext/lib/vendor.qti.hardware.perf@2.0.so|b61a2a19ff74b9362d16efed038f5eb7c2fe38a1
 system_ext/lib/vendor.qti.hardware.perf@2.1.so|cdf2ce59500193c7d6f09ffb33991663cc4d8adb
@@ -1261,6 +1265,7 @@ vendor/lib64/vendor.qti.hardware.tui_comm@1.0.so|16baab27397ad493e845515c20ac0c0
 # VNDK
 vendor/lib/vndk-sp/libcutils.so|7276c71299f501f1de8469b8bf1baffcf60180f3
 vendor/lib/vndk/libprocessgroup.so|164204f6902c40dc438c064c88afd0e2749c93f4
+vendor/lib/vndk/libstagefright_omx.so|3e65906f792f4b3d222a3d06a60fa843c3202478
 
 # Wi-Fi - from LA.UM.9.6.2.r1-03300-89xx.0
 vendor/bin/wcnss_service|6fb29e5b9beee42dce36657b63815afff5c13b1d
