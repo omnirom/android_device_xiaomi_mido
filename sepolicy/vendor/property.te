@@ -6,3 +6,10 @@ type vendor_thermal_prop, property_type;
 
 # Dirac
 type dirac_prop, property_type;
+
+# FM prop
+type fm_prop, property_type;
+
+# IMS
+type qcom_ims_prop, property_type;
+
