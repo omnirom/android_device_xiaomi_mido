@@ -22,10 +22,9 @@ package_resource_overlays := $(strip \
 
 LOCAL_RESOURCE_DIR := $(package_resource_overlays) $(LOCAL_RESOURCE_DIR)
 
-LOCAL_JAVA_LIBRARIES := telephony-common
-
 LOCAL_PROGUARD_ENABLED := disabled
 LOCAL_DEX_PREOPT := false
+LOCAL_PRIVATE_PLATFORM_APIS := true
 
 include frameworks/base/packages/SettingsLib/common.mk
 
