@@ -30,7 +30,8 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
-    $(LOCAL_PATH)
+    $(LOCAL_PATH) \
+    packages/apps/Bluetooth
 
 # Permissions
 PRODUCT_COPY_FILES += \
