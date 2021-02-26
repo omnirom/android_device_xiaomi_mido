@@ -1,0 +1,8 @@
+{
+    "model": "Redmi Note 4",
+    "pageUrl":"https://dl.omnirom.org/mido",
+    "make": "Xiaomi",
+    "image": "meta/device_image.png",
+    "state": "official",
+    "device": "mido"
+}
