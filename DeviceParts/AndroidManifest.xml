@@ -17,7 +17,6 @@
         android:theme="@style/AppTheme"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         tools:replace="android:appComponentFactory"
-        android:supportsRtl="true"
         android:persistent="true">
         <activity
             android:name="org.omnirom.device.DeviceSettingsActivity"
