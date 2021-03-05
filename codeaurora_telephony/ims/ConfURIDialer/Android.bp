@@ -1,0 +1,14 @@
+
+
+android_app {
+    name: "ConfURIDialer",
+    owner: "qcom",
+
+    srcs: ["**/*.java"],
+
+    platform_apis: true,
+
+    certificate: "platform",
+
+    system_ext_specific: true
+}

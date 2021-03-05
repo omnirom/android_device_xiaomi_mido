@@ -61,5 +61,8 @@
   },
   {
     "remove": "android_vendor_qcom_opensource_display-commonsys-intf"
+  },
+  {
+    "remove": "android_vendor_codeaurora_telephony"
   }
 ]
