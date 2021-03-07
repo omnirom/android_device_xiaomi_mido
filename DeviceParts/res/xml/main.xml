@@ -18,11 +18,12 @@
     <PreferenceCategory
             android:key="category_navigation"
             android:title="@string/navigation_title">
-        <SwitchPreference
+<!--        <SwitchPreference
                 android:key="navigation_bar_show"
                 android:title="@string/navigation_bar_show_title"
                 android:summary="@string/navigation_bar_show_summary"
                 android:persistent="false" />
+-->
         <SwitchPreference
             android:key="hwd"
             android:title="@string/disable_hw_keys"
