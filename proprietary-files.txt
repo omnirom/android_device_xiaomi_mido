@@ -1244,6 +1244,13 @@ vendor/lib64/libsensor_user_cal.so|9493f9495f170ab043b0ea9fec8d0bba0cd7b9d9
 vendor/lib64/sensor_calibrate.so|219ee0b1bdcc6a3f0b9261f6fc31838916856c99
 vendor/lib64/sensors.ssc.so|863de4d737c389c059670d8e1592bba58ae33de3
 
+# Service Tracker
+vendor/bin/hw/vendor.qti.hardware.servicetracker@1.2-service
+vendor/etc/init/vendor.qti.hardware.servicetracker@1.2-service.rc
+-vendor/etc/vintf/manifest/vendor.qti.hardware.servicetracker@1.2-service.xml
+vendor/lib/hw/vendor.qti.hardware.servicetracker@1.2-impl.so
+vendor/lib64/hw/vendor.qti.hardware.servicetracker@1.2-impl.so
+
 # Thermal - from Olive PKQ1.190319.001 V10.3.5.0.PCNCNXM
 vendor/bin/thermal-engine|7b59145e9e75cdc8b491f2ed7a04c0880899fc74
 -vendor/lib/libthermalclient.so|2c91276835c185e47a66916d24b3adc98b17e6eb
